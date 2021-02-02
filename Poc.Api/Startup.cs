@@ -32,6 +32,8 @@ namespace Poc.Api
 
             services.AddDbContext<ServiceIdentityDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddDbContext<DevEventsDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionDomain_DevEvents")));
+
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<ServiceIdentityDbContext>()
                 .AddDefaultTokenProviders();

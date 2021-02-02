@@ -11,7 +11,6 @@ namespace Infra.Data.Context
 
         public ServiceIdentityDbContext()
         {
-
         }
     }
 }

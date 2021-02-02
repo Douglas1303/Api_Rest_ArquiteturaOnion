@@ -1,0 +1,15 @@
+﻿using System;
+
+namespace Poc.Domain.Entities.Base
+{
+    public class EntityBase
+    {
+        public int Id { get; set; }
+        public DateTime CreateDate { get; set; }
+
+        public EntityBase()
+        {
+            CreateDate = DateTime.Now; 
+        }
+    }
+}
