@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Test\\Poc.Test.csproj": {}
+    "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Test\\Poc.Test.csproj": {}
   },
   "projects": {
-    "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Test\\Poc.Test.csproj": {
+    "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Test\\Poc.Test.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Test\\Poc.Test.csproj",
+        "projectUniqueName": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Test\\Poc.Test.csproj",
         "projectName": "Poc.Test",
-        "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Test\\Poc.Test.csproj",
+        "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Test\\Poc.Test.csproj",
         "packagesPath": "C:\\Users\\douglas.sousa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Test\\obj\\",
+        "outputPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Test\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\douglas.sousa\\AppData\\Roaming\\NuGet\\NuGet.Config",

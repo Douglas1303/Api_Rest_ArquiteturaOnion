@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "213g9q7FWJBJ0N/IyOaGoKWwDcY9If4i4TotAgfCIFJ/jM6ImFLdNSefFzA1jcXfTlpVfBfBdJtuTCm9NV5SxA==",
+  "dgSpecHash": "s+f9YGYdkMVKCLwEBia9lGT2lEoEmQE8OW5ueg+R/OMx6M5zsOGIJVdbV//u5bHU8oWg9MRhDNKZiDdl+8E32Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Domain\\Poc.Domain.csproj",
+  "projectFilePath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Domain\\Poc.Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\aspnetcore.healthchecks.mongodb\\3.1.3\\aspnetcore.healthchecks.mongodb.3.1.3.nupkg.sha512",
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\aspnetcore.healthchecks.sqlserver\\3.2.0\\aspnetcore.healthchecks.sqlserver.3.2.0.nupkg.sha512",

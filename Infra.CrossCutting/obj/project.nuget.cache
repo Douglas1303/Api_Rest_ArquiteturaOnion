@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kOLjwMHbPuWLplM6L7jc+9ii3Kptyg71ckciU1fLd1YnyFHcyvqoTRY8X70Ro1xdxIOU9F07e1ZDWIewhBhT0Q==",
+  "dgSpecHash": "OfEZU5WjEpbK1TGKvapFVi6Un8mmWMDiSa3X8Li5+NbsfjNZUUqPvGsUe4rKVAoEzOHaetyp0EoDRr/vF6zJRw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Infra.CrossCutting\\Infra.CrossCutting.csproj",
+  "projectFilePath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.CrossCutting\\Infra.CrossCutting.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\aspnetcore.healthchecks.mongodb\\3.1.3\\aspnetcore.healthchecks.mongodb.3.1.3.nupkg.sha512",
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\aspnetcore.healthchecks.sqlserver\\3.2.0\\aspnetcore.healthchecks.sqlserver.3.2.0.nupkg.sha512",

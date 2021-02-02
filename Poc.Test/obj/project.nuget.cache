@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SUl+x1wq7QZvs87qeO4CsQzFdyt6zBj6/UyZ6CqXdMO52+teuDF2p4c4H4T+doPtjQpae02BSwwgJ8roCLQsGQ==",
+  "dgSpecHash": "gySbO1y7fIyEQHnXSsNmE0vF+oIldZVakB03//SKQjnWnAI8K3GqcsLrQ8WTPSF4V+9uVS20q2eXHZUlUrozIQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Test\\Poc.Test.csproj",
+  "projectFilePath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Test\\Poc.Test.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\coverlet.collector\\3.0.2\\coverlet.collector.3.0.2.nupkg.sha512",
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\microsoft.codecoverage\\16.8.3\\microsoft.codecoverage.16.8.3.nupkg.sha512",

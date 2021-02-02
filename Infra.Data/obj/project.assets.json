@@ -8722,11 +8722,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Infra.Data\\Infra.Data.csproj",
+      "projectUniqueName": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.Data\\Infra.Data.csproj",
       "projectName": "Infra.Data",
-      "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Infra.Data\\Infra.Data.csproj",
+      "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.Data\\Infra.Data.csproj",
       "packagesPath": "C:\\Users\\douglas.sousa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Infra.Data\\obj\\",
+      "outputPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\douglas.sousa\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -8743,11 +8743,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Infra.CrossCutting\\Infra.CrossCutting.csproj": {
-              "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Infra.CrossCutting\\Infra.CrossCutting.csproj"
+            "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.CrossCutting\\Infra.CrossCutting.csproj": {
+              "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.CrossCutting\\Infra.CrossCutting.csproj"
             },
-            "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Domain\\Poc.Domain.csproj": {
-              "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Domain\\Poc.Domain.csproj"
+            "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Domain\\Poc.Domain.csproj": {
+              "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Domain\\Poc.Domain.csproj"
             }
           }
         }

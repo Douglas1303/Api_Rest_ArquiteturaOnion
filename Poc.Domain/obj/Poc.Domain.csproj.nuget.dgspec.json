@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Domain\\Poc.Domain.csproj": {}
+    "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Domain\\Poc.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Infra.CrossCutting\\Infra.CrossCutting.csproj": {
+    "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.CrossCutting\\Infra.CrossCutting.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Infra.CrossCutting\\Infra.CrossCutting.csproj",
+        "projectUniqueName": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.CrossCutting\\Infra.CrossCutting.csproj",
         "projectName": "Infra.CrossCutting",
-        "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Infra.CrossCutting\\Infra.CrossCutting.csproj",
+        "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.CrossCutting\\Infra.CrossCutting.csproj",
         "packagesPath": "C:\\Users\\douglas.sousa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Infra.CrossCutting\\obj\\",
+        "outputPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.CrossCutting\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\douglas.sousa\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -95,14 +95,14 @@
         }
       }
     },
-    "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Domain\\Poc.Domain.csproj": {
+    "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Domain\\Poc.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Domain\\Poc.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Domain\\Poc.Domain.csproj",
         "projectName": "Poc.Domain",
-        "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Domain\\Poc.Domain.csproj",
+        "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Domain\\Poc.Domain.csproj",
         "packagesPath": "C:\\Users\\douglas.sousa\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Domain\\obj\\",
+        "outputPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\douglas.sousa\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -119,8 +119,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Infra.CrossCutting\\Infra.CrossCutting.csproj": {
-                "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Infra.CrossCutting\\Infra.CrossCutting.csproj"
+              "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.CrossCutting\\Infra.CrossCutting.csproj": {
+                "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.CrossCutting\\Infra.CrossCutting.csproj"
               }
             }
           }

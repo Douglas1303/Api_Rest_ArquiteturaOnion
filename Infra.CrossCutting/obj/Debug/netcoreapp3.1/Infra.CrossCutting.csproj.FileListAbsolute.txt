@@ -7,3 +7,12 @@ C:\Users\douglas.sousa\Desktop\POC\PocProject\Infra.CrossCutting\obj\Debug\netco
 C:\Users\douglas.sousa\Desktop\POC\PocProject\Infra.CrossCutting\obj\Debug\netcoreapp3.1\Infra.CrossCutting.csproj.CoreCompileInputs.cache
 C:\Users\douglas.sousa\Desktop\POC\PocProject\Infra.CrossCutting\obj\Debug\netcoreapp3.1\Infra.CrossCutting.dll
 C:\Users\douglas.sousa\Desktop\POC\PocProject\Infra.CrossCutting\obj\Debug\netcoreapp3.1\Infra.CrossCutting.pdb
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.CrossCutting\bin\Debug\netcoreapp3.1\Infra.CrossCutting.deps.json
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.CrossCutting\bin\Debug\netcoreapp3.1\Infra.CrossCutting.dll
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.CrossCutting\bin\Debug\netcoreapp3.1\Infra.CrossCutting.pdb
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.CrossCutting\obj\Debug\netcoreapp3.1\Infra.CrossCutting.csprojAssemblyReference.cache
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.CrossCutting\obj\Debug\netcoreapp3.1\Infra.CrossCutting.AssemblyInfoInputs.cache
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.CrossCutting\obj\Debug\netcoreapp3.1\Infra.CrossCutting.AssemblyInfo.cs
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.CrossCutting\obj\Debug\netcoreapp3.1\Infra.CrossCutting.csproj.CoreCompileInputs.cache
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.CrossCutting\obj\Debug\netcoreapp3.1\Infra.CrossCutting.dll
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.CrossCutting\obj\Debug\netcoreapp3.1\Infra.CrossCutting.pdb

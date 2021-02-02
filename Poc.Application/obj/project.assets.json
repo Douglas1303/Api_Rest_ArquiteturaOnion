@@ -7968,11 +7968,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Application\\Poc.Application.csproj",
+      "projectUniqueName": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Application\\Poc.Application.csproj",
       "projectName": "Poc.Application",
-      "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Application\\Poc.Application.csproj",
+      "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Application\\Poc.Application.csproj",
       "packagesPath": "C:\\Users\\douglas.sousa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Application\\obj\\",
+      "outputPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\douglas.sousa\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -7989,11 +7989,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Infra.CrossCutting\\Infra.CrossCutting.csproj": {
-              "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Infra.CrossCutting\\Infra.CrossCutting.csproj"
+            "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.CrossCutting\\Infra.CrossCutting.csproj": {
+              "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.CrossCutting\\Infra.CrossCutting.csproj"
             },
-            "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Domain\\Poc.Domain.csproj": {
-              "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Poc.Domain\\Poc.Domain.csproj"
+            "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Domain\\Poc.Domain.csproj": {
+              "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Domain\\Poc.Domain.csproj"
             }
           }
         }

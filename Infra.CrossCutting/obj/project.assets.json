@@ -7819,11 +7819,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Infra.CrossCutting\\Infra.CrossCutting.csproj",
+      "projectUniqueName": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.CrossCutting\\Infra.CrossCutting.csproj",
       "projectName": "Infra.CrossCutting",
-      "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Infra.CrossCutting\\Infra.CrossCutting.csproj",
+      "projectPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.CrossCutting\\Infra.CrossCutting.csproj",
       "packagesPath": "C:\\Users\\douglas.sousa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\PocProject\\Infra.CrossCutting\\obj\\",
+      "outputPath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.CrossCutting\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\douglas.sousa\\AppData\\Roaming\\NuGet\\NuGet.Config",
