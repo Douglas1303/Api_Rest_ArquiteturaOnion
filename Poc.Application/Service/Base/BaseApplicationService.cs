@@ -2,10 +2,12 @@
 using Infra.CrossCutting.Mediator;
 using Infra.CrossCutting.Models;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace Poc.Application.Service.Base
 {
+    [ExcludeFromCodeCoverage]
     public abstract class BaseApplicationService
     {
         protected const string Success = "Éxito";

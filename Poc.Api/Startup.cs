@@ -1,5 +1,4 @@
 using Infra.CrossCutting.IoC;
-using Infra.CrossCutting.Tools.Service;
 using Infra.Data.Context;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -11,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Text;
 
@@ -28,7 +28,11 @@ namespace Poc.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+            }).AddDataAnnotationsLocalization(); ;
 
             services.AddDbContext<ServiceIdentityDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -84,7 +88,7 @@ namespace Poc.Api
                 });
             });
 
-            Bootstrap.RegisterService(services); 
+            Bootstrap.RegisterService(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -106,7 +110,7 @@ namespace Poc.Api
 
             app.UseRouting();
 
-            app.UseAuthentication(); 
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

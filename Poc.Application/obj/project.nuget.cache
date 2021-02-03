@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "xyoc5wM8Lg+xvyrE7BALWNgo8I9zPTWBCKzraKL9mPLU5CUvBnN44brtWJhhWl1COVAOQBAohCdfvmFXD2nzTQ==",
+  "dgSpecHash": "xkdLRVjnvL1c5hNeYwxcNWFbfYf9K/WiH3CCzpRhUG90zmnnQ+HyakYewW3C9LS0jixCOfVomk99qr7c3W/N4g==",
   "success": true,
   "projectFilePath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Poc.Application\\Poc.Application.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\awssdk.core\\3.5.1.51\\awssdk.core.3.5.1.51.nupkg.sha512",
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\bouncycastle.netcore\\1.8.8\\bouncycastle.netcore.1.8.8.nupkg.sha512",
+    "C:\\Users\\douglas.sousa\\.nuget\\packages\\dapper\\2.0.78\\dapper.2.0.78.nupkg.sha512",
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\dnsclient\\1.2.0\\dnsclient.1.2.0.nupkg.sha512",
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\fluentvalidation\\9.3.0\\fluentvalidation.9.3.0.nupkg.sha512",
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\fluentvalidation.aspnetcore\\9.3.0\\fluentvalidation.aspnetcore.9.3.0.nupkg.sha512",
@@ -106,7 +107,7 @@
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
-    "C:\\Users\\douglas.sousa\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
+    "C:\\Users\\douglas.sousa\\.nuget\\packages\\system.reflection.emit.lightweight\\4.7.0\\system.reflection.emit.lightweight.4.7.0.nupkg.sha512",
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\douglas.sousa\\.nuget\\packages\\system.reflection.typeextensions\\4.3.0\\system.reflection.typeextensions.4.3.0.nupkg.sha512",

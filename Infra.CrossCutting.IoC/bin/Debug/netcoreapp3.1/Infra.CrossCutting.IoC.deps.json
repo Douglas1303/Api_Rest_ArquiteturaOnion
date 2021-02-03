@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v3.1": {
       "Infra.CrossCutting.IoC/1.0.0": {
         "dependencies": {
+          "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.0",
           "Infra.CrossCutting": "1.0.0",
           "Infra.Data": "1.0.0",
           "MediatR": "9.0.0",
@@ -58,6 +59,19 @@
           }
         }
       },
+      "AutoMapper.Extensions.Microsoft.DependencyInjection/8.1.0": {
+        "dependencies": {
+          "AutoMapper": "10.1.1",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0",
+          "Microsoft.Extensions.Options": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.1.0.0"
+          }
+        }
+      },
       "AWSSDK.Core/3.5.1.51": {
         "runtime": {
           "lib/netcoreapp3.1/AWSSDK.Core.dll": {
@@ -71,6 +85,17 @@
           "lib/netstandard2.0/BouncyCastle.Crypto.dll": {
             "assemblyVersion": "1.8.8.0",
             "fileVersion": "1.8.20265.1"
+          }
+        }
+      },
+      "Dapper/2.0.78": {
+        "dependencies": {
+          "System.Reflection.Emit.Lightweight": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Dapper.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.78.45418"
           }
         }
       },
@@ -639,7 +664,7 @@
           "System.Collections.NonGeneric": "4.3.0",
           "System.Diagnostics.Process": "4.1.0",
           "System.Dynamic.Runtime": "4.3.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.7.0",
           "System.Runtime.Serialization.Formatters": "4.3.0"
         },
         "runtime": {
@@ -1187,7 +1212,7 @@
           "System.Reflection": "4.3.0",
           "System.Reflection.Emit": "4.7.0",
           "System.Reflection.Emit.ILGeneration": "4.3.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.7.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
           "System.Reflection.TypeExtensions": "4.3.0",
@@ -1326,7 +1351,7 @@
           "System.Linq": "4.3.0",
           "System.Reflection": "4.3.0",
           "System.Reflection.Emit.ILGeneration": "4.3.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.7.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
           "System.Reflection.TypeExtensions": "4.3.0",
@@ -1368,14 +1393,7 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Reflection.Emit.Lightweight/4.3.0": {
-        "dependencies": {
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Emit.ILGeneration": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Runtime": "4.3.0"
-        }
-      },
+      "System.Reflection.Emit.Lightweight/4.7.0": {},
       "System.Reflection.Extensions/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -1826,6 +1844,7 @@
       },
       "Infra.Data/1.0.0": {
         "dependencies": {
+          "Dapper": "2.0.78",
           "Infra.CrossCutting": "1.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "5.0.2",
           "Microsoft.EntityFrameworkCore": "5.0.2",
@@ -1850,6 +1869,7 @@
       },
       "Poc.Domain/1.0.0": {
         "dependencies": {
+          "Dapper": "2.0.78",
           "FluentValidator": "2.0.4",
           "Infra.CrossCutting": "1.0.0"
         },
@@ -1886,6 +1906,13 @@
       "path": "automapper/10.1.1",
       "hashPath": "automapper.10.1.1.nupkg.sha512"
     },
+    "AutoMapper.Extensions.Microsoft.DependencyInjection/8.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dQyGCAYcHbGuimVvCMu4Ea2S1oYOlgO9XfVdClmY5wgygJMZoS57emPzH0qNfknmtzMm4QbDO9i237W5IDjU1A==",
+      "path": "automapper.extensions.microsoft.dependencyinjection/8.1.0",
+      "hashPath": "automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512"
+    },
     "AWSSDK.Core/3.5.1.51": {
       "type": "package",
       "serviceable": true,
@@ -1899,6 +1926,13 @@
       "sha512": "sha512-Jx3dQd4SQOHZmxcImYSp0YT2WpYxosQXoZutbHORhFK/zHGH8aykfIyM6S4DVGyu4g9+KHGJUQEh2RH4qXj/Jg==",
       "path": "bouncycastle.netcore/1.8.8",
       "hashPath": "bouncycastle.netcore.1.8.8.nupkg.sha512"
+    },
+    "Dapper/2.0.78": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vLPwL2HZXp/DN17Eu7sg6GMEj02alq7jcy6atn5Gv8i96b9Hu1UoxlCrhInUPfSFLQQiD8O7pdWAE1fdUEO/1Q==",
+      "path": "dapper/2.0.78",
+      "hashPath": "dapper.2.0.78.nupkg.sha512"
     },
     "DnsClient/1.2.0": {
       "type": "package",
@@ -2754,12 +2788,12 @@
       "path": "system.reflection.emit.ilgeneration/4.3.0",
       "hashPath": "system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512"
     },
-    "System.Reflection.Emit.Lightweight/4.3.0": {
+    "System.Reflection.Emit.Lightweight/4.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-oadVHGSMsTmZsAF864QYN1t1QzZjIcuKU3l2S9cZOwDdDueNTrqq1yRj7koFfIGEnKpt6NjpL3rOzRhs4ryOgA==",
-      "path": "system.reflection.emit.lightweight/4.3.0",
-      "hashPath": "system.reflection.emit.lightweight.4.3.0.nupkg.sha512"
+      "sha512": "sha512-a4OLB4IITxAXJeV74MDx49Oq2+PsF6Sml54XAFv+2RyWwtDBcabzoxiiJRhdhx+gaohLh4hEGCLQyBozXoQPqA==",
+      "path": "system.reflection.emit.lightweight/4.7.0",
+      "hashPath": "system.reflection.emit.lightweight.4.7.0.nupkg.sha512"
     },
     "System.Reflection.Extensions/4.3.0": {
       "type": "package",

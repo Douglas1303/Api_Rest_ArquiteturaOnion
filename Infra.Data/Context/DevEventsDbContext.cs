@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Infra.CrossCutting.AppSettings;
+using Microsoft.EntityFrameworkCore;
 using Poc.Domain.Entities;
 
 namespace Infra.Data.Context
@@ -9,10 +10,6 @@ namespace Infra.Data.Context
         {
         }
 
-        //public DevEventsDbContext()
-        //{
-        //}
-
         public DbSet<CategoryModel> Categories { get; set; }
         public DbSet<EventModel> Events { get; set; }
         public DbSet<UserModel> Users { get; set; }
@@ -20,6 +17,8 @@ namespace Infra.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(DevEventsDbContext).Assembly); 
+
             modelBuilder.Entity<EventModel>()
                 .Property(e => e.Descricao)
                     .HasMaxLength(300);
@@ -53,5 +52,10 @@ namespace Infra.Data.Context
                 .HasForeignKey(i => i.UsuarioId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(GetAppSetting.GetConnection(DefaultKeys.DevEvents_Domain())); 
+        //}
     }
 }

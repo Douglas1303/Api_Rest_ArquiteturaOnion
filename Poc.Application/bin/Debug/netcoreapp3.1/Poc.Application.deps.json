@@ -70,6 +70,17 @@
           }
         }
       },
+      "Dapper/2.0.78": {
+        "dependencies": {
+          "System.Reflection.Emit.Lightweight": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Dapper.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.78.45418"
+          }
+        }
+      },
       "DnsClient/1.2.0": {
         "dependencies": {
           "System.Buffers": "4.4.0"
@@ -367,7 +378,7 @@
           "System.Collections.NonGeneric": "4.3.0",
           "System.Diagnostics.Process": "4.1.0",
           "System.Dynamic.Runtime": "4.3.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.7.0",
           "System.Runtime.Serialization.Formatters": "4.3.0"
         },
         "runtime": {
@@ -916,7 +927,7 @@
           "System.Reflection": "4.3.0",
           "System.Reflection.Emit": "4.7.0",
           "System.Reflection.Emit.ILGeneration": "4.3.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.7.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
           "System.Reflection.TypeExtensions": "4.3.0",
@@ -1055,7 +1066,7 @@
           "System.Linq": "4.3.0",
           "System.Reflection": "4.3.0",
           "System.Reflection.Emit.ILGeneration": "4.3.0",
-          "System.Reflection.Emit.Lightweight": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.7.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
           "System.Reflection.TypeExtensions": "4.3.0",
@@ -1091,14 +1102,7 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.Reflection.Emit.Lightweight/4.3.0": {
-        "dependencies": {
-          "System.Reflection": "4.3.0",
-          "System.Reflection.Emit.ILGeneration": "4.3.0",
-          "System.Reflection.Primitives": "4.3.0",
-          "System.Runtime": "4.3.0"
-        }
-      },
+      "System.Reflection.Emit.Lightweight/4.7.0": {},
       "System.Reflection.Extensions/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "2.1.2",
@@ -1547,6 +1551,7 @@
       },
       "Poc.Domain/1.0.0": {
         "dependencies": {
+          "Dapper": "2.0.78",
           "FluentValidator": "2.0.4",
           "Infra.CrossCutting": "1.0.0"
         },
@@ -1596,6 +1601,13 @@
       "sha512": "sha512-Jx3dQd4SQOHZmxcImYSp0YT2WpYxosQXoZutbHORhFK/zHGH8aykfIyM6S4DVGyu4g9+KHGJUQEh2RH4qXj/Jg==",
       "path": "bouncycastle.netcore/1.8.8",
       "hashPath": "bouncycastle.netcore.1.8.8.nupkg.sha512"
+    },
+    "Dapper/2.0.78": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vLPwL2HZXp/DN17Eu7sg6GMEj02alq7jcy6atn5Gv8i96b9Hu1UoxlCrhInUPfSFLQQiD8O7pdWAE1fdUEO/1Q==",
+      "path": "dapper/2.0.78",
+      "hashPath": "dapper.2.0.78.nupkg.sha512"
     },
     "DnsClient/1.2.0": {
       "type": "package",
@@ -2276,12 +2288,12 @@
       "path": "system.reflection.emit.ilgeneration/4.3.0",
       "hashPath": "system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512"
     },
-    "System.Reflection.Emit.Lightweight/4.3.0": {
+    "System.Reflection.Emit.Lightweight/4.7.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-oadVHGSMsTmZsAF864QYN1t1QzZjIcuKU3l2S9cZOwDdDueNTrqq1yRj7koFfIGEnKpt6NjpL3rOzRhs4ryOgA==",
-      "path": "system.reflection.emit.lightweight/4.3.0",
-      "hashPath": "system.reflection.emit.lightweight.4.3.0.nupkg.sha512"
+      "sha512": "sha512-a4OLB4IITxAXJeV74MDx49Oq2+PsF6Sml54XAFv+2RyWwtDBcabzoxiiJRhdhx+gaohLh4hEGCLQyBozXoQPqA==",
+      "path": "system.reflection.emit.lightweight/4.7.0",
+      "hashPath": "system.reflection.emit.lightweight.4.7.0.nupkg.sha512"
     },
     "System.Reflection.Extensions/4.3.0": {
       "type": "package",
