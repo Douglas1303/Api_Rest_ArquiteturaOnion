@@ -1,0 +1,50 @@
+﻿using Infra.CrossCutting.Models;
+using Infra.Data.Context;
+using Infra.Data.Repository.Base;
+using Microsoft.EntityFrameworkCore;
+using Poc.Domain.Entities;
+using Poc.Domain.Interface.Base;
+using Poc.Domain.Interface.Repository;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace Infra.Data.Repository
+{
+    public class UserRepository : BaseRepository, IUserRepository
+    {
+        public UserRepository(DevEventsDbContext context, IDapperBase dapper, ILogModel log) : base(context, dapper, log)
+        {
+        }
+
+        public async Task<IEnumerable<UserModel>> GetAllAsync()
+        {
+            try
+            {
+                var users = await _context.Users.ToListAsync();
+
+                return users;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public async Task<UserModel> AddAsync(UserModel userModel)
+        {
+            try
+            {
+                var user = _context.Users.Add(userModel);
+
+                _context.SaveChanges();
+
+                return userModel;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+    }
+}

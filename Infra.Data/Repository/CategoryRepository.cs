@@ -17,7 +17,7 @@ namespace Infra.Data.Repository
         {
         }
 
-        public async Task<IEnumerable<CategoryModel>> GetCategories()
+        public async Task<IEnumerable<CategoryModel>> GetAllAsync()
         {
             try
             {

@@ -9,7 +9,6 @@
     <Folder Include="Commands\" />
     <Folder Include="Dtos\" />
     <Folder Include="Enum\" />
-    <Folder Include="ValueObjects\" />
     <Folder Include="Resources\" />
   </ItemGroup>
 

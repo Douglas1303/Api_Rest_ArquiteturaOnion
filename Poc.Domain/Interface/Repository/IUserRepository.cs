@@ -4,8 +4,10 @@ using System.Threading.Tasks;
 
 namespace Poc.Domain.Interface.Repository
 {
-    public interface ICategoryRepository
+    public interface IUserRepository
     {
-        Task<IEnumerable<CategoryModel>> GetAllAsync();
+        Task<IEnumerable<UserModel>> GetAllAsync();
+
+        Task<UserModel> AddAsync(UserModel userModel);
     }
 }

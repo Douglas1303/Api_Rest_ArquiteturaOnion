@@ -31,10 +31,12 @@ namespace Infra.CrossCutting.IoC
             //Application
             services.AddScoped<IAuthorizationApplication, AuthorizationApplication>();
             services.AddScoped<ICategoryApplication, CategoryApplication>();
+            services.AddScoped<IUserApplication, UserApplication>(); 
 
             //Repository
             services.AddScoped<IDapperBase, DapperBase>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IUserRepository, UserRepository>(); 
 
             //Automapper
             services.AddAutoMapper(typeof(AutoMapperConfiguration));

@@ -9,8 +9,12 @@ namespace Poc.Domain.Entities
         public string NomeCompleto { get; set; }
         public DateTime DataNascimento { get; set; }
         public string Email { get; set; }
-        public DateTime DataCadastro { get; set; }
         public bool Ativo { get; set; }
         public IEnumerable<SubscriptionModel> Inscricoes { get; set; }
+
+        public UserModel()
+        {
+            Ativo = true;
+        }
     }
 }

@@ -19,11 +19,11 @@ namespace Poc.Application.Service
             _categoryRepository = categoryRepository;
         }
 
-        public async Task<IResult> GetCategories()
+        public async Task<IResult> GetAllAsync()
         {
             try
             {
-                return new QueryResult(await _categoryRepository.GetCategories());
+                return new QueryResult(await _categoryRepository.GetAllAsync());
             }
             catch (Exception)
             {

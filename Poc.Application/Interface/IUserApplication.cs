@@ -1,11 +1,13 @@
 ﻿using Infra.CrossCutting.Core.CQRS;
-using System.Collections.Generic;
+using Poc.Application.ViewModel;
 using System.Threading.Tasks;
 
 namespace Poc.Application.Interface
 {
-    public interface ICategoryApplication
+    public interface IUserApplication
     {
         Task<IResult> GetAllAsync();
+
+        Task<IResult> AddAsync(AddUserViewModel addUserViewModel);
     }
 }

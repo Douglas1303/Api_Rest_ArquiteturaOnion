@@ -16,7 +16,7 @@ namespace Poc.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _categoryApplication.GetCategories());
+            return Ok(await _categoryApplication.GetAllAsync());
         }
     }
 }
