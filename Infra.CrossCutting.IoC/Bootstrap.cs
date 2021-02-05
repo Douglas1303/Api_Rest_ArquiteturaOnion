@@ -5,12 +5,15 @@ using Infra.Data.Context;
 using Infra.Data.Repository;
 using Infra.Data.Repository.Base;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Poc.Application.AutoMapper;
 using Poc.Application.Interface;
 using Poc.Application.Interface.Identity;
 using Poc.Application.Service;
 using Poc.Application.Service.Identity;
+using Poc.Domain.Helper;
+using Poc.Domain.Helper.Interface;
 using Poc.Domain.Interface.Base;
 using Poc.Domain.Interface.Repository;
 
@@ -22,6 +25,9 @@ namespace Infra.CrossCutting.IoC
 
         public static void RegisterService(IServiceCollection services)
         {
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IUserInfo>(a => new UserInfo(a.GetRequiredService<IHttpContextAccessor>()));
+
             services.AddMediatR(typeof(MediatorHandler));
             services.AddTransient<IMediatorHandler, MediatorHandler>();
 
@@ -31,12 +37,14 @@ namespace Infra.CrossCutting.IoC
             //Application
             services.AddScoped<IAuthorizationApplication, AuthorizationApplication>();
             services.AddScoped<ICategoryApplication, CategoryApplication>();
-            services.AddScoped<IUserApplication, UserApplication>(); 
+            services.AddScoped<IUserApplication, UserApplication>();
+            services.AddScoped<IEventApplication, EventApplication>(); 
 
             //Repository
             services.AddScoped<IDapperBase, DapperBase>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<IUserRepository, UserRepository>(); 
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IEventRepository, EventRepository>(); 
 
             //Automapper
             services.AddAutoMapper(typeof(AutoMapperConfiguration));

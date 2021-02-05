@@ -11,11 +11,15 @@ namespace Poc.Domain.Entities
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
         public bool Ativo { get; set; }
-        public DateTime DataCadastro { get; set; }
-        public int CategoriaId { get; set; }
+        public int? CategoriaId { get; set; }
         public CategoryModel Categoria { get; set; }
         public int UsuarioId { get; set; }
         public UserModel Usuario { get; set; }
         public IEnumerable<SubscriptionModel> Inscricoes { get; set; }
+
+        public EventModel()
+        {
+            Ativo = true;           
+        }
     }
 }

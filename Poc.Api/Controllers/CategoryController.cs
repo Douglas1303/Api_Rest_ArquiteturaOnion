@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Poc.Application.Interface;
 using System.Threading.Tasks;
 
@@ -13,7 +14,8 @@ namespace Poc.Api.Controllers
             _categoryApplication = categoryApplication;
         }
 
-        [HttpGet]
+        [AllowAnonymous]
+        [HttpGet("CAtegorias")]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _categoryApplication.GetAllAsync());

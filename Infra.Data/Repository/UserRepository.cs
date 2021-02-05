@@ -21,7 +21,7 @@ namespace Infra.Data.Repository
         {
             try
             {
-                var users = await _context.Users.ToListAsync();
+                var users = await _context.Users.AsNoTracking().ToListAsync();
 
                 return users;
             }

@@ -14,14 +14,14 @@ namespace Poc.Api.Controllers
             _userApplication = userApplication;
         }
 
-        [HttpGet]
+        [HttpGet("Usuarios")]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _userApplication.GetAllAsync());
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddAsync([FromBody] AddUserViewModel addUserViewModel)
+        public async Task<IActionResult> Add([FromBody] AddUserViewModel addUserViewModel)
         {
             return Ok(await _userApplication.AddAsync(addUserViewModel)); 
         }

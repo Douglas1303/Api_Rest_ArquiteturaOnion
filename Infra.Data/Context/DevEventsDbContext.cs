@@ -20,7 +20,13 @@ namespace Infra.Data.Context
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DevEventsDbContext).Assembly); 
 
             modelBuilder.Entity<EventModel>()
+                .Property(e => e.Titulo)
+                .IsRequired()
+                    .HasMaxLength(300);
+
+            modelBuilder.Entity<EventModel>()
                 .Property(e => e.Descricao)
+                  .IsRequired()
                     .HasMaxLength(300);
 
             modelBuilder.Entity<CategoryModel>()
@@ -30,7 +36,8 @@ namespace Infra.Data.Context
             modelBuilder.Entity<EventModel>()
                .HasOne(e => e.Categoria)
                .WithMany()
-               .HasForeignKey(e => e.CategoriaId);
+               .HasForeignKey(e => e.CategoriaId)
+                .IsRequired(false);
 
             modelBuilder.Entity<EventModel>()
                 .HasOne(e => e.Usuario)

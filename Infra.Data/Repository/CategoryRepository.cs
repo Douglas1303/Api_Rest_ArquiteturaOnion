@@ -21,7 +21,7 @@ namespace Infra.Data.Repository
         {
             try
             {
-                var categories = await _context.Categories.ToListAsync();
+                var categories = await _context.Categories.AsNoTracking().ToListAsync();
 
                 return categories;
             }
