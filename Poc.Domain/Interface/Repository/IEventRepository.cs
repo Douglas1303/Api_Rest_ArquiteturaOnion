@@ -12,12 +12,15 @@ namespace Poc.Domain.Interface.Repository
 
         Task<EventModel> GetByIdAsync(int eventId);
 
-        Task<EventModel> AddAsync(EventModel eventModel);
+        void AddAsync(EventModel eventModel);
 
-        Task<EventModel> UpdateAsync(EventModel eventModel);
+        void UpdateAsync(EventModel eventModel);
 
-        Task<EventModel> RegisterAsync(int eventId, int userId, EventModel eventModel);
+        void RegisterAsync(EventUserModel eventUserModel);
 
-        Task<string> CancelAsync(EventModel eventModel);
+        void CancelAsync(EventModel eventModel);
+        EventModel EventExists(int eventId);
+
+        void RemoveAsync(int eventId);
     }
 }

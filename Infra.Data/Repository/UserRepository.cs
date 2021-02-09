@@ -31,19 +31,15 @@ namespace Infra.Data.Repository
             }
         }
 
-        public async Task<UserModel> AddAsync(UserModel userModel)
+        public void AddAsync(UserModel userModel)
         {
             try
             {
-                var user = _context.Users.Add(userModel);
-
-                _context.SaveChanges();
-
-                return userModel;
+               _context.Users.AddAsync(userModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
     }

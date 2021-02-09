@@ -11,7 +11,7 @@ namespace Infra.Data.Migrations
 {
     [DbContext(typeof(ServiceIdentityDbContext))]
     [Migration("20210126145056_IdentityListo")]
-    partial class IdentityListo
+    partial class Identity
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

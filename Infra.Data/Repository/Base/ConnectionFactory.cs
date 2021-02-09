@@ -11,7 +11,7 @@ namespace Infra.Data.Repository.Base
     {
         public static IDbConnection Connection(string databaseKey, string connectionString)
         {
-            if (databaseKey == DefaultKeys.IdentityListo())
+            if (databaseKey == DefaultKeys.Identity())
                 return new SqlConnection(connectionString);
 
             if (databaseKey == DefaultKeys.DevEvents_Domain())

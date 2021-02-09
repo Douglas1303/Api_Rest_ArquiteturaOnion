@@ -14,6 +14,7 @@ namespace Infra.Data.Context
         public DbSet<EventModel> Events { get; set; }
         public DbSet<UserModel> Users { get; set; }
         public DbSet<SubscriptionModel> Subscription { get; set; }
+        public DbSet<EventUserModel> UsersEvents { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,9 +41,8 @@ namespace Infra.Data.Context
                 .IsRequired(false);
 
             modelBuilder.Entity<EventModel>()
-                .HasOne(e => e.Usuario)
-                .WithMany()
-                .HasForeignKey(e => e.UsuarioId);
+                .HasMany(e => e.Usuarios);
+
 
             modelBuilder.Entity<SubscriptionModel>()
                .HasKey(i => i.Id);
@@ -58,6 +58,10 @@ namespace Infra.Data.Context
                 .WithMany(e => e.Inscricoes)
                 .HasForeignKey(i => i.UsuarioId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            //N : N 
+            modelBuilder.Entity<EventUserModel>()
+                .HasKey(x => new { x.EventoId, x.UsuarioId}); 
         }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

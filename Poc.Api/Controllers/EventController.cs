@@ -23,10 +23,10 @@ namespace Poc.Api.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("Evento/{eventId}")]
-        public async Task<IActionResult> GetById(int eventId)
+        [HttpGet("Evento/{id=int}")]
+        public async Task<IActionResult> GetById(int id)
         {
-            return Ok(await _eventApplication.GetByIdAsync(eventId));
+            return Ok(await _eventApplication.GetByIdAsync(id));
         }
 
         [HttpPost]
@@ -41,16 +41,23 @@ namespace Poc.Api.Controllers
             return Ok(await _eventApplication.UpdateAsync(updateEventViewModel));
         }
 
-        [HttpPost("{id}/eventos/{usuarioId}/inscrever")]
-        public async Task<IActionResult> RegisterUserEvent(int eventId, int userId, [FromBody] AddUserEventViewModel addUserEventViewModel)
+        [HttpPost("UserEvent")]
+        public async Task<IActionResult> RegisterUserEvent([FromBody] AddUserEventViewModel addUserEventViewModel)
         {
-            return Ok(await _eventApplication.RegisterAsync(eventId, userId, addUserEventViewModel));
+            return Ok(await _eventApplication.RegisterAsync(addUserEventViewModel));
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Cancel(int eventId)
+        [HttpDelete("Desabilitar/{id=int}")]
+        public async Task<IActionResult> Disable(int id)
         {
-            return Ok(await _eventApplication.CancelAsync(eventId));
+            return Ok(await _eventApplication.CancelAsync(id));
+        }
+
+
+        [HttpDelete("Excluir/{id=int}")]
+        public async Task<IActionResult> Remove(int id)
+        {
+            return Ok(await _eventApplication.RemoveAsync(id));
         }
     }
 }

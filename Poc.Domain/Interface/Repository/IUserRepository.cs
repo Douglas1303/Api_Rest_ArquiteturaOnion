@@ -8,6 +8,6 @@ namespace Poc.Domain.Interface.Repository
     {
         Task<IEnumerable<UserModel>> GetAllAsync();
 
-        Task<UserModel> AddAsync(UserModel userModel);
+        void AddAsync(UserModel userModel);
     }
 }

@@ -4,6 +4,7 @@ using Infra.CrossCutting.Models;
 using Infra.Data.Context;
 using Infra.Data.Repository;
 using Infra.Data.Repository.Base;
+using Infra.Data.UnitOfWork;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,6 +17,7 @@ using Poc.Domain.Helper;
 using Poc.Domain.Helper.Interface;
 using Poc.Domain.Interface.Base;
 using Poc.Domain.Interface.Repository;
+using Poc.Domain.Interface.Repository.UnitOfWork;
 
 namespace Infra.CrossCutting.IoC
 {
@@ -51,7 +53,10 @@ namespace Infra.CrossCutting.IoC
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
 
             //Logger
-            services.AddScoped<ILogModel, LogModel>(); 
+            services.AddScoped<ILogModel, LogModel>();
+
+            //UnitOfWork
+            services.AddScoped<IUnitOfWork, UnitOfWork>(); 
 
             ServiceProvider = services.BuildServiceProvider();
         }

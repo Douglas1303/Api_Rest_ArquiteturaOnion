@@ -15,7 +15,7 @@ namespace Poc.Api.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("CAtegorias")]
+        [HttpGet("Categorias")]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _categoryApplication.GetAllAsync());

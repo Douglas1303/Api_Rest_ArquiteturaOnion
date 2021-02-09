@@ -7,6 +7,7 @@ using Poc.Domain.Interface.Base;
 using Poc.Domain.Interface.Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Infra.Data.Repository
@@ -15,7 +16,6 @@ namespace Infra.Data.Repository
     {
         public EventRepository(DevEventsDbContext devEventsDbContext, IDapperBase dapperBase, ILogModel logModel) : base(devEventsDbContext, dapperBase, logModel)
         {
-
         }
 
         public async Task<IEnumerable<EventModel>> GetAllAsync()
@@ -24,11 +24,10 @@ namespace Infra.Data.Repository
             {
                 var events = await _context.Events.AsNoTracking().ToListAsync();
 
-                return events; 
+                return events;
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -40,82 +39,91 @@ namespace Infra.Data.Repository
                 var user = await _context.Events
                     .AsNoTracking()
                     .Include(x => x.Categoria)
-                    .Include(x => x.Usuario)
                     .SingleOrDefaultAsync(x => x.Id == eventId);
 
-                return user; 
+                return user;
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
 
-        public async Task<EventModel> AddAsync(EventModel eventModel)
+        public void AddAsync(EventModel eventModel)
         {
             try
             {
-                var addEvent = await _context.Events.AddAsync(eventModel);
-               var save = await _context.SaveChangesAsync();
-
-                return eventModel; 
+                _context.Events.AddAsync(eventModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
         }
 
-        public async Task<EventModel> UpdateAsync(EventModel eventModel)
+        public void UpdateAsync(EventModel eventModel)
         {
             try
             {
-                  _context.Events.Update(eventModel);
+                _context.Events.Update(eventModel);
 
                 _context.Entry(eventModel).Property(e => e.DataCadastro).IsModified = false;
                 _context.Entry(eventModel).Property(e => e.Ativo).IsModified = false;
-                _context.Entry(eventModel).Property(e => e.UsuarioId).IsModified = false;
-
-                await _context.SaveChangesAsync(); 
-
-                return eventModel; 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
                 throw;
             }
         }
 
-        public Task<EventModel> RegisterAsync(int eventId, int userId, EventModel eventModel)
+        public void RegisterAsync(EventUserModel eventUserModel)
         {
             try
             {
-                return null; 
+                 _context.UsersEvents.AddAsync(eventUserModel);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                throw ex;
             }
         }
 
-        public async Task<string> CancelAsync(EventModel eventModel)
+        public void CancelAsync(EventModel eventModel)
         {
             try
             {
                 eventModel.Ativo = false;
-
-               await _context.SaveChangesAsync();
-
-                return "Evento desativado."; 
             }
-            catch (Exception)
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public EventModel EventExists(int eventId)
+        {
+            try
+            {
+                var eventExists =  _context.Events.SingleOrDefault(x => x.Id == eventId);
+
+                return eventExists; 
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void RemoveAsync(int eventId)
+        {
+            try
+            {
+                 _context.Events.RemoveRange(_context.Events.Where(x => x.Id.Equals(eventId))); 
+            }
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
         }
     }

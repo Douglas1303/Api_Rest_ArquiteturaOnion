@@ -59,7 +59,7 @@ namespace Poc.Api
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Poc Listo", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Dev Events", Version = "v1" });
 
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
@@ -103,7 +103,7 @@ namespace Poc.Api
 
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Poc Listo");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Dev Events");
             });
 
             app.UseHttpsRedirection();

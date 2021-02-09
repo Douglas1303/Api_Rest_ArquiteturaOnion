@@ -14,8 +14,9 @@ namespace Poc.Application.Interface
 
         Task<IResult> UpdateAsync(UpdateEventViewModel eventViewModel);
 
-        Task<IResult> RegisterAsync(int eventId, int userId, AddUserEventViewModel eventViewModel);
+        Task<IResult> RegisterAsync(AddUserEventViewModel eventViewModel);
 
         Task<IResult> CancelAsync(int eventId);
+        Task<IResult> RemoveAsync(int eventId);
     }
 }

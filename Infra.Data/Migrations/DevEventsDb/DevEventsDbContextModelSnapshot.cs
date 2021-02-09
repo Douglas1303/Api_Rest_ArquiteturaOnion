@@ -19,6 +19,21 @@ namespace Infra.Data.Migrations.DevEventsDb
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
+            modelBuilder.Entity("EventModelUserModel", b =>
+                {
+                    b.Property<int>("EventosId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsuariosId")
+                        .HasColumnType("int");
+
+                    b.HasKey("EventosId", "UsuariosId");
+
+                    b.HasIndex("UsuariosId");
+
+                    b.ToTable("EventModelUserModel");
+                });
+
             modelBuilder.Entity("Poc.Domain.Entities.CategoryModel", b =>
                 {
                     b.Property<int>("Id")
@@ -70,16 +85,26 @@ namespace Infra.Data.Migrations.DevEventsDb
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoriaId");
 
+                    b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("Poc.Domain.Entities.EventUserModel", b =>
+                {
+                    b.Property<int>("EventoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("EventoId", "UsuarioId");
+
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("Events");
+                    b.ToTable("UsersEvents");
                 });
 
             modelBuilder.Entity("Poc.Domain.Entities.SubscriptionModel", b =>
@@ -134,11 +159,37 @@ namespace Infra.Data.Migrations.DevEventsDb
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("EventModelUserModel", b =>
+                {
+                    b.HasOne("Poc.Domain.Entities.EventModel", null)
+                        .WithMany()
+                        .HasForeignKey("EventosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Poc.Domain.Entities.UserModel", null)
+                        .WithMany()
+                        .HasForeignKey("UsuariosId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Poc.Domain.Entities.EventModel", b =>
                 {
                     b.HasOne("Poc.Domain.Entities.CategoryModel", "Categoria")
                         .WithMany()
                         .HasForeignKey("CategoriaId");
+
+                    b.Navigation("Categoria");
+                });
+
+            modelBuilder.Entity("Poc.Domain.Entities.EventUserModel", b =>
+                {
+                    b.HasOne("Poc.Domain.Entities.EventModel", "Evento")
+                        .WithMany()
+                        .HasForeignKey("EventoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Poc.Domain.Entities.UserModel", "Usuario")
                         .WithMany()
@@ -146,7 +197,7 @@ namespace Infra.Data.Migrations.DevEventsDb
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Categoria");
+                    b.Navigation("Evento");
 
                     b.Navigation("Usuario");
                 });

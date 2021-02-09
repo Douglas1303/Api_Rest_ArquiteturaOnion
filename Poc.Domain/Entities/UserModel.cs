@@ -10,6 +10,7 @@ namespace Poc.Domain.Entities
         public DateTime DataNascimento { get; set; }
         public string Email { get; set; }
         public bool Ativo { get; set; }
+        public IEnumerable<EventModel> Eventos { get; set; }
         public IEnumerable<SubscriptionModel> Inscricoes { get; set; }
 
         public UserModel()

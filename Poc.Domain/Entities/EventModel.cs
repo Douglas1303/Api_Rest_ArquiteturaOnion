@@ -13,13 +13,12 @@ namespace Poc.Domain.Entities
         public bool Ativo { get; set; }
         public int? CategoriaId { get; set; }
         public CategoryModel Categoria { get; set; }
-        public int UsuarioId { get; set; }
-        public UserModel Usuario { get; set; }
+        public IEnumerable<UserModel> Usuarios { get; set; }
         public IEnumerable<SubscriptionModel> Inscricoes { get; set; }
 
         public EventModel()
         {
-            Ativo = true;           
+            Ativo = true;
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Poc.Application.ViewModel
 {
@@ -9,10 +6,16 @@ namespace Poc.Application.ViewModel
     {
         [Required(ErrorMessage = "Titulo precisa ser informado.")]
         public string Titulo { get; set; }
+
         [Required(ErrorMessage = "Descrição precisa ser informada.")]
         public string Descricao { get; set; }
+
+        [DataType(DataType.Date)]
         public string DataInicio { get; set; }
+
+        [DataType(DataType.Date)]
         public string DataFim { get; set; }
 
+        public int CategoriaId { get; set; }
     }
 }

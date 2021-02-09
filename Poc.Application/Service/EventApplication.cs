@@ -8,6 +8,7 @@ using Poc.Application.ViewModel;
 using Poc.Domain.Entities;
 using Poc.Domain.Helper.Interface;
 using Poc.Domain.Interface.Repository;
+using Poc.Domain.Interface.Repository.UnitOfWork;
 using System;
 using System.Threading.Tasks;
 
@@ -16,12 +17,14 @@ namespace Poc.Application.Service
     public class EventApplication : BaseApplicationService, IEventApplication
     {
         private readonly IEventRepository _eventRepository;
-        private readonly IUserInfo _userInfo; 
+        private readonly IUserInfo _userInfo;
+        private readonly IUnitOfWork _unitOfWork; 
 
-        public EventApplication(IEventRepository eventRepository, IUserInfo userInfo, IMediatorHandler mediatorHandler, IMapper mapper, ILogModel logModel) : base(mediatorHandler, mapper, logModel)
+        public EventApplication(IEventRepository eventRepository, IUserInfo userInfo, IUnitOfWork unitOfWork, IMediatorHandler mediatorHandler, IMapper mapper, ILogModel logModel) : base(mediatorHandler, mapper, logModel)
         {
             _eventRepository = eventRepository;
-            _userInfo = userInfo; 
+            _userInfo = userInfo;
+            _unitOfWork = unitOfWork; 
         }
 
         public async Task<IResult> GetAllAsync()
@@ -30,10 +33,10 @@ namespace Poc.Application.Service
             {
                 return new QueryResult(await _eventRepository.GetAllAsync()); 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
         }
 
@@ -43,10 +46,10 @@ namespace Poc.Application.Service
             {
                 return new QueryResult(await _eventRepository.GetByIdAsync(eventId)); 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
         }
 
@@ -60,42 +63,108 @@ namespace Poc.Application.Service
                     Descricao = eventViewModel.Descricao, 
                     DataInicio = DateTime.Parse(eventViewModel.DataInicio),
                     DataFim = DateTime.Parse(eventViewModel.DataFim),
-                    UsuarioId = _userInfo.UserId
-                }; 
+                    CategoriaId = eventViewModel.CategoriaId
+                    //UsuarioId = _userInfo.UserId
+                };
 
-                return new QueryResult(await _eventRepository.AddAsync(model)); 
+                 _eventRepository.AddAsync(model);
+
+                await _unitOfWork.Commit(); 
+
+                return new CommandResult(); 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
         }
 
-        public Task<IResult> UpdateAsync(UpdateEventViewModel eventViewModel)
+        public async Task<IResult> UpdateAsync(UpdateEventViewModel eventViewModel)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var model = new EventModel
+                {
+                    Id = eventViewModel.Id, 
+                    Titulo = eventViewModel.Titulo, 
+                    Descricao = eventViewModel.Descricao, 
+                    DataInicio = DateTime.Parse(eventViewModel.DataInicio), 
+                    DataFim = DateTime.Parse(eventViewModel.DataFim), 
+                    CategoriaId = eventViewModel.CategoriaId
+                };
+
+                _eventRepository.UpdateAsync(model);
+
+                await _unitOfWork.Commit(); 
+
+                return new CommandResult(); 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
-        public Task<IResult> RegisterAsync(int eventId, int userId, AddUserEventViewModel eventViewModel)
+        public async Task<IResult> RegisterAsync(AddUserEventViewModel addUserEventViewModel)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var model = new EventUserModel
+                {
+                    EventoId = addUserEventViewModel.EventoId, 
+                    UsuarioId = addUserEventViewModel.UsuarioId
+                }; 
+
+                 _eventRepository.RegisterAsync(model);
+
+                await _unitOfWork.Commit(); 
+
+                return new CommandResult(); 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public async Task<IResult> CancelAsync(int eventId)
         {
             try
             {
-                var events = await _eventRepository.GetByIdAsync(eventId);
+                var events = _eventRepository.EventExists(eventId);
 
                 if (events == null) return new QueryResult("Evento não existe.");
 
-                return new QueryResult(_eventRepository.CancelAsync(events)); 
+                 _eventRepository.CancelAsync(events);
+
+                await _unitOfWork.Commit(); 
+
+                return new CommandResult(); 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                throw;
+                throw ex;
+            }
+        }
+
+        public async Task<IResult> RemoveAsync(int eventId)
+        {
+            try
+            {
+                _eventRepository.RemoveAsync(eventId);
+
+                await _unitOfWork.Commit(); 
+
+                return new CommandResult(); 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
         }
     }

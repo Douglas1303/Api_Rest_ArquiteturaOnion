@@ -7,6 +7,7 @@ using Poc.Application.Service.Base;
 using Poc.Application.ViewModel;
 using Poc.Domain.Entities;
 using Poc.Domain.Interface.Repository;
+using Poc.Domain.Interface.Repository.UnitOfWork;
 using Poc.Domain.ValueObjects;
 using System;
 using System.Threading.Tasks;
@@ -16,10 +17,12 @@ namespace Poc.Application.Service
     public class UserApplication : BaseApplicationService, IUserApplication
     {
         private readonly IUserRepository _userRepository;
+        private readonly IUnitOfWork _unitOfWork; 
 
-        public UserApplication(IUserRepository userRepository, IMediatorHandler mediatorHandler, IMapper mapper, ILogModel logModel) : base(mediatorHandler, mapper, logModel)
+        public UserApplication(IUserRepository userRepository, IMediatorHandler mediatorHandler, IUnitOfWork unitOfWork,  IMapper mapper, ILogModel logModel) : base(mediatorHandler, mapper, logModel)
         {
             _userRepository = userRepository;
+            _unitOfWork = unitOfWork; 
         }
 
         public async Task<IResult> GetAllAsync()
@@ -38,7 +41,7 @@ namespace Poc.Application.Service
         {
             try
             {
-                //if (!new EmailVo(addUserViewModel.Email).IsValid()) return new QueryResult("Email invalido.");
+                if (!new EmailVo(addUserViewModel.Email).IsValid()) return new QueryResult("Email invalido.");
 
                 var model = new UserModel
                 {
@@ -47,11 +50,15 @@ namespace Poc.Application.Service
                     Email = addUserViewModel.Email
                 };
 
-                return new QueryResult(await _userRepository.AddAsync(model));
+                 _userRepository.AddAsync(model);
+
+                await _unitOfWork.Commit(); 
+
+                return new CommandResult();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
     }

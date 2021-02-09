@@ -1,4 +1,5 @@
 ﻿using Infra.CrossCutting.Core.CQRS;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -80,7 +81,7 @@ namespace Poc.Application.Service.Identity
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.UniqueName, userInfo.Email),
-                new Claim("Listo", "Tecnologia"),
+                new Claim("Dev", "Events"),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
