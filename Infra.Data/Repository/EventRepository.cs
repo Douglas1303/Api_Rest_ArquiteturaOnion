@@ -49,7 +49,7 @@ namespace Infra.Data.Repository
             }
         }
 
-        public void AddAsync(EventModel eventModel)
+        public void Add(EventModel eventModel)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace Infra.Data.Repository
             }
         }
 
-        public void UpdateAsync(EventModel eventModel)
+        public void Update(EventModel eventModel)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace Infra.Data.Repository
             }
         }
 
-        public void RegisterAsync(EventUserModel eventUserModel)
+        public void Register(EventUserModel eventUserModel)
         {
             try
             {
@@ -88,7 +88,7 @@ namespace Infra.Data.Repository
             }
         }
 
-        public void CancelAsync(EventModel eventModel)
+        public void Cancel(EventModel eventModel)
         {
             try
             {
@@ -114,7 +114,7 @@ namespace Infra.Data.Repository
             }
         }
 
-        public void RemoveAsync(int eventId)
+        public void Remove(int eventId)
         {
             try
             {
@@ -124,6 +124,49 @@ namespace Infra.Data.Repository
             {
 
                 throw ex;
+            }
+        }
+
+        public void RemoveEventUser(int eventId)
+        {
+            try
+            {
+                _context.UsersEvents.RemoveRange(_context.UsersEvents.Where(x => x.EventoId.Equals(eventId)));
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public bool EventIdExists(int eventId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UserIdExists(int eventId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool HasEventToUser(int eventId, int userId)
+        {
+            try
+            {
+                //var count = (from e in _context.UsersEvents.AsNoTracking()
+                //             where e.EventoId.Equals(eventId) &&
+                //             e.UsuarioId.Equals(userId)
+                //             select e)?.Count();
+
+                var count = _context.UsersEvents.Where(x => x.EventoId == eventId && x.UsuarioId == userId).Count(); 
+
+                return count > 0; 
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

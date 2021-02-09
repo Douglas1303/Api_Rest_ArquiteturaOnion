@@ -6,7 +6,9 @@
 
   <ItemGroup>
     <Folder Include="CommandHandlers\" />
-    <Folder Include="Commands\" />
+    <Folder Include="Commands\Categories\Validators\" />
+    <Folder Include="Commands\Events\Validators\" />
+    <Folder Include="Commands\Users\Validators\" />
     <Folder Include="Dtos\" />
     <Folder Include="Enum\" />
     <Folder Include="Resources\" />

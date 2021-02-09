@@ -10,6 +10,8 @@ using Poc.Domain.Interface.Repository;
 using Poc.Domain.Interface.Repository.UnitOfWork;
 using Poc.Domain.ValueObjects;
 using System;
+using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Poc.Application.Service

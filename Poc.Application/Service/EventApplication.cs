@@ -67,7 +67,7 @@ namespace Poc.Application.Service
                     //UsuarioId = _userInfo.UserId
                 };
 
-                 _eventRepository.AddAsync(model);
+                 _eventRepository.Add(model);
 
                 await _unitOfWork.Commit(); 
 
@@ -94,7 +94,7 @@ namespace Poc.Application.Service
                     CategoriaId = eventViewModel.CategoriaId
                 };
 
-                _eventRepository.UpdateAsync(model);
+                _eventRepository.Update(model);
 
                 await _unitOfWork.Commit(); 
 
@@ -109,15 +109,30 @@ namespace Poc.Application.Service
 
         public async Task<IResult> RegisterAsync(AddUserEventViewModel addUserEventViewModel)
         {
+
+            //CheckEventIdExists(addUserEventViewModel); 
+            //CheckUserIdExists(addUserEventViewModel); 
+
             try
             {
+
+                if (_eventRepository.HasEventToUser(addUserEventViewModel.EventoId, addUserEventViewModel.UsuarioId))
+                {
+                    return new CommandResult("Usuario já cadastrado para o evento.");
+                }
+
+
+                _eventRepository.RemoveEventUser(addUserEventViewModel.EventoId); 
+
                 var model = new EventUserModel
                 {
                     EventoId = addUserEventViewModel.EventoId, 
                     UsuarioId = addUserEventViewModel.UsuarioId
                 }; 
 
-                 _eventRepository.RegisterAsync(model);
+                //TODO: Validar se Usuario Id e EventoId Existe na base de dados. 
+
+                 _eventRepository.Register(model);
 
                 await _unitOfWork.Commit(); 
 
@@ -138,7 +153,7 @@ namespace Poc.Application.Service
 
                 if (events == null) return new QueryResult("Evento não existe.");
 
-                 _eventRepository.CancelAsync(events);
+                 _eventRepository.Cancel(events);
 
                 await _unitOfWork.Commit(); 
 
@@ -155,11 +170,44 @@ namespace Poc.Application.Service
         {
             try
             {
-                _eventRepository.RemoveAsync(eventId);
+                _eventRepository.Remove(eventId);
 
                 await _unitOfWork.Commit(); 
 
                 return new CommandResult(); 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        //refatorar para command
+        private void CheckEventIdExists(AddUserEventViewModel addUserEventViewModel)
+        {
+            try
+            {
+                if (!_eventRepository.EventIdExists(addUserEventViewModel.EventoId))
+                {
+                     new QueryResult("EventoId não existe.");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw  ex;
+            }
+        }
+
+        private void CheckUserIdExists(AddUserEventViewModel addUserEventViewModel)
+        {
+            try
+            {
+                if (!_eventRepository.UserIdExists(addUserEventViewModel.UsuarioId))
+                {
+                    new QueryResult("UsuarioId não existe.");
+                }
             }
             catch (Exception ex)
             {
