@@ -247,3 +247,8 @@ C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Api\bin\Debug\n
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Api\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Api\bin\Debug\netcoreapp3.1\Refit.dll
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Api\bin\Debug\netcoreapp3.1\System.Net.Http.Json.dll
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Api\bin\Debug\netcoreapp3.1\ExternalServices.dll
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Api\bin\Debug\netcoreapp3.1\ExternalServices.pdb
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Api\obj\Debug\netcoreapp3.1\Poc.Api.GeneratedMSBuildEditorConfig.editorconfig
