@@ -1,4 +1,6 @@
-﻿namespace Poc.Application.ViewModel.Identity
+﻿using System.Text.Json.Serialization;
+
+namespace Poc.Application.ViewModel.Identity
 {
     public class LoginIdentityViewModel
     {

@@ -47,6 +47,7 @@ namespace Infra.CrossCutting.IoC
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IEventRepository, EventRepository>(); 
+            services.AddScoped<ICustomUserManagerRepository, CustomUserManagerRepository>(); 
 
             //Automapper
             services.AddAutoMapper(typeof(AutoMapperConfiguration));

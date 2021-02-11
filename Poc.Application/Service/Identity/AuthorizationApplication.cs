@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using Poc.Application.Interface.Identity;
 using Poc.Application.Model;
 using Poc.Application.ViewModel.Identity;
+using Poc.Domain.Interface.Repository;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -19,12 +20,14 @@ namespace Poc.Application.Service.Identity
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IConfiguration _configuration;
+        private readonly ICustomUserManagerRepository _customUserManagerRepository; 
 
-        public AuthorizationApplication(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IConfiguration configuration)
+        public AuthorizationApplication(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IConfiguration configuration, ICustomUserManagerRepository customUserManagerRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
+            _customUserManagerRepository = customUserManagerRepository; 
         }
 
         public async Task<IResult> LoginAsync(LoginIdentityViewModel loginViewModel)
@@ -81,6 +84,7 @@ namespace Poc.Application.Service.Identity
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.UniqueName, userInfo.Email),
+                new Claim(JwtRegisteredClaimNames.NameId, _customUserManagerRepository.GetUserById(userInfo.Email)),
                 new Claim("Dev", "Events"),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
