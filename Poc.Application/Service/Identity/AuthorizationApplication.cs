@@ -84,7 +84,7 @@ namespace Poc.Application.Service.Identity
             var claims = new[]
             {
                 new Claim(JwtRegisteredClaimNames.UniqueName, userInfo.Email),
-                new Claim(JwtRegisteredClaimNames.NameId, _customUserManagerRepository.GetUserById(userInfo.Email)),
+                new Claim(JwtRegisteredClaimNames.Sid, _customUserManagerRepository.GetUserById(userInfo.Email)),
                 new Claim("Dev", "Events"),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
@@ -117,5 +117,23 @@ namespace Poc.Application.Service.Identity
                 Message = "Token JWT OK"
             };
         }
+
+        //private async Task<string> GeraTokenJwt(string email)
+        //{
+        //    var user = await _userManager.FindByEmailAsync(email);
+
+        //    var tokenHandler = new JwtSecurityTokenHandler();
+        //    var key = Encoding.ASCII.GetBytes(_configuration["Jwt:key"]);
+
+        //    var tokenDescriptor = new SecurityTokenDescriptor
+        //    {
+        //        Issuer = _configuration["TokenConfiguration:Issuer"],
+        //        Audience = _configuration["TokenConfiguration:Audience"],
+        //        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+        //        //,Expires = DateTime.UtcNow.AddHours(_configuration["TokenConfiguration:ExpireHours"])
+        //    };
+
+        //    return tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor)); 
+        //}
     }
 }

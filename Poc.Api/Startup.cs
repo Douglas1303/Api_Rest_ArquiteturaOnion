@@ -42,19 +42,26 @@ namespace Poc.Api
                 .AddEntityFrameworkStores<ServiceIdentityDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddAuthentication(
-               JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication(x =>
+                {
+                    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; 
+                })
                .AddJwtBearer(options =>
-               options.TokenValidationParameters = new TokenValidationParameters
                {
-                   ValidateIssuer = true,
-                   ValidateAudience = true,
-                   ValidateLifetime = true,
-                   ValidAudience = Configuration["TokenConfiguration:Audience"],
-                   ValidIssuer = Configuration["TokenConfiguration:Issuer"],
-                   ValidateIssuerSigningKey = true,
-                   IssuerSigningKey = new SymmetricSecurityKey(
-                   Encoding.UTF8.GetBytes(Configuration["Jwt:key"]))
+                   options.RequireHttpsMetadata = true;
+                   options.SaveToken = true;
+                   options.TokenValidationParameters = new TokenValidationParameters
+                   {
+                       ValidateIssuer = true,
+                       ValidateAudience = true,
+                       ValidateLifetime = true,
+                       ValidAudience = Configuration["TokenConfiguration:Audience"],
+                       ValidIssuer = Configuration["TokenConfiguration:Issuer"],
+                       ValidateIssuerSigningKey = true,
+                       IssuerSigningKey = new SymmetricSecurityKey(
+                       Encoding.UTF8.GetBytes(Configuration["Jwt:key"]))
+                   }; 
                });
 
             services.AddSwaggerGen(c =>

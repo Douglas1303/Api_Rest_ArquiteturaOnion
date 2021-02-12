@@ -2,6 +2,7 @@
 using Infra.CrossCutting.Core.CQRS;
 using Infra.CrossCutting.Mediator;
 using Infra.CrossCutting.Models;
+using Infra.CrossCutting.Extensions; 
 using Poc.Application.Interface;
 using Poc.Application.Service.Base;
 using Poc.Application.ViewModel;
@@ -64,8 +65,7 @@ namespace Poc.Application.Service
                     DataInicio = DateTime.Parse(eventViewModel.DataInicio),
                     DataFim = DateTime.Parse(eventViewModel.DataFim),
                     CategoriaId = eventViewModel.CategoriaId
-                    //UsuarioId = _userInfo.UserId
-                };
+                 };
 
                  _eventRepository.Add(model);
 

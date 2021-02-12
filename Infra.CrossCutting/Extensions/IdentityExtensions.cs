@@ -8,15 +8,12 @@ namespace Infra.CrossCutting.Extensions
 {
     public static class IdentityExtensions
     {
-        public static int GetId(this IIdentity identity)
+        public static string GetId(this IIdentity identity)
         {
             ClaimsIdentity claimsIdentity = identity as ClaimsIdentity;
-            Claim claim = claimsIdentity?.FindFirst(CustomClaimTypes.Id);
+            Claim claim = claimsIdentity?.FindFirst(CustomClaimTypes.Sid);
 
-            if (claim == null)
-                return 0;
-
-            return int.Parse(claim.Value);
+            return claim?.Value ?? string.Empty;
         }
 
         public static string GetName(this IIdentity identity)

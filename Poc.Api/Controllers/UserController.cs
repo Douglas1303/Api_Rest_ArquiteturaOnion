@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Infra.CrossCutting.Extensions;
+using Microsoft.AspNetCore.Mvc;
 using Poc.Application.Interface;
 using Poc.Application.ViewModel;
 using System.Threading.Tasks;
@@ -24,6 +25,15 @@ namespace Poc.Api.Controllers
         public async Task<IActionResult> Add([FromBody] AddUserViewModel addUserViewModel)
         {
             return Ok(await _userApplication.AddAsync(addUserViewModel)); 
+        }
+
+        [HttpPost("Identity")]
+        public async Task<IActionResult> GetIdentity()
+        {
+            var tt = User.Identity.GetId(); 
+            var aaaa = User.Identity.GetName(); 
+
+            return Ok();
         }
     }
 }
