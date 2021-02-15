@@ -10,3 +10,15 @@ C:\Users\douglas.sousa\Desktop\POC\PocProject\Poc.Domain\bin\Debug\netcoreapp3.1
 C:\Users\douglas.sousa\Desktop\POC\PocProject\Poc.Domain\bin\Debug\netcoreapp3.1\Infra.CrossCutting.pdb
 C:\Users\douglas.sousa\Desktop\POC\PocProject\Poc.Domain\obj\Debug\netcoreapp3.1\Poc.Domain.csprojAssemblyReference.cache
 C:\Users\douglas.sousa\Desktop\POC\PocProject\Poc.Domain\obj\Debug\netcoreapp3.1\Poc.Domain.csproj.CopyComplete
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Domain\bin\Debug\netcoreapp3.1\Poc.Domain.deps.json
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Domain\bin\Debug\netcoreapp3.1\Poc.Domain.dll
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Domain\bin\Debug\netcoreapp3.1\Poc.Domain.pdb
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Domain\bin\Debug\netcoreapp3.1\Infra.CrossCutting.dll
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Domain\bin\Debug\netcoreapp3.1\Infra.CrossCutting.pdb
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Domain\obj\Debug\netcoreapp3.1\Poc.Domain.csprojAssemblyReference.cache
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Domain\obj\Debug\netcoreapp3.1\Poc.Domain.AssemblyInfoInputs.cache
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Domain\obj\Debug\netcoreapp3.1\Poc.Domain.AssemblyInfo.cs
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Domain\obj\Debug\netcoreapp3.1\Poc.Domain.csproj.CoreCompileInputs.cache
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Domain\obj\Debug\netcoreapp3.1\Poc.Domain.csproj.CopyComplete
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Domain\obj\Debug\netcoreapp3.1\Poc.Domain.dll
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Domain\obj\Debug\netcoreapp3.1\Poc.Domain.pdb

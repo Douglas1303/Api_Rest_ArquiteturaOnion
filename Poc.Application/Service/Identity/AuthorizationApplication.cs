@@ -38,7 +38,7 @@ namespace Poc.Application.Service.Identity
 
             if (result.Succeeded)
             {
-                return new QueryResult(GeraToken(loginViewModel));
+                return new QueryResult(await GeraTokenJwt(loginViewModel.Email));
             }
             else
             {
@@ -50,7 +50,7 @@ namespace Poc.Application.Service.Identity
         {
             var user = new IdentityUser
             {
-                UserName = viewModel.Email,
+                UserName = viewModel.UserName,
                 Email = viewModel.Email,
                 EmailConfirmed = true
             };
@@ -78,29 +78,31 @@ namespace Poc.Application.Service.Identity
             return sb.ToString();
         }
 
-        private UserTokenModel GeraToken(LoginIdentityViewModel userInfo)
+        private async Task<UserTokenModel> GeraTokenJwt(string email)
         {
-            //definir delarações do usuário
+            var user = await _userManager.FindByEmailAsync(email);
+
+            var identityClaims = new ClaimsIdentity();
+            identityClaims.AddClaims(await _userManager.GetClaimsAsync(user));
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            //var key = Encoding.ASCII.GetBytes(_configuration["Jwt:key"]);
+            var key = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(_configuration["Jwt:key"]));
+
+            var credenciais = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var expiracao = _configuration["TokenConfiguration:ExpireHours"];
+            var expiration = DateTime.UtcNow.AddHours(double.Parse(expiracao));
+
             var claims = new[]
-            {
-                new Claim(JwtRegisteredClaimNames.UniqueName, userInfo.Email),
-                new Claim(JwtRegisteredClaimNames.Sid, _customUserManagerRepository.GetUserById(userInfo.Email)),
+           {
+                new Claim(JwtRegisteredClaimNames.Email, email),
+                new Claim(JwtRegisteredClaimNames.Sid, _customUserManagerRepository.GetUserById(email)),
                 new Claim("Dev", "Events"),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
-            //gerar uma chave com base em um algoritmo simetrico
-            var key = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(_configuration["Jwt:key"]));
-
-            //gerar assinatura digital do token usando o algoritmo Hmac e a chave privada
-            var credenciais = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            //tempo de expiração do token
-            var expiracao = _configuration["TokenConfiguration:ExpireHours"];
-            var expiration = DateTime.UtcNow.AddHours(double.Parse(expiracao));
-
-            //classe que representa um token JWT e gera o token
             JwtSecurityToken token = new JwtSecurityToken(
                 issuer: _configuration["TokenConfiguration:Issuer"],
                 audience: _configuration["TokenConfiguration:Audience"],
@@ -108,7 +110,6 @@ namespace Poc.Application.Service.Identity
                 expires: expiration,
                 signingCredentials: credenciais);
 
-            //retornar os dados com o token de informações
             return new UserTokenModel()
             {
                 Authenticated = true,
@@ -117,23 +118,5 @@ namespace Poc.Application.Service.Identity
                 Message = "Token JWT OK"
             };
         }
-
-        //private async Task<string> GeraTokenJwt(string email)
-        //{
-        //    var user = await _userManager.FindByEmailAsync(email);
-
-        //    var tokenHandler = new JwtSecurityTokenHandler();
-        //    var key = Encoding.ASCII.GetBytes(_configuration["Jwt:key"]);
-
-        //    var tokenDescriptor = new SecurityTokenDescriptor
-        //    {
-        //        Issuer = _configuration["TokenConfiguration:Issuer"],
-        //        Audience = _configuration["TokenConfiguration:Audience"],
-        //        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-        //        //,Expires = DateTime.UtcNow.AddHours(_configuration["TokenConfiguration:ExpireHours"])
-        //    };
-
-        //    return tokenHandler.WriteToken(tokenHandler.CreateToken(tokenDescriptor)); 
-        //}
     }
 }

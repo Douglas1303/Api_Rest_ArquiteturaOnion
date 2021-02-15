@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Poc.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Poc.Api.Controllers.AuthorizationController.Get">
+            <summary>
+            Verificar se Api está funcionando
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Refit.Implementation.Generated">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

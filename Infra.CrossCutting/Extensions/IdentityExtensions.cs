@@ -16,10 +16,10 @@ namespace Infra.CrossCutting.Extensions
             return claim?.Value ?? string.Empty;
         }
 
-        public static string GetName(this IIdentity identity)
+        public static string GetEmailUser(this IIdentity identity)
         {
             ClaimsIdentity claimsIdentity = identity as ClaimsIdentity;
-            Claim claim = claimsIdentity?.FindFirst(ClaimTypes.Name);
+            Claim claim = claimsIdentity?.FindFirst(ClaimTypes.Email);
 
             return claim?.Value ?? string.Empty;
         }

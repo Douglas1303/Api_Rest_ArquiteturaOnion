@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "15iZ3oFcZb1K6fwKL1ONYcJCKfHVqlMfeGdT+1Z/rC5O0AmDwuyCpFjO6F4x2w+xRG23cFV1xnOd3TOFQ72VEQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\ExternalServices\\ExternalServices.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\douglas.sousa\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\douglas.sousa\\.nuget\\packages\\refit\\6.0.8\\refit.6.0.8.nupkg.sha512",
+    "C:\\Users\\douglas.sousa\\.nuget\\packages\\system.net.http.json\\5.0.0\\system.net.http.json.5.0.0.nupkg.sha512",
+    "C:\\Users\\douglas.sousa\\.nuget\\packages\\system.text.json\\5.0.1\\system.text.json.5.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

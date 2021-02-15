@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Poc.Application.Interface;
 using Poc.Application.ViewModel;
+using Poc.Domain.Entities.Identity;
 using System.Threading.Tasks;
 
 namespace Poc.Api.Controllers
@@ -29,6 +30,7 @@ namespace Poc.Api.Controllers
             return Ok(await _eventApplication.GetByIdAsync(id));
         }
 
+        [ClaimsAuthorize("Identity", "Incluir")]
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] AddEventViewModel addEventViewModel)
         {

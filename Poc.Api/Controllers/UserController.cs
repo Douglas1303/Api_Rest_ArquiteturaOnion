@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Poc.Application.Interface;
 using Poc.Application.ViewModel;
+using Poc.Domain.Entities.Identity;
 using System.Threading.Tasks;
 
 namespace Poc.Api.Controllers
@@ -27,11 +28,12 @@ namespace Poc.Api.Controllers
             return Ok(await _userApplication.AddAsync(addUserViewModel)); 
         }
 
-        [HttpPost("Identity")]
+        //[ClaimsAuthorize("Identity", "Incluir")]
+        [HttpPost("Identity")] 
         public async Task<IActionResult> GetIdentity()
         {
             var tt = User.Identity.GetId(); 
-            var aaaa = User.Identity.GetName(); 
+            var aaaa = User.Identity.GetEmailUser(); 
 
             return Ok();
         }
