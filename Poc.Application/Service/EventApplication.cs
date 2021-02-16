@@ -58,14 +58,7 @@ namespace Poc.Application.Service
         {
             try
             {
-                var model = new EventModel 
-                {
-                    Titulo = eventViewModel.Titulo,
-                    Descricao = eventViewModel.Descricao, 
-                    DataInicio = DateTime.Parse(eventViewModel.DataInicio),
-                    DataFim = DateTime.Parse(eventViewModel.DataFim),
-                    CategoriaId = eventViewModel.CategoriaId
-                 };
+                var model = new EventModel(eventViewModel.Titulo, eventViewModel.Descricao, DateTime.Parse(eventViewModel.DataInicio), DateTime.Parse(eventViewModel.DataFim), eventViewModel.CategoriaId);
 
                  _eventRepository.Add(model);
 
@@ -84,15 +77,7 @@ namespace Poc.Application.Service
         {
             try
             {
-                var model = new EventModel
-                {
-                    Id = eventViewModel.Id, 
-                    Titulo = eventViewModel.Titulo, 
-                    Descricao = eventViewModel.Descricao, 
-                    DataInicio = DateTime.Parse(eventViewModel.DataInicio), 
-                    DataFim = DateTime.Parse(eventViewModel.DataFim), 
-                    CategoriaId = eventViewModel.CategoriaId
-                };
+                var model = new EventModel(eventViewModel.Id, eventViewModel.Titulo, eventViewModel.Descricao, DateTime.Parse(eventViewModel.DataInicio), DateTime.Parse(eventViewModel.DataFim), eventViewModel.CategoriaId);
 
                 _eventRepository.Update(model);
 
@@ -122,13 +107,9 @@ namespace Poc.Application.Service
                 }
 
 
-                _eventRepository.RemoveEventUser(addUserEventViewModel.EventoId); 
+                _eventRepository.RemoveEventUser(addUserEventViewModel.EventoId);
 
-                var model = new EventUserModel
-                {
-                    EventoId = addUserEventViewModel.EventoId, 
-                    UsuarioId = addUserEventViewModel.UsuarioId
-                }; 
+                var model = new EventUserModel(addUserEventViewModel.EventoId, addUserEventViewModel.UsuarioId); 
 
                 //TODO: Validar se Usuario Id e EventoId Existe na base de dados. 
 

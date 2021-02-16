@@ -2,7 +2,7 @@
 
 namespace Poc.Domain.Entities.Base
 {
-    public class EntityBase
+    public abstract class EntityBase
     {
         public int Id { get; set; }
         public DateTime DataCadastro { get; set; }

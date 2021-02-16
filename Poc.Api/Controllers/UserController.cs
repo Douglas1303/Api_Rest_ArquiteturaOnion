@@ -28,7 +28,7 @@ namespace Poc.Api.Controllers
             return Ok(await _userApplication.AddAsync(addUserViewModel)); 
         }
 
-        //[ClaimsAuthorize("Identity", "Incluir")]
+        [ClaimsAuthorize("Identity", "Incluir")]
         [HttpPost("Identity")] 
         public async Task<IActionResult> GetIdentity()
         {

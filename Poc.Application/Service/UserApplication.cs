@@ -45,12 +45,7 @@ namespace Poc.Application.Service
             {
                 if (!new EmailVo(addUserViewModel.Email).IsValid()) return new QueryResult("Email invalido.");
 
-                var model = new UserModel
-                {
-                    NomeCompleto = addUserViewModel.NomeCompleto,
-                    DataNascimento = DateTime.Parse(addUserViewModel.DataNascimento),
-                    Email = addUserViewModel.Email
-                };
+                var model = new UserModel(addUserViewModel.NomeCompleto, DateTime.Parse(addUserViewModel.DataNascimento), addUserViewModel.Email); 
 
                  _userRepository.AddAsync(model);
 

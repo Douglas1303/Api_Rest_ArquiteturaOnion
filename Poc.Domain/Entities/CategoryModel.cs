@@ -4,6 +4,14 @@ namespace Poc.Domain.Entities
 {
     public class CategoryModel : EntityBase
     {
-        public string Descricao { get; set; }
+        public CategoryModel(string descricao)
+        {
+            Descricao = descricao;
+        }
+
+        //ctor protected para EF
+        protected CategoryModel() {}
+
+        public string Descricao { get; private set; }
     }
 }

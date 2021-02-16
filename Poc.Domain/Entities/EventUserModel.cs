@@ -2,9 +2,18 @@
 {
     public class EventUserModel
     {
-        public int EventoId { get; set; }
-        public virtual EventModel Evento { get; set; }
-        public int UsuarioId { get; set; }
-        public virtual UserModel Usuario { get; set; }
+        public EventUserModel(int eventoId, int usuarioId)
+        {
+            EventoId = eventoId;
+            UsuarioId = usuarioId;
+        }
+
+        //ctor protected para EF
+        protected EventUserModel() {}
+
+        public int EventoId { get; private set; }
+        public virtual EventModel Evento { get; private set; }
+        public int UsuarioId { get; private set; }
+        public virtual UserModel Usuario { get; private set; }
     }
 }

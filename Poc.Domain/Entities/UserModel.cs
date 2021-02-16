@@ -6,16 +6,22 @@ namespace Poc.Domain.Entities
 {
     public class UserModel : EntityBase
     {
-        public string NomeCompleto { get; set; }
-        public DateTime DataNascimento { get; set; }
-        public string Email { get; set; }
-        public bool Ativo { get; set; }
-        public IEnumerable<EventModel> Eventos { get; set; }
-        public IEnumerable<SubscriptionModel> Inscricoes { get; set; }
-
-        public UserModel()
+        public UserModel(string nomeCompleto, DateTime dataNascimento, string email)
         {
+            NomeCompleto = nomeCompleto;
+            DataNascimento = dataNascimento;
+            Email = email;
             Ativo = true;
         }
+
+        //ctor protected para EF
+        protected UserModel() { }
+
+        public string NomeCompleto { get; private set; }
+        public DateTime DataNascimento { get; private set; }
+        public string Email { get; private set; }
+        public bool Ativo { get; private set; }
+        public IEnumerable<EventModel> Eventos { get; private set; }
+        public IEnumerable<SubscriptionModel> Inscricoes { get; private set; }
     }
 }

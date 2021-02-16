@@ -8,7 +8,9 @@ using Poc.Application.Model;
 using Poc.Application.ViewModel.Identity;
 using Poc.Domain.Interface.Repository;
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,7 +52,7 @@ namespace Poc.Application.Service.Identity
         {
             var user = new IdentityUser
             {
-                UserName = viewModel.UserName,
+                UserName = viewModel.Email,
                 Email = viewModel.Email,
                 EmailConfirmed = true
             };
@@ -85,8 +87,8 @@ namespace Poc.Application.Service.Identity
             var identityClaims = new ClaimsIdentity();
             identityClaims.AddClaims(await _userManager.GetClaimsAsync(user));
 
-            var tokenHandler = new JwtSecurityTokenHandler();
-            //var key = Encoding.ASCII.GetBytes(_configuration["Jwt:key"]);
+            IEnumerable<Claim> claimsList = identityClaims.Claims;
+
             var key = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(_configuration["Jwt:key"]));
 
@@ -96,9 +98,10 @@ namespace Poc.Application.Service.Identity
             var expiration = DateTime.UtcNow.AddHours(double.Parse(expiracao));
 
             var claims = new[]
-           {
+            {
+                new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
                 new Claim(JwtRegisteredClaimNames.Email, email),
-                new Claim(JwtRegisteredClaimNames.Sid, _customUserManagerRepository.GetUserById(email)),
+                new Claim(JwtRegisteredClaimNames.Sid, user.Id.ToString()),
                 new Claim("Dev", "Events"),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
@@ -109,6 +112,7 @@ namespace Poc.Application.Service.Identity
                 claims: claims,
                 expires: expiration,
                 signingCredentials: credenciais);
+
 
             return new UserTokenModel()
             {
