@@ -76,11 +76,11 @@ namespace Infra.Data.Repository
             }
         }
 
-        public void Register(EventUserModel eventUserModel)
+        public void Register(SubscriptionModel eventUserModel)
         {
             try
             {
-                 _context.UsersEvents.AddAsync(eventUserModel);
+                 _context.Subscription.AddAsync(eventUserModel);
             }
             catch (Exception ex)
             {
@@ -92,7 +92,8 @@ namespace Infra.Data.Repository
         {
             try
             {
-                eventModel.Ativo = false;
+                eventModel.DisableStatus(); 
+                //eventModel.Ativo = false;
             }
             catch (Exception ex)
             {
@@ -131,7 +132,7 @@ namespace Infra.Data.Repository
         {
             try
             {
-                _context.UsersEvents.RemoveRange(_context.UsersEvents.Where(x => x.EventoId.Equals(eventId)));
+                _context.Subscription.RemoveRange(_context.Subscription.Where(x => x.EventoId.Equals(eventId)));
             }
             catch (Exception ex)
             {
@@ -159,7 +160,7 @@ namespace Infra.Data.Repository
                 //             e.UsuarioId.Equals(userId)
                 //             select e)?.Count();
 
-                var count = _context.UsersEvents.Where(x => x.EventoId == eventId && x.UsuarioId == userId).Count(); 
+                var count = _context.Subscription.Where(x => x.EventoId == eventId && x.UsuarioId == userId).Count(); 
 
                 return count > 0; 
             }

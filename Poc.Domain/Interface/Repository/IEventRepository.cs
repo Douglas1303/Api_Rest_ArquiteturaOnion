@@ -16,7 +16,7 @@ namespace Poc.Domain.Interface.Repository
 
         void Update(EventModel eventModel);
 
-        void Register(EventUserModel eventUserModel);
+        void Register(SubscriptionModel eventUserModel);
 
         void Cancel(EventModel eventModel);
         EventModel EventExists(int eventId);

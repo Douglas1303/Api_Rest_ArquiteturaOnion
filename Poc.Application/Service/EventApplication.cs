@@ -106,10 +106,7 @@ namespace Poc.Application.Service
                     return new CommandResult("Usuario já cadastrado para o evento.");
                 }
 
-
-                _eventRepository.RemoveEventUser(addUserEventViewModel.EventoId);
-
-                var model = new EventUserModel(addUserEventViewModel.EventoId, addUserEventViewModel.UsuarioId); 
+                var model = new SubscriptionModel(addUserEventViewModel.UsuarioId, addUserEventViewModel.EventoId); 
 
                 //TODO: Validar se Usuario Id e EventoId Existe na base de dados. 
 
@@ -134,7 +131,9 @@ namespace Poc.Application.Service
 
                 if (events == null) return new QueryResult("Evento não existe.");
 
-                 _eventRepository.Cancel(events);
+                if (events.Ativo == false) return new QueryResult("Evento já está desabilitado.");
+
+                _eventRepository.Cancel(events);
 
                 await _unitOfWork.Commit(); 
 

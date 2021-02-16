@@ -33,10 +33,17 @@ namespace Poc.Domain.Entities
         public string Descricao { get; private set; }
         public DateTime DataInicio { get; private set; }
         public DateTime DataFim { get; private set; }
-        public bool Ativo { get; set; }
+        public bool Ativo { get; private set; }
         public int? CategoriaId { get; private set; }
         public CategoryModel Categoria { get; private set; }
         public IEnumerable<UserModel> Usuarios { get; private set; }
         public IEnumerable<SubscriptionModel> Inscricoes { get; private set; }
+
+        public bool DisableStatus()
+        {
+            Ativo = false;
+
+            return Ativo; 
+        }
     }
 }

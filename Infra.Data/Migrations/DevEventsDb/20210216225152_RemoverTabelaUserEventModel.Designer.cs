@@ -4,14 +4,16 @@ using Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infra.Data.Migrations.DevEventsDb
 {
     [DbContext(typeof(DevEventsDbContext))]
-    partial class DevEventsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210216225152_RemoverTabelaUserEventModel")]
+    partial class RemoverTabelaUserEventModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
