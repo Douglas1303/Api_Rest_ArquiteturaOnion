@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
+using Poc.Api.Configuration;
 using System.Collections.Generic;
 using System.Text;
 
@@ -96,6 +97,8 @@ namespace Poc.Api
             });
 
             Bootstrap.RegisterService(services);
+
+            services.AddHealthCheckConfiguration(Configuration); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -112,6 +115,8 @@ namespace Poc.Api
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Dev Events");
             });
+
+            app.UseHealthCheckConfiguration(ApiVersion.Get());
 
             app.UseHttpsRedirection();
 

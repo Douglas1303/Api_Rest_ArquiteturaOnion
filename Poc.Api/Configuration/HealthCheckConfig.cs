@@ -23,7 +23,7 @@ namespace Poc.Api.Configuration
                 .AddSqlServer(configuration["ConnectionStrings:ConnectionDomain_DevEvents"], name: "DevEvents_Domain");
         }
 
-        public static void UseHealthCheckConfiguration(this IApplicationBuilder app)
+        public static IApplicationBuilder UseHealthCheckConfiguration(this IApplicationBuilder app, string apiVersion)
         {
             app.UseHealthChecks(URL_CHECK,
                 new HealthCheckOptions()
@@ -33,6 +33,7 @@ namespace Poc.Api.Configuration
                         var result = JsonConvert.SerializeObject(
                             new
                             {
+                                apiVersion,
                                 statusApplication = report.Status.ToString(),
                                 healthChecks = report.Entries.Select(e => new
                                 {
@@ -45,6 +46,8 @@ namespace Poc.Api.Configuration
                     }
                 }
             );
+
+            return app;
         }
     }
 }
