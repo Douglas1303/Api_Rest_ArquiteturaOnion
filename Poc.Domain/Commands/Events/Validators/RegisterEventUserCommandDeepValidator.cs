@@ -11,8 +11,8 @@ namespace Poc.Domain.Commands.Events.Validators
 {
     internal class RegisterEventUserCommandDeepValidator : BaseValidator<RegisterEventUserCommand, RegisterEventUserRsc>, IDeepValidator<RegisterEventUserCommand>
     {
-        private const string EventIdExistsError = "EventIdExistsError";
-        private const string UserIdExistsError = "UserIdExistsError";
+        private const string EventIdNotExistsError = "EventIdNotExistsError";
+        private const string UserIdNotExistsError = "UserIdNotExistsError";
 
         private readonly IEventRepository _eventRepository;
 
@@ -26,13 +26,13 @@ namespace Poc.Domain.Commands.Events.Validators
         {
             RuleFor(x => x.EventoId)
                 .Must(CheckEventExists)
-                .WithErrorCode(EventIdExistsError)
-                .WithMessage(x => GetMessage(EventIdExistsError));
+                .WithErrorCode(EventIdNotExistsError)
+                .WithMessage(x => GetMessage(EventIdNotExistsError));
 
             RuleFor(x => x.UsuarioId)
                 .Must(CheckUserExists)
-                .WithErrorCode(UserIdExistsError)
-                .WithMessage(x => GetMessage(UserIdExistsError));
+                .WithErrorCode(UserIdNotExistsError)
+                .WithMessage(x => GetMessage(UserIdNotExistsError));
         }
 
         private bool CheckEventExists(int eventId)

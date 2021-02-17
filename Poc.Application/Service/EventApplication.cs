@@ -99,14 +99,6 @@ namespace Poc.Application.Service
                     addUserEventViewModel.UsuarioId,
                     addUserEventViewModel.EventoId);
 
-                //CheckEventIdExists(command);
-                //CheckUserIdExists(command);
-
-                //if (!command.Failures.IsValid)
-                //{
-                //    return new CommandResult("Usuario ou evento não existe.");
-                //}
-
                 return await _mediatorHandler.SendCommand(command);
             }
             catch (Exception ex)
@@ -136,37 +128,6 @@ namespace Poc.Application.Service
                 var command = new RemoveEventCommand(eventId);
 
                 return await _mediatorHandler.SendCommand(command);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        //refatorar para command
-        private void CheckEventIdExists(RegisterEventUserCommand command)
-        {
-            try
-            {
-                if (!_eventRepository.EventIdExists(command.EventoId))
-                {
-                    command.AddFailure("EventId", $"Evento {command.EventoId} não existe na base de dados.");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        private void CheckUserIdExists(RegisterEventUserCommand command)
-        {
-            try
-            {
-                if (!_eventRepository.UserIdExists(command.UsuarioId))
-                {
-                    command.AddFailure("UserId", $"Usuario {command.EventoId} não existe na base de dados.");
-                }
             }
             catch (Exception ex)
             {

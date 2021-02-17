@@ -22,7 +22,7 @@ namespace Poc.Domain.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class RegisterEventUserRsc {
+    internal class RegisterEventUserRsc {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -61,20 +61,38 @@ namespace Poc.Domain.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Evento {0} não existe na base de dados..
+        ///   Looks up a localized string similar to EventoId precisa ser maior que zero. .
         /// </summary>
-        internal static string EventIdExistsError {
+        internal static string EventIdInvalidError {
             get {
-                return ResourceManager.GetString("EventIdExistsError", resourceCulture);
+                return ResourceManager.GetString("EventIdInvalidError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Usuário {0} não existe na base de dados..
+        ///   Looks up a localized string similar to EventoId não existe na base de dados..
         /// </summary>
-        internal static string UserIdExistsError {
+        internal static string EventIdNotExistsError {
             get {
-                return ResourceManager.GetString("UserIdExistsError", resourceCulture);
+                return ResourceManager.GetString("EventIdNotExistsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UsuarioId não existe na base de dados..
+        /// </summary>
+        internal static string UserIdNotExistsError {
+            get {
+                return ResourceManager.GetString("UserIdNotExistsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UsuarioId precisa ser maior que zero..
+        /// </summary>
+        internal static string UserIdNotInvalidError {
+            get {
+                return ResourceManager.GetString("UserIdNotInvalidError", resourceCulture);
             }
         }
     }

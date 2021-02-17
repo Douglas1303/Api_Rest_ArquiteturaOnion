@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Infra.CrossCutting.Core.CQRS;
+using Infra.CrossCutting.IoC.PipelineBehavior;
 using Infra.CrossCutting.Mediator;
 using Infra.CrossCutting.Models;
 using Infra.Data.Context;
@@ -71,6 +72,8 @@ namespace Infra.CrossCutting.IoC
 
             //UnitOfWork
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddPipelineBehaviorValidation();
 
             services.AddScoped(typeof(IRequestExceptionHandler<AddEventCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
             services.AddScoped(typeof(IRequestExceptionHandler<DisableEventCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
