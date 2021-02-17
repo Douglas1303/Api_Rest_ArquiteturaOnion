@@ -94,23 +94,16 @@ namespace Infra.Data.Migrations.DevEventsDb
 
             modelBuilder.Entity("Poc.Domain.Entities.SubscriptionModel", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("datetime2");
-
                     b.Property<int>("EventoId")
                         .HasColumnType("int");
 
                     b.Property<int>("UsuarioId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("datetime2");
 
-                    b.HasIndex("EventoId");
+                    b.HasKey("EventoId", "UsuarioId");
 
                     b.HasIndex("UsuarioId");
 
@@ -173,13 +166,13 @@ namespace Infra.Data.Migrations.DevEventsDb
                     b.HasOne("Poc.Domain.Entities.EventModel", "Evento")
                         .WithMany("Inscricoes")
                         .HasForeignKey("EventoId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Poc.Domain.Entities.UserModel", "Usuario")
                         .WithMany("Inscricoes")
                         .HasForeignKey("UsuarioId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Evento");

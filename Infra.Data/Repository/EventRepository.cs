@@ -143,12 +143,32 @@ namespace Infra.Data.Repository
 
         public bool EventIdExists(int eventId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var eventExists = _context.Events.Where(x => x.Id == eventId).Count();
+
+                return eventExists > 0; 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
-        public bool UserIdExists(int eventId)
+        public bool UserIdExists(int userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var userExists = _context.Users.Where(x => x.Id == userId).Count();
+
+                return userExists > 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public bool HasEventToUser(int eventId, int userId)

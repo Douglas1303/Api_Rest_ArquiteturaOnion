@@ -19,6 +19,8 @@ namespace Poc.Application.ViewModel
         [DataType(DataType.Date)]
         public string DataFim { get; set; }
 
+        public bool Ativo { get; set; }
+
         [Required]
         public int CategoriaId { get; set; }
     }

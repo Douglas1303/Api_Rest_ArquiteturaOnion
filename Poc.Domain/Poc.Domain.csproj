@@ -5,13 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CommandHandlers\" />
     <Folder Include="Commands\Categories\Validators\" />
-    <Folder Include="Commands\Events\Validators\" />
     <Folder Include="Commands\Users\Validators\" />
     <Folder Include="Dtos\" />
     <Folder Include="Enum\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +18,21 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Infra.CrossCutting\Infra.CrossCutting.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\RegisterEventUserRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RegisterEventUserRsc.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\RegisterEventUserRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RegisterEventUserRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

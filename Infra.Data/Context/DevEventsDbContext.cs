@@ -43,24 +43,24 @@ namespace Infra.Data.Context
                 .HasMany(e => e.Usuarios);
 
 
-            modelBuilder.Entity<SubscriptionModel>()
-               .HasKey(i => i.Id);
+            //modelBuilder.Entity<SubscriptionModel>()
+            //   .HasKey(i => i.Id);
 
-            modelBuilder.Entity<SubscriptionModel>()
-                .HasOne(i => i.Evento)
-                .WithMany(e => e.Inscricoes)
-                .HasForeignKey(i => i.EventoId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<SubscriptionModel>()
+            //    .HasOne(i => i.Evento)
+            //    .WithMany(e => e.Inscricoes)
+            //    .HasForeignKey(i => i.EventoId)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<SubscriptionModel>()
-                .HasOne(i => i.Usuario)
-                .WithMany(e => e.Inscricoes)
-                .HasForeignKey(i => i.UsuarioId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<SubscriptionModel>()
+            //    .HasOne(i => i.Usuario)
+            //    .WithMany(e => e.Inscricoes)
+            //    .HasForeignKey(i => i.UsuarioId)
+            //    .OnDelete(DeleteBehavior.Restrict);
 
             //N : N 
-            //modelBuilder.Entity<EventUserModel>()
-            //    .HasKey(x => new { x.EventoId, x.UsuarioId}); 
+            modelBuilder.Entity<SubscriptionModel>()
+                .HasKey(x => new { x.EventoId, x.UsuarioId });
         }
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

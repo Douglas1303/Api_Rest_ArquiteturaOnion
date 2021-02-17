@@ -30,7 +30,7 @@ namespace Poc.Api.Controllers
             return Ok(await _eventApplication.GetByIdAsync(id));
         }
 
-        [ClaimsAuthorize("Identity", "Incluir")]
+        //[ClaimsAuthorize("Identity", "Incluir")]
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] AddEventViewModel addEventViewModel)
         {
@@ -43,13 +43,13 @@ namespace Poc.Api.Controllers
             return Ok(await _eventApplication.UpdateAsync(updateEventViewModel));
         }
 
-        [HttpPost("UserEvent")]
+        [HttpPost("RegisterUserEvent")]
         public async Task<IActionResult> RegisterUserEvent([FromBody] AddUserEventViewModel addUserEventViewModel)
         {
             return Ok(await _eventApplication.RegisterAsync(addUserEventViewModel));
         }
 
-        [HttpDelete("Desabilitar/{id=int}")]
+        [HttpPut("Desabilitar/{id=int}")]
         public async Task<IActionResult> Disable(int id)
         {
             return Ok(await _eventApplication.CancelAsync(id));
