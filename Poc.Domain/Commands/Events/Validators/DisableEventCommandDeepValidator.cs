@@ -7,7 +7,7 @@ using Poc.Domain.Resources;
 
 namespace Poc.Domain.Commands.Events.Validators
 {
-    public class DisableEventCommandDeepValidator : BaseValidator<DisableEventCommand, DisableEventRsc>, IDeepValidator<DisableEventCommand>
+    internal class DisableEventCommandDeepValidator : BaseValidator<DisableEventCommand, DisableEventRsc>, IDeepValidator<DisableEventCommand>
     {
         private const string EventIdNotExistsError = "EventIdNotExistsError";
         private readonly IEventRepository _eventRepository;

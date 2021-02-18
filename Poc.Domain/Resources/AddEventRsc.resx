@@ -129,6 +129,9 @@
   <data name="InitialDateIsEmptyErrror" xml:space="preserve">
     <value>Data inicial precisa ser informada. </value>
   </data>
+  <data name="TitleExists" xml:space="preserve">
+    <value>Titulo do evento já existe. </value>
+  </data>
   <data name="TitleIsEmptyErrror" xml:space="preserve">
     <value>Titulo não pode ser vazio. </value>
   </data>

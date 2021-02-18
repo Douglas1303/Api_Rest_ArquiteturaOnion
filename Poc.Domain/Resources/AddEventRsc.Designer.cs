@@ -22,7 +22,7 @@ namespace Poc.Domain.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class AddEventRsc {
+    internal class AddEventRsc {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -93,6 +93,15 @@ namespace Poc.Domain.Resources {
         internal static string InitialDateIsEmptyErrror {
             get {
                 return ResourceManager.GetString("InitialDateIsEmptyErrror", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Titulo do evento já existe. .
+        /// </summary>
+        internal static string TitleExists {
+            get {
+                return ResourceManager.GetString("TitleExists", resourceCulture);
             }
         }
         

@@ -190,5 +190,20 @@ namespace Infra.Data.Repository
                 throw;
             }
         }
+
+        public bool TituloExists(string titulo)
+        {
+            try
+            {
+                var eventTitle = _context.Events.Where(x => x.Titulo == titulo).Count();
+
+                return eventTitle <= 0; 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
