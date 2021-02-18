@@ -4,6 +4,8 @@ using Infra.CrossCutting.Mediator;
 using Infra.CrossCutting.Models;
 using Poc.Application.Interface;
 using Poc.Application.Service.Base;
+using Poc.Application.ViewModel;
+using Poc.Domain.Commands.Categories;
 using Poc.Domain.Interface.Repository;
 using System;
 using System.Threading.Tasks;
@@ -28,6 +30,21 @@ namespace Poc.Application.Service
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        public async Task<IResult> AddCategory(AddCategoryViewModel addCategoryViewModel)
+        {
+            try
+            {
+                var command = new AddCategoryCommand(addCategoryViewModel.Descricao);
+
+                return await _mediatorHandler.SendCommand(command); 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
         }
     }

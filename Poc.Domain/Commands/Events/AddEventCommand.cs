@@ -16,11 +16,11 @@ namespace Poc.Domain.Commands.Events
             CategoriaId = categoriaId;
         }
 
-        public string Titulo { get; set; }
-        public string Descricao { get; set; }
-        public DateTime DataInicio { get; set; }
-        public DateTime DataFim { get; set; }
-        public bool Ativo { get; set; }
-        public int? CategoriaId { get; set; }
+        public string Titulo { get; private set; }
+        public string Descricao { get; private set; }
+        public DateTime DataInicio { get; private set; }
+        public DateTime DataFim { get; private set; }
+        public bool Ativo { get; private set; }
+        public int? CategoriaId { get; private set; }
     }
 }

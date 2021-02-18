@@ -11,7 +11,7 @@ namespace Poc.Domain.Commands.Events
             EventoId = eventoId;
         }
 
-        public int UsuarioId { get; set; }
-        public int EventoId { get; set; }
+        public int UsuarioId { get; private set; }
+        public int EventoId { get; private set; }
     }
 }

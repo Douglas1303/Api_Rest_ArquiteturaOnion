@@ -10,6 +10,6 @@ namespace Poc.Domain.Commands.Events
             EventoId = eventoId;
         }
 
-        public int EventoId { get; set; }
+        public int EventoId { get; private set; }
     }
 }

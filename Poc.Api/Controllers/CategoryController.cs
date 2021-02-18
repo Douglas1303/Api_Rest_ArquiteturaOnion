@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Poc.Application.Interface;
+using Poc.Application.ViewModel;
 using System.Threading.Tasks;
 
 namespace Poc.Api.Controllers
@@ -19,6 +20,12 @@ namespace Poc.Api.Controllers
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _categoryApplication.GetAllAsync());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddCategory([FromBody] AddCategoryViewModel addCategoryViewModel)
+        {
+            return Ok(await _categoryApplication.AddCategory(addCategoryViewModel)); 
         }
     }
 }

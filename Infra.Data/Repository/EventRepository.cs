@@ -53,7 +53,7 @@ namespace Infra.Data.Repository
         {
             try
             {
-                _context.Events.AddAsync(eventModel);
+                _context.Events.Add(eventModel);
             }
             catch (Exception ex)
             {
@@ -93,7 +93,6 @@ namespace Infra.Data.Repository
             try
             {
                 eventModel.DisableStatus(); 
-                //eventModel.Ativo = false;
             }
             catch (Exception ex)
             {
@@ -182,7 +181,7 @@ namespace Infra.Data.Repository
 
                 var count = _context.Subscription.Where(x => x.EventoId == eventId && x.UsuarioId == userId).Count(); 
 
-                return count > 0; 
+                return count > 0; //Se for maior que zero retorna True
             }
             catch (Exception)
             {

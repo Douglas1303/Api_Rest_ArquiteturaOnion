@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Categories\Validators\" />
     <Folder Include="Commands\Users\Validators\" />
     <Folder Include="Dtos\" />
     <Folder Include="Enum\" />
@@ -21,6 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Resources\AddCategoryRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AddCategoryRsc.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\AddEventRsc.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -44,6 +48,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\AddCategoryRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddCategoryRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\AddEventRsc.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AddEventRsc.Designer.cs</LastGenOutput>
