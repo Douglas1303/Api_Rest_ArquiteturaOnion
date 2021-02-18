@@ -13,10 +13,5 @@ namespace Poc.Domain.Commands.Events
 
         public int UsuarioId { get; set; }
         public int EventoId { get; set; }
-
-        public override ValidationResult Validate()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

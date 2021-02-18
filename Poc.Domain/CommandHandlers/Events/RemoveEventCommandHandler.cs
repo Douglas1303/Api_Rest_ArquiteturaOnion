@@ -24,11 +24,6 @@ namespace Poc.Domain.CommandHandlers.Events
         {
             try
             {
-                if (_eventRepository.EventExists(request.EventoId) == null)
-                {
-                    return new CommandResult("Evento não existe.");
-                }
-
                 _eventRepository.Remove(request.EventoId);
 
                 await _unitOfWork.Commit();

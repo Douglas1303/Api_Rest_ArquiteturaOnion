@@ -22,10 +22,5 @@ namespace Poc.Domain.Commands.Events
         public DateTime DataFim { get; set; }
         public bool Ativo { get; set; }
         public int? CategoriaId { get; set; }
-
-        public override ValidationResult Validate()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

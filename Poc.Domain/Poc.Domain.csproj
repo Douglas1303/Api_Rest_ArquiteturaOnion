@@ -21,17 +21,44 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Resources\AddEventRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AddEventRsc.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\DisableEventRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DisableEventRsc.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\RegisterEventUserRsc.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>RegisterEventUserRsc.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\RemoveEventRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RemoveEventRsc.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\AddEventRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddEventRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\DisableEventRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisableEventRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\RegisterEventUserRsc.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RegisterEventUserRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\RemoveEventRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RemoveEventRsc.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

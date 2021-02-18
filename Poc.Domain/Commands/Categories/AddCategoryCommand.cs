@@ -14,10 +14,5 @@ namespace Poc.Domain.Commands.Categories
 
         public int Id { get; set; }
         public string Descricao { get; set; }
-
-        public override ValidationResult Validate()
-        {
-            throw new NotImplementedException();
-        }
     }
 }
