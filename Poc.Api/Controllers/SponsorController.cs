@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Poc.Application.Interface;
+using Poc.Application.ViewModel;
 using System.Threading.Tasks;
 
 namespace Poc.Api.Controllers
@@ -16,7 +17,13 @@ namespace Poc.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _sponsorApplication.GetAll());
+            return Ok(await _sponsorApplication.GetAllAsync());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddAsync([FromBody] AddSponsorViewModel viewModel)
+        {
+            return Ok(await _sponsorApplication.AddAsync(viewModel)); 
         }
     }
 }

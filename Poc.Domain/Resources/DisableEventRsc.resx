@@ -120,4 +120,7 @@
   <data name="EventIdNotExistsError" xml:space="preserve">
     <value>EventoId não existe. </value>
   </data>
+  <data name="StatusIsFalseError" xml:space="preserve">
+    <value>Evento já está desabilitado.</value>
+  </data>
 </root>

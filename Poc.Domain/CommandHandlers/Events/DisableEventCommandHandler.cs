@@ -26,8 +26,6 @@ namespace Poc.Domain.CommandHandlers.Events
             {
                 var events = _eventRepository.EventExists(request.EventoId);
 
-                if (events.Ativo == false) return new CommandResult("Evento já está desabilitado.");
-
                 _eventRepository.Cancel(events);
 
                 await _unitOfWork.Commit();

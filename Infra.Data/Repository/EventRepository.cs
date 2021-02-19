@@ -155,6 +155,22 @@ namespace Infra.Data.Repository
             }
         }
 
+        public bool StatusIsFalse(int id)
+        {
+            try
+            {
+                //var status = _context.Events.Where(x => x.Ativo == false).Count();           
+                var status = _context.Events.Where(x => x.Id == id && x.Ativo == false).Count();
+
+                return status <= 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public bool UserIdExists(int userId)
         {
             try

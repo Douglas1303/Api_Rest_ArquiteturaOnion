@@ -23,7 +23,7 @@ namespace Poc.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddCategory([FromBody] AddCategoryViewModel addCategoryViewModel)
+        public async Task<IActionResult> AddCategoryAsync([FromBody] AddCategoryViewModel addCategoryViewModel)
         {
             return Ok(await _categoryApplication.AddCategory(addCategoryViewModel)); 
         }

@@ -30,6 +30,8 @@ namespace Poc.Domain.Interface.Repository
 
         bool UserIdExists(int userId);
 
-        bool HasEventToUser(int eventId, int userId); 
+        bool HasEventToUser(int eventId, int userId);
+
+        bool StatusIsFalse(int id);
     }
 }

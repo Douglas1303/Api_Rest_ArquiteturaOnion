@@ -68,5 +68,14 @@ namespace Poc.Domain.Resources {
                 return ResourceManager.GetString("EventIdNotExistsError", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Evento já está desabilitado..
+        /// </summary>
+        internal static string StatusIsFalseError {
+            get {
+                return ResourceManager.GetString("StatusIsFalseError", resourceCulture);
+            }
+        }
     }
 }

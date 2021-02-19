@@ -2,6 +2,8 @@
 using Infra.CrossCutting.Models;
 using MediatR;
 using Poc.Application.Interface;
+using Poc.Application.ViewModel;
+using Poc.Domain.Commands.Sponsor;
 using Poc.Domain.Interface.Repository;
 using System;
 using System.Threading.Tasks;
@@ -21,7 +23,32 @@ namespace Poc.Application.Service
             _logModel = logModel;
         }
 
-        public async Task<IResult> GetAll()
+        public async Task<IResult> AddAsync(AddSponsorViewModel viewModel)
+        {
+            try
+            {
+                var command = new AddSponsorCommand(
+                    viewModel.NomePatrocinador, 
+                    viewModel.Documento, 
+                    viewModel.Cep,
+                    viewModel.Logradouro, 
+                    viewModel.Complemento, 
+                    viewModel.Bairro, 
+                    viewModel.Localidade, 
+                    viewModel.UF, 
+                    viewModel.DDD
+                    );
+
+                return await _mediator.Send(command); 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public async Task<IResult> GetAllAsync()
         {
             try
             {

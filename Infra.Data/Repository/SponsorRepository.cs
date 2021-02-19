@@ -1,4 +1,5 @@
-﻿using Infra.CrossCutting.AppSettings;
+﻿using Dapper;
+using Infra.CrossCutting.AppSettings;
 using Infra.CrossCutting.Models;
 using Infra.Data.Context;
 using Infra.Data.Repository.Base;
@@ -21,12 +22,39 @@ namespace Infra.Data.Repository
         {
             try
             {
-                var sponsors = await _dapper.ExecuteProcedureAsync<SponsorDto>(DefaultKeys.DevEvents_Domain(), "[dbo].[Sps_Sponsor]", null);
+                var result = await _dapper.ExecuteProcedureAsync<SponsorDto>(DefaultKeys.DevEvents_Domain(), "[dbo].[Sps_Sponsor]", null);
 
-                return sponsors;
+                return result;
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+        }
+
+        public int Add(SponsorDto dto)
+        {
+            try
+            {
+                var parameters = new DynamicParameters();
+
+                parameters.Add("@NomePatrocinador", dto.NomePatrocinador); 
+                parameters.Add("@Documento", dto.Documento); 
+                parameters.Add("@Cep", dto.Cep); 
+                parameters.Add("@Logradouro", dto.Logradouro); 
+                parameters.Add("@Complemento", dto.Complemento); 
+                parameters.Add("@Bairro", dto.Bairro); 
+                parameters.Add("@Localidade", dto.Localidade); 
+                parameters.Add("@UF", dto.UF); 
+                parameters.Add("@DDD", dto.DDD);
+
+               var result = _dapper.ExecuteProcedureScalar<SponsorDto>(DefaultKeys.DevEvents_Domain(), "[dbo].[Spi_Sponsor]", parameters);
+
+                return result.Id; 
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
         }
