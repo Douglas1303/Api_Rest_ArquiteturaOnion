@@ -10,6 +10,6 @@ Bounded Contexts:
 Evento, Cursos, Livros, Usuário, Pagamento, Categoria, Cep, Autenticação
 
 Modelo estratégico dos Bounded Contexts: 
-Diminio Principal: Evento, Cursos, Livros
-Dominio Genérico: Usuário, pagamento, categoria
-Dominio Auxiliar: Cep, autenticação
+Diminio Principal: Evento, Cursos, Livros.
+Dominio Genérico: Usuário, pagamento, categoria.
+Dominio Auxiliar: Cep, autenticação.
