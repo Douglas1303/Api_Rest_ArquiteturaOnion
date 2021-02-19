@@ -6,9 +6,7 @@ using Poc.Application.Interface;
 using Poc.Application.Service.Base;
 using Poc.Application.ViewModel;
 using Poc.Domain.Commands.Events;
-using Poc.Domain.Helper.Interface;
 using Poc.Domain.Interface.Repository;
-using Poc.Domain.Interface.Repository.UnitOfWork;
 using System;
 using System.Threading.Tasks;
 
@@ -17,14 +15,10 @@ namespace Poc.Application.Service
     public class EventApplication : BaseApplicationService, IEventApplication
     {
         private readonly IEventRepository _eventRepository;
-        private readonly IUserInfo _userInfo;
-        private readonly IUnitOfWork _unitOfWork;
 
-        public EventApplication(IEventRepository eventRepository, IUserInfo userInfo, IUnitOfWork unitOfWork, IMediatorHandler mediatorHandler, IMapper mapper, ILogModel logModel) : base(mediatorHandler, mapper, logModel)
+        public EventApplication(IEventRepository eventRepository, IMediatorHandler mediatorHandler, IMapper mapper, ILogModel logModel) : base(mediatorHandler, mapper, logModel)
         {
             _eventRepository = eventRepository;
-            _userInfo = userInfo;
-            _unitOfWork = unitOfWork;
         }
 
         public async Task<IResult> GetAllAsync()

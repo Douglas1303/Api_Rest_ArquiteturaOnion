@@ -19,9 +19,11 @@ using Poc.Application.Service;
 using Poc.Application.Service.Identity;
 using Poc.Domain.CommandHandlers.Categories;
 using Poc.Domain.CommandHandlers.Events;
+using Poc.Domain.CommandHandlers.Sponsor;
 using Poc.Domain.CommandHandlers.Users;
 using Poc.Domain.Commands.Categories;
 using Poc.Domain.Commands.Events;
+using Poc.Domain.Commands.Sponsor;
 using Poc.Domain.Commands.Users;
 using Poc.Domain.Helper;
 using Poc.Domain.Helper.Interface;
@@ -53,6 +55,7 @@ namespace Infra.CrossCutting.IoC
             services.AddScoped<IUserApplication, UserApplication>();
             services.AddScoped<IEventApplication, EventApplication>();
             services.AddScoped<ICepApplication, CepApplication>();
+            services.AddScoped<ISponsorApplication, SponsorApplication>();
 
             //Repository
             services.AddScoped<IDapperBase, DapperBase>();
@@ -60,6 +63,7 @@ namespace Infra.CrossCutting.IoC
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<ICustomUserManagerRepository, CustomUserManagerRepository>();
+            services.AddScoped<ISponsorRepository, SponsorRepository>();
 
             //Automapper
             services.AddAutoMapper(typeof(AutoMapperConfiguration));
@@ -73,6 +77,7 @@ namespace Infra.CrossCutting.IoC
             services.AddTransient<IRequestHandler<RemoveEventCommand, IResult>, RemoveEventCommandHandler>();
             services.AddTransient<IRequestHandler<AddCategoryCommand, IResult>, AddCategoryCommandHandler>();
             services.AddTransient<IRequestHandler<AddUserCommand, IResult>, AddUserCommandHandler>();
+            services.AddTransient<IRequestHandler<AddSponsorCommand, IResult>, AddSponsorCommandHandler>();
 
             //Logger
             services.AddScoped<ILogModel, LogModel>();
@@ -89,6 +94,7 @@ namespace Infra.CrossCutting.IoC
             services.AddScoped(typeof(IRequestExceptionHandler<RemoveEventCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
             services.AddScoped(typeof(IRequestExceptionHandler<AddCategoryCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
             services.AddScoped(typeof(IRequestExceptionHandler<AddUserCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
+            services.AddScoped(typeof(IRequestExceptionHandler<AddSponsorCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
 
             ServiceProvider = services.BuildServiceProvider();
         }

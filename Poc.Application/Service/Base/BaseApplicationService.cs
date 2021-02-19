@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Infra.CrossCutting.Mediator;
 using Infra.CrossCutting.Models;
+using Poc.Domain.Interface.Repository.UnitOfWork;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
@@ -16,7 +17,7 @@ namespace Poc.Application.Service.Base
         protected List<string> Message;
         protected readonly ILogModel _log;
 
-        protected BaseApplicationService(IMediatorHandler mediatorHandler, IMapper mapper, ILogModel log)
+        protected BaseApplicationService(IMediatorHandler mediatorHandler, IMapper mapper,ILogModel log)
         {
             _mediatorHandler = mediatorHandler;
             _mapper = mapper;

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Dtos\" />
+    <Folder Include="Commands\Sponsor\Validators\" />
     <Folder Include="Enum\" />
   </ItemGroup>
 
