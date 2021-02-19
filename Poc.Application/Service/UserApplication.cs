@@ -5,6 +5,7 @@ using Infra.CrossCutting.Models;
 using Poc.Application.Interface;
 using Poc.Application.Service.Base;
 using Poc.Application.ViewModel;
+using Poc.Domain.Commands.Users;
 using Poc.Domain.Entities;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Interface.Repository.UnitOfWork;
@@ -39,19 +40,18 @@ namespace Poc.Application.Service
             }
         }
 
-        public async Task<IResult> AddAsync(AddUserViewModel addUserViewModel)
+        public async Task<IResult> AddAsync(AddUserViewModel addUserViewModel, string email)
         {
             try
             {
-                if (!new EmailVo(addUserViewModel.Email).IsValid()) return new QueryResult("Email invalido.");
+                var command = new AddUserCommand(
+                    addUserViewModel.NomeCompleto, 
+                    addUserViewModel.Cpf,
+                    DateTime.Parse(addUserViewModel.DataNascimento),
+                    email);
 
-                var model = new UserModel(addUserViewModel.NomeCompleto, DateTime.Parse(addUserViewModel.DataNascimento), addUserViewModel.Email); 
-
-                 _userRepository.AddAsync(model);
-
-                await _unitOfWork.Commit(); 
-
-                return new CommandResult();
+                return await _mediatorHandler.SendCommand(command); 
+                //if (!new EmailVo(addUserViewModel.Email).IsValid()) return new QueryResult("Email invalido.");
             }
             catch (Exception ex)
             {

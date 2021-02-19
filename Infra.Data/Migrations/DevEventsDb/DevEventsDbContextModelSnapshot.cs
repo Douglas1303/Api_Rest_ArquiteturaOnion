@@ -120,6 +120,9 @@ namespace Infra.Data.Migrations.DevEventsDb
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Cpf")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
 

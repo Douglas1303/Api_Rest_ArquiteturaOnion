@@ -8,7 +8,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Poc.Domain.CommandHandlers.Category
+namespace Poc.Domain.CommandHandlers.Categories
 {
     public class AddCategoryCommandHandler : IRequestHandler<AddCategoryCommand, IResult>
     {

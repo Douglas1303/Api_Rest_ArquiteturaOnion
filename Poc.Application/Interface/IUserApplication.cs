@@ -10,6 +10,6 @@ namespace Poc.Application.Interface
     {
         Task<IResult> GetAllAsync();
 
-        Task<IResult> AddAsync(AddUserViewModel addUserViewModel);
+        Task<IResult> AddAsync(AddUserViewModel addUserViewModel, string email);
     }
 }

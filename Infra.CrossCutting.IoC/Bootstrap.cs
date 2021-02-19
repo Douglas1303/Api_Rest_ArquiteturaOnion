@@ -17,10 +17,12 @@ using Poc.Application.Interface.Identity;
 using Poc.Application.PipelineBehavior;
 using Poc.Application.Service;
 using Poc.Application.Service.Identity;
-using Poc.Domain.CommandHandlers.Category;
+using Poc.Domain.CommandHandlers.Categories;
 using Poc.Domain.CommandHandlers.Events;
+using Poc.Domain.CommandHandlers.Users;
 using Poc.Domain.Commands.Categories;
 using Poc.Domain.Commands.Events;
+using Poc.Domain.Commands.Users;
 using Poc.Domain.Helper;
 using Poc.Domain.Helper.Interface;
 using Poc.Domain.Interface.Base;
@@ -69,6 +71,7 @@ namespace Infra.CrossCutting.IoC
             services.AddTransient<IRequestHandler<DisableEventCommand, IResult>, DisableEventCommandHandler>();
             services.AddTransient<IRequestHandler<RemoveEventCommand, IResult>, RemoveEventCommandHandler>();
             services.AddTransient<IRequestHandler<AddCategoryCommand, IResult>, AddCategoryCommandHandler>();
+            services.AddTransient<IRequestHandler<AddUserCommand, IResult>, AddUserCommandHandler>();
 
             //Logger
             services.AddScoped<ILogModel, LogModel>();
@@ -84,6 +87,7 @@ namespace Infra.CrossCutting.IoC
             services.AddScoped(typeof(IRequestExceptionHandler<UpdateEventCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
             services.AddScoped(typeof(IRequestExceptionHandler<RemoveEventCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
             services.AddScoped(typeof(IRequestExceptionHandler<AddCategoryCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
+            services.AddScoped(typeof(IRequestExceptionHandler<AddUserCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
 
             ServiceProvider = services.BuildServiceProvider();
         }

@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Poc.Application.Interface;
 using Poc.Application.ViewModel;
-using Poc.Domain.Entities.Identity;
 using System.Threading.Tasks;
 
 namespace Poc.Api.Controllers
@@ -25,15 +24,15 @@ namespace Poc.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] AddUserViewModel addUserViewModel)
         {
-            return Ok(await _userApplication.AddAsync(addUserViewModel)); 
+            return Ok(await _userApplication.AddAsync(addUserViewModel, User.Identity.GetEmailUser()));
         }
 
-        [ClaimsAuthorize("Identity", "Incluir")]
-        [HttpPost("Identity")] 
+        //[ClaimsAuthorize("Identity", "Incluir")]
+        [HttpPost("Identity")]
         public async Task<IActionResult> GetIdentity()
         {
-            var tt = User.Identity.GetId(); 
-            var aaaa = User.Identity.GetEmailUser(); 
+            var tt = User.Identity.GetId();
+            var aaaa = User.Identity.GetEmailUser();
 
             return Ok();
         }

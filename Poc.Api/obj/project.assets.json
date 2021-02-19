@@ -3289,7 +3289,9 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
+          "Infra.Data": "1.0.0",
           "Newtonsoft.Json": "12.0.3",
+          "Poc.Domain": "1.0.0",
           "Refit": "6.0.8"
         },
         "compile": {
@@ -3297,7 +3299,10 @@
         },
         "runtime": {
           "bin/placeholder/ExternalServices.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       },
       "Infra.CrossCutting/1.0.0": {
         "type": "project",

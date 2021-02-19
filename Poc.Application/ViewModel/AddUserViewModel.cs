@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Poc.Application.ViewModel
 {
@@ -8,10 +7,10 @@ namespace Poc.Application.ViewModel
         [Required(ErrorMessage = "Nome não pode ser vazio.")]
         public string NomeCompleto { get; set; }
 
+        [Required(ErrorMessage = "Cpf não pode ser vazio.")]
+        public string Cpf { get; set; }
+
         [Required(ErrorMessage = "Data de nascimento não pode ser vazia.")]
         public string DataNascimento { get; set; }
-
-        [EmailAddress(ErrorMessage = "Email em formato invalido.")]
-        public string Email { get; set; }
     }
 }

@@ -46,7 +46,7 @@ namespace Poc.Api
             services.AddAuthentication(x =>
                 {
                     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; 
+                    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
                .AddJwtBearer(options =>
                {
@@ -62,7 +62,7 @@ namespace Poc.Api
                        ValidateIssuerSigningKey = true,
                        IssuerSigningKey = new SymmetricSecurityKey(
                        Encoding.UTF8.GetBytes(Configuration["Jwt:key"]))
-                   }; 
+                   };
                });
 
             services.AddSwaggerGen(c =>
@@ -98,7 +98,7 @@ namespace Poc.Api
 
             Bootstrap.RegisterService(services);
 
-            services.AddHealthCheckConfiguration(Configuration); 
+            services.AddHealthCheckConfiguration(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

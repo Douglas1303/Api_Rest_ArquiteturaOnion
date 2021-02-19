@@ -28,3 +28,4 @@ C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Domain\obj\Debu
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Domain\obj\Debug\netcoreapp3.1\Poc.Domain.Resources.RemoveEventRsc.resources
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Domain\obj\Debug\netcoreapp3.1\Poc.Domain.Resources.DisableEventRsc.resources
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Domain\obj\Debug\netcoreapp3.1\Poc.Domain.Resources.AddCategoryRsc.resources
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Domain\obj\Debug\netcoreapp3.1\Poc.Domain.Resources.AddUserRsc.resources

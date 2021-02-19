@@ -31,7 +31,7 @@ namespace Infra.Data.Repository
             }
         }
 
-        public void AddAsync(UserModel userModel)
+        public void Add(UserModel userModel)
         {
             try
             {

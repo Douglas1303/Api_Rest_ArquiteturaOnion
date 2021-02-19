@@ -6,9 +6,10 @@ namespace Poc.Domain.Entities
 {
     public class UserModel : EntityBase
     {
-        public UserModel(string nomeCompleto, DateTime dataNascimento, string email)
+        public UserModel(string nomeCompleto, string cpf, DateTime dataNascimento, string email)
         {
             NomeCompleto = nomeCompleto;
+            Cpf = cpf; 
             DataNascimento = dataNascimento;
             Email = email;
             Ativo = true;
@@ -18,6 +19,7 @@ namespace Poc.Domain.Entities
         protected UserModel() { }
 
         public string NomeCompleto { get; private set; }
+        public string Cpf { get; private set; }
         public DateTime DataNascimento { get; private set; }
         public string Email { get; private set; }
         public bool Ativo { get; private set; }
