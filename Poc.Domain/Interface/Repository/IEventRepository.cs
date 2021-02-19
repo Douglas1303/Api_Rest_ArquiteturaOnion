@@ -26,7 +26,7 @@ namespace Poc.Domain.Interface.Repository
 
         bool EventIdExists(int eventId);
 
-        bool TituloExists(string titulo);
+        bool TitleExists(string titulo);
 
         bool UserIdExists(int userId);
 

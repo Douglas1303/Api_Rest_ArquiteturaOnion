@@ -9,5 +9,6 @@ namespace Poc.Domain.Interface.Repository
         Task<IEnumerable<UserModel>> GetAllAsync();
 
         void Add(UserModel userModel);
+        bool UserExists(string userName); 
     }
 }

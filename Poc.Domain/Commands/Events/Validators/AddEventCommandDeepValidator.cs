@@ -28,7 +28,7 @@ namespace Poc.Domain.Commands.Events.Validators
 
         private bool CheckEventExists(string titulo)
         {
-            return _eventRepository.TituloExists(titulo);
+            return _eventRepository.TitleExists(titulo);
         }
     }
 }

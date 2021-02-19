@@ -190,7 +190,7 @@ namespace Infra.Data.Repository
             }
         }
 
-        public bool TituloExists(string titulo)
+        public bool TitleExists(string titulo)
         {
             try
             {

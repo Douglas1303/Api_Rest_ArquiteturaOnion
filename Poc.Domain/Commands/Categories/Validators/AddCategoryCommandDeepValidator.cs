@@ -7,7 +7,7 @@ using Poc.Domain.Resources;
 
 namespace Poc.Domain.Commands.Categories.Validators
 {
-    public class AddCategoryCommandDeepValidator : BaseValidator<AddCategoryCommand, AddCategoryRsc>, IDeepValidator<AddCategoryCommand>
+    internal class AddCategoryCommandDeepValidator : BaseValidator<AddCategoryCommand, AddCategoryRsc>, IDeepValidator<AddCategoryCommand>
     {
         private const string DescriptionExists = "DescriptionExists";
         private readonly ICategoryRepository _categoryRepository;

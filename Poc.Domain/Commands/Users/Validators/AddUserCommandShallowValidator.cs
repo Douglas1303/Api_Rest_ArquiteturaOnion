@@ -7,7 +7,7 @@ using Poc.Domain.ValueObjects;
 
 namespace Poc.Domain.Commands.Users.Validators
 {
-    public class AddUserCommandShallowValidator : BaseValidator<AddUserCommand, AddUserRsc>, IShallowValidator<AddUserCommand>
+    internal class AddUserCommandShallowValidator : BaseValidator<AddUserCommand, AddUserRsc>, IShallowValidator<AddUserCommand>
     {
         private const string CpfInvalid = "CpfInvalid";
         private const string CpfEmptyError = "CpfEmptyError";
@@ -28,22 +28,6 @@ namespace Poc.Domain.Commands.Users.Validators
                 .Equal(true)
                 .WithMessage(x => GetMessage(CpfInvalid))
                 .WithErrorCode(CpfInvalid); 
-                
-                    
-                
-
-            ////RuleFor(x => x.Cpf.Length).Equals(CpfVo.LengthCpf)
-            ////    .WithMessage(x => GetMessage(LengthCpfInvalid))
-            ////    .WithErrorCode(LengthCpfInvalid); 
-            ////RuleFor(x => CpfVo.IsValid(x.Cpf))
-            ////    .Equals(true)
-            ////    .WithMessage(x => GetMessage(CpfInvalid))
-            ////    .WithErrorCode(CpfInvalid);
-
-            //RuleFor(c => c.Cpf)
-            //  .NotEmpty()
-            // .WithMessage(x => GetMessage(LengthCpfInvalid))
-            // .WithErrorCode(LengthCpfInvalid);
         }
     }
 }

@@ -126,4 +126,7 @@
   <data name="LengthCpfInvalid" xml:space="preserve">
     <value>Cpf precisa ter 11 caracteres.</value>
   </data>
+  <data name="NameInvalidError" xml:space="preserve">
+    <value>Nome já existe. </value>
+  </data>
 </root>

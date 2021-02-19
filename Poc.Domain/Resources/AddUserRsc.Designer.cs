@@ -86,5 +86,14 @@ namespace Poc.Domain.Resources {
                 return ResourceManager.GetString("LengthCpfInvalid", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nome já existe. .
+        /// </summary>
+        internal static string NameInvalidError {
+            get {
+                return ResourceManager.GetString("NameInvalidError", resourceCulture);
+            }
+        }
     }
 }

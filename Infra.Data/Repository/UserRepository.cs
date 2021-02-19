@@ -7,6 +7,7 @@ using Poc.Domain.Interface.Base;
 using Poc.Domain.Interface.Repository;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Infra.Data.Repository
@@ -39,6 +40,21 @@ namespace Infra.Data.Repository
             }
             catch (Exception ex)
             {
+                throw ex;
+            }
+        }
+
+        public bool UserExists(string userName)
+        {
+            try
+            {
+                var count = _context.Users.Where(x => x.NomeCompleto == userName).Count();
+
+                return count <= 0; 
+            }
+            catch (Exception ex)
+            {
+
                 throw ex;
             }
         }
