@@ -2,6 +2,14 @@
 Api rest em C# na arquitetura Onion.
 Nesse projeto eu utilizo:
 
-Dot Net Core 3.1, DDD, Linq, Solid, Cqrs, Entity framework, Code First, Dapper, Unit Of Work, Fluent Validation, Mediator, Xunit, Acesso a api ViaCep.
+Dot Net Core 3.1, DDD, Linq, Solid, Cqrs, Entity framework, Code First, Dapper, Unit Of Work, Fluent Validation, Mediator, Xunit, Autenticação, Acesso a api ViaCep.
 
-O objetivo desse projeto é desenvolver uma solução que atenda o nicho de desenvolvedores. Nele o usuário faz o cadastro e com esse cadastro o mesmo consegue acessar os serviços do sistema. Como: ver e se candidatar a um evento. Ver livros em pdf. Ver e se candidatar a cursos. 
+O objetivo desse projeto é desenvolver uma solução que atenda o nicho de desenvolvedores e o dominio "Evento". Nele o usuário faz o cadastro e com esse cadastro o mesmo consegue acessar os serviços do sistema. Como: ver e se candidatar a um evento. Ver livros em pdf. Ver e se candidatar a cursos. 
+
+Bounded Contexts:
+Evento, Cursos, Livros, Usuário, Pagamento, Categoria, Cep, Autenticação
+
+Modelo estratégico dos Bounded Contexts: 
+Diminio Principal: Evento, Cursos, Livros
+Dominio Genérico: Usuário, pagamento, categoria
+Dominio Auxiliar: Cep, autenticação
