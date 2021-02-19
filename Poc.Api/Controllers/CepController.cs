@@ -1,7 +1,6 @@
 ﻿using ExternalServices.Cep;
-using ExternalServices.Cep.Interface;
 using Microsoft.AspNetCore.Mvc;
-using Refit;
+using Poc.Application.Interface;
 using System;
 using System.Threading.Tasks;
 
@@ -9,16 +8,19 @@ namespace Poc.Api.Controllers
 {
     public class CepController : BaseController
     {
-        [HttpPost]
-        public async Task<IActionResult> AddAsync([FromBody] CepViewModel cep)
+        private readonly ICepApplication _cepApplidation;
+
+        public CepController(ICepApplication cepApplidation)
+        {
+            _cepApplidation = cepApplidation;
+        }
+
+        [HttpGet("{cep}")]
+        public async Task<IActionResult> GetByCepAsync(string cep)
         {
             try
             {
-                var cepClient = RestService.For<ICepService>("http://viacep.com.br");
-
-                var address = await cepClient.GetAddressAsync(cep.Cep);
-
-                return Ok(address);
+                return Ok(await _cepApplidation.GetCepAsync(cep));
             }
             catch (Exception ex)
             {

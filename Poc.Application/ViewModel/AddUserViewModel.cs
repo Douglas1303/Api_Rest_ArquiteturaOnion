@@ -12,5 +12,7 @@ namespace Poc.Application.ViewModel
 
         [Required(ErrorMessage = "Data de nascimento não pode ser vazia.")]
         public string DataNascimento { get; set; }
+
+        public string Cep { get; set; }
     }
 }

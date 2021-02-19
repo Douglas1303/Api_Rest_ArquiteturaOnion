@@ -1,5 +1,6 @@
 using Infra.CrossCutting.IoC;
 using Infra.Data.Context;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -97,6 +98,8 @@ namespace Poc.Api
             });
 
             Bootstrap.RegisterService(services);
+
+            services.AddMediatR(typeof(Startup));
 
             services.AddHealthCheckConfiguration(Configuration);
         }

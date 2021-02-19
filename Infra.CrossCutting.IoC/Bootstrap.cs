@@ -52,6 +52,7 @@ namespace Infra.CrossCutting.IoC
             services.AddScoped<ICategoryApplication, CategoryApplication>();
             services.AddScoped<IUserApplication, UserApplication>();
             services.AddScoped<IEventApplication, EventApplication>();
+            services.AddScoped<ICepApplication, CepApplication>();
 
             //Repository
             services.AddScoped<IDapperBase, DapperBase>();

@@ -2778,6 +2778,7 @@
         "dependencies": {
           "AWSSDK.Core": "3.5.1.51",
           "AutoMapper": "10.1.1",
+          "ExternalServices": "1.0.0",
           "Infra.CrossCutting": "1.0.0",
           "MediatR": "9.0.0",
           "Poc.Domain": "1.0.0"

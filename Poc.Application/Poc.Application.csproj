@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ExternalServices\ExternalServices.csproj" />
     <ProjectReference Include="..\Infra.CrossCutting\Infra.CrossCutting.csproj" />
     <ProjectReference Include="..\Poc.Domain\Poc.Domain.csproj" />
   </ItemGroup>

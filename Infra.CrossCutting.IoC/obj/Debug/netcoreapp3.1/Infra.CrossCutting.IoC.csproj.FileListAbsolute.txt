@@ -34,3 +34,6 @@ C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.CrossCutting.
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.CrossCutting.IoC\obj\Debug\netcoreapp3.1\Infra.CrossCutting.IoC.csproj.CopyComplete
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.CrossCutting.IoC\obj\Debug\netcoreapp3.1\Infra.CrossCutting.IoC.dll
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.CrossCutting.IoC\obj\Debug\netcoreapp3.1\Infra.CrossCutting.IoC.pdb
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.CrossCutting.IoC\bin\Debug\netcoreapp3.1\ExternalServices.dll
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.CrossCutting.IoC\bin\Debug\netcoreapp3.1\ExternalServices.pdb
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.CrossCutting.IoC\obj\Debug\netcoreapp3.1\Infra.CrossCutting.IoC.GeneratedMSBuildEditorConfig.editorconfig

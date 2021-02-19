@@ -26,3 +26,8 @@ C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Application\obj
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Application\obj\Debug\netcoreapp3.1\Poc.Application.csproj.CopyComplete
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Application\obj\Debug\netcoreapp3.1\Poc.Application.dll
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Application\obj\Debug\netcoreapp3.1\Poc.Application.pdb
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Application\bin\Debug\netcoreapp3.1\ExternalServices.dll
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Application\bin\Debug\netcoreapp3.1\Infra.Data.dll
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Application\bin\Debug\netcoreapp3.1\ExternalServices.pdb
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Application\bin\Debug\netcoreapp3.1\Infra.Data.pdb
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Poc.Application\obj\Debug\netcoreapp3.1\Poc.Application.GeneratedMSBuildEditorConfig.editorconfig
