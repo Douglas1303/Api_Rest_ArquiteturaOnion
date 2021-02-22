@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Sponsor\Validators\" />
-    <Folder Include="Enum\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.78" />
     <PackageReference Include="FluentValidator" Version="2.0.4" />
   </ItemGroup>
@@ -28,6 +23,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>AddEventRsc.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\AddSponsorRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AddSponsorRsc.resx</DependentUpon>
     </Compile>
     <Compile Update="Resources\AddUserRsc.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -59,6 +59,10 @@
     <EmbeddedResource Update="Resources\AddEventRsc.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AddEventRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\AddSponsorRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddSponsorRsc.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\AddUserRsc.resx">
       <Generator>ResXFileCodeGenerator</Generator>

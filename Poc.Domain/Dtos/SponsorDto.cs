@@ -1,8 +1,10 @@
-﻿namespace Poc.Domain.Dtos
+﻿using System;
+
+namespace Poc.Domain.Dtos
 {
-    public class SponsorDto
+    public class SponsorDto : DtoBase
     {
-        public SponsorDto(string nomePatrocinador, string document, string cep, string logradouro, string complemento, string bairro, string localidade, string uF, int dDD)
+        public SponsorDto(string nomePatrocinador, string document, string cep, string logradouro, string complemento, string bairro, string localidade, string uf, int ddd)
         {
             NomePatrocinador = nomePatrocinador;
             Documento = document;
@@ -11,11 +13,11 @@
             Complemento = complemento;
             Bairro = bairro;
             Localidade = localidade;
-            UF = uF;
-            DDD = dDD;
+            UF = uf;
+            DDD = ddd;
         }
 
-        public SponsorDto(int id, string nomePatrocinador, string document, string cep, string logradouro, string complemento, string bairro, string localidade, string uF, int dDD)
+        public SponsorDto(int id, string nomePatrocinador, string document, string cep, string logradouro, string complemento, string bairro, string localidade, string uf, int ddd)
         {
             Id = id;
             NomePatrocinador = nomePatrocinador;
@@ -25,13 +27,12 @@
             Complemento = complemento;
             Bairro = bairro;
             Localidade = localidade;
-            UF = uF;
-            DDD = dDD;
+            UF = uf;
+            DDD = ddd;
         }
 
         public SponsorDto() { }
 
-        public int Id { get; private set; }
         public string NomePatrocinador { get; private set; }
         public string Documento { get; private set; }
         public string Cep { get; private set; }

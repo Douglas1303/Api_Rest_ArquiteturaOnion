@@ -7,6 +7,6 @@ namespace Poc.Domain.Interface.Repository
     public interface ISponsorRepository
     {
         Task<IEnumerable<SponsorDto>> GetAll();
-        int Add(SponsorDto dto); 
+        Task<int> AddAsync(SponsorDto dto); 
     }
 }

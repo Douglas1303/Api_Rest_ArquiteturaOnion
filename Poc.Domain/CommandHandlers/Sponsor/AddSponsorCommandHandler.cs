@@ -23,10 +23,12 @@ namespace Poc.Domain.CommandHandlers.Sponsor
 
         public async Task<IResult> Handle(AddSponsorCommand request, CancellationToken cancellationToken)
         {
+            var cepNumber = request.Cep.Replace("-", "").Replace(".", "");
+
             var dto = new SponsorDto(
                     request.NomePatrocinador,
                     request.Documento,
-                    request.Cep,
+                    cepNumber,
                     request.Logradouro,
                     request.Complemento,
                     request.Bairro,
@@ -35,7 +37,7 @@ namespace Poc.Domain.CommandHandlers.Sponsor
                     request.DDD); 
             try
             {
-                _sponsorRepository.Add(dto);
+                await _sponsorRepository.AddAsync(dto);
 
                 await _unitOfWork.Commit(); 
             }

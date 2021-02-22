@@ -1,10 +1,13 @@
-﻿using Infra.CrossCutting.Core.CQRS;
+﻿using ExternalServices.Cep.Interface;
+using Infra.CrossCutting.Core.CQRS;
 using Infra.CrossCutting.Models;
 using MediatR;
 using Poc.Application.Interface;
 using Poc.Application.ViewModel;
 using Poc.Domain.Commands.Sponsor;
+using Poc.Domain.Enum;
 using Poc.Domain.Interface.Repository;
+using Refit;
 using System;
 using System.Threading.Tasks;
 
@@ -27,15 +30,19 @@ namespace Poc.Application.Service
         {
             try
             {
+                var cepClient = RestService.For<ICepService>("http://viacep.com.br");
+                var address = await cepClient.GetAddressAsync(viewModel.Cep);
+
                 var command = new AddSponsorCommand(
+                    (ETipoPatrocinador)viewModel.TipoPatrocinador,
                     viewModel.NomePatrocinador, 
-                    viewModel.Documento, 
-                    viewModel.Cep,
-                    viewModel.Logradouro, 
-                    viewModel.Complemento, 
-                    viewModel.Bairro, 
-                    viewModel.Localidade, 
-                    viewModel.UF, 
+                    viewModel.Documento,
+                    address.Cep,
+                    viewModel.Logradouro,
+                    viewModel.Complemento,
+                    viewModel.Bairro,
+                    viewModel.Localidade,
+                    viewModel.UF,
                     viewModel.DDD
                     );
 

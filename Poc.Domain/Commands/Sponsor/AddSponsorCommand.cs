@@ -1,11 +1,13 @@
 ﻿using Infra.CrossCutting.Core.CQRS.Command;
+using Poc.Domain.Enum;
 
 namespace Poc.Domain.Commands.Sponsor
 {
     public class AddSponsorCommand : Command
     {
-        public AddSponsorCommand(string nomePatrocinador, string documento, string cep, string logradouro, string complemento, string bairro, string localidade, string uF, int dDD)
+        public AddSponsorCommand(ETipoPatrocinador tipoPatrocinador, string nomePatrocinador, string documento, string cep, string logradouro, string complemento, string bairro, string localidade, string uf, int ddd)
         {
+            TipoPatrocinador = tipoPatrocinador;
             NomePatrocinador = nomePatrocinador;
             Documento = documento;
             Cep = cep;
@@ -13,10 +15,11 @@ namespace Poc.Domain.Commands.Sponsor
             Complemento = complemento;
             Bairro = bairro;
             Localidade = localidade;
-            UF = uF;
-            DDD = dDD;
+            UF = uf;
+            DDD = ddd;
         }
 
+        public ETipoPatrocinador TipoPatrocinador { get; set; }
         public string NomePatrocinador { get; private set; }
         public string Documento { get; private set; }
         public string Cep { get; private set; }

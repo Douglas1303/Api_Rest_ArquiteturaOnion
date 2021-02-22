@@ -8,6 +8,7 @@ using Poc.Domain.Interface.Base;
 using Poc.Domain.Interface.Repository;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Threading.Tasks;
 
 namespace Infra.Data.Repository
@@ -32,12 +33,13 @@ namespace Infra.Data.Repository
             }
         }
 
-        public int Add(SponsorDto dto)
+        public async Task<int> AddAsync(SponsorDto dto)
         {
             try
             {
                 var parameters = new DynamicParameters();
 
+                parameters.Add("@Id", 0, direction: ParameterDirection.Output);
                 parameters.Add("@NomePatrocinador", dto.NomePatrocinador); 
                 parameters.Add("@Documento", dto.Documento); 
                 parameters.Add("@Cep", dto.Cep); 
@@ -47,14 +49,17 @@ namespace Infra.Data.Repository
                 parameters.Add("@Localidade", dto.Localidade); 
                 parameters.Add("@UF", dto.UF); 
                 parameters.Add("@DDD", dto.DDD);
+                parameters.Add("@DataCadastro", dto.DataCadastro); 
 
-               var result = _dapper.ExecuteProcedureScalar<SponsorDto>(DefaultKeys.DevEvents_Domain(), "[dbo].[Spi_Sponsor]", parameters);
+                var result = await _dapper.ExecuteProcedureScalarAsync<SponsorDto>(DefaultKeys.DevEvents_Domain(), "[dbo].[Spi_Sponsor]", parameters);
+               
+                //if (result.Result == -1)
+                //    return 0;
 
                 return result.Id; 
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

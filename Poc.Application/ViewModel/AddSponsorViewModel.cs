@@ -1,15 +1,36 @@
-﻿namespace Poc.Application.ViewModel
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Poc.Application.ViewModel
 {
     public class AddSponsorViewModel
     {
+        [Required]
+        public int TipoPatrocinador { get; set; }
+        [Required]
         public string NomePatrocinador { get; set; }
+
+        [Required]
         public string Documento { get; set; }
-        public string Cep { get; private set; }
-        public string Logradouro { get; private set; }
-        public string Complemento { get; private set; }
-        public string Bairro { get; private set; }
-        public string Localidade { get; private set; }
-        public string UF { get; private set; }
-        public int DDD { get; private set; }
+
+        [Required]
+        public string Cep { get; set; }
+
+        [Required]
+        public string Logradouro { get; set; }
+
+        public string Complemento { get; set; }
+
+        [Required]
+        public string Bairro { get; set; }
+
+        [Required]
+        [Display(Name = "Cidade")]
+        public string Localidade { get; set; }
+
+        [Required]
+        public string UF { get; set; }
+
+        [Required]
+        public int DDD { get; set; }
     }
 }
