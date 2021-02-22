@@ -18,20 +18,21 @@ namespace Poc.Application.Service
         private readonly ISponsorRepository _sponsorRepository; 
         private readonly IMediator _mediator;
         private readonly ILogModel _logModel;
+        private readonly ICepService _cepService; 
 
-        public SponsorApplication(ISponsorRepository sponsorRepository, IMediator mediator, ILogModel logModel)
+        public SponsorApplication(ISponsorRepository sponsorRepository, IMediator mediator, ILogModel logModel, ICepService cepService)
         {
             _sponsorRepository = sponsorRepository; 
             _mediator = mediator;
             _logModel = logModel;
+            _cepService = cepService; 
         }
 
         public async Task<IResult> AddAsync(AddSponsorViewModel viewModel)
         {
             try
             {
-                var cepClient = RestService.For<ICepService>("http://viacep.com.br");
-                var address = await cepClient.GetAddressAsync(viewModel.Cep);
+                var address = await _cepService.GetAddressAsync(viewModel.Cep); 
 
                 var command = new AddSponsorCommand(
                     (ETipoPatrocinador)viewModel.TipoPatrocinador,

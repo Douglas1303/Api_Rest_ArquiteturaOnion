@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using ExternalServices.Cep.Interface;
+using ExternalServices.Cep.Interface.Service;
 using Infra.CrossCutting.Core.CQRS;
 using Infra.CrossCutting.IoC.PipelineBehavior;
 using Infra.CrossCutting.Mediator;
@@ -97,6 +99,9 @@ namespace Infra.CrossCutting.IoC
             services.AddScoped(typeof(IRequestExceptionHandler<AddUserCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
             services.AddScoped(typeof(IRequestExceptionHandler<AddSponsorCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
             services.AddScoped(typeof(IRequestExceptionHandler<RemoveSponsorCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
+
+            //ExternalService
+            services.AddScoped<ICepService, CepService>(); 
 
             ServiceProvider = services.BuildServiceProvider();
         }

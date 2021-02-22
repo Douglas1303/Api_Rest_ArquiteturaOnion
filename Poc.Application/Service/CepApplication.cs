@@ -9,13 +9,20 @@ namespace Poc.Application.Service
 {
     public class CepApplication : ICepApplication
     {
+        private readonly ICepService _cepService;
+
+        public CepApplication(ICepService cepService)
+        {
+            _cepService = cepService;
+        }
+
         public async Task<IResult> GetCepAsync(string cep)
         {
             try
             {
-                var cepClient = RestService.For<ICepService>("http://viacep.com.br");
+                var address = await _cepService.GetAddressAsync(cep);
 
-                var address = await cepClient.GetAddressAsync(cep);
+                if (address.Cep == null) return new QueryResult("Endereço não encontrado"); 
 
                 return new QueryResult(address);
             }
