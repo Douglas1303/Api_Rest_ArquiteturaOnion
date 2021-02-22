@@ -49,6 +49,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>RemoveEventRsc.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\RemoveSponsorRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RemoveSponsorRsc.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -79,6 +84,10 @@
     <EmbeddedResource Update="Resources\RemoveEventRsc.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RemoveEventRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\RemoveSponsorRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RemoveSponsorRsc.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

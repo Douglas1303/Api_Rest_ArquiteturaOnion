@@ -25,5 +25,11 @@ namespace Poc.Api.Controllers
         {
             return Ok(await _sponsorApplication.AddAsync(viewModel)); 
         }
+
+        [HttpDelete("Excluir/{id=int}")]
+        public async Task<IActionResult> Remove(int id)
+        {
+            return Ok(await _sponsorApplication.RemoveAsync(id)); 
+        }
     }
 }

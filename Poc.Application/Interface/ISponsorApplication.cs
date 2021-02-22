@@ -7,6 +7,7 @@ namespace Poc.Application.Interface
     public interface ISponsorApplication
     {
         Task<IResult> GetAllAsync();
-        Task<IResult> AddAsync(AddSponsorViewModel viewModel); 
+        Task<IResult> AddAsync(AddSponsorViewModel viewModel);
+        Task<IResult> RemoveAsync(int id); 
     }
 }

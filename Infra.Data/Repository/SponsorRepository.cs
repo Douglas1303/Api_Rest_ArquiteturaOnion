@@ -63,5 +63,41 @@ namespace Infra.Data.Repository
                 throw ex;
             }
         }
+
+        public async Task<string> RemoveAsync(int id)
+        {
+            try
+            {
+                var parameters = new DynamicParameters();
+
+                parameters.Add("@Id", id);
+
+                var result = await _dapper.ExecuteProcedureScalarAsync<ProcedureResultDto>(DefaultKeys.DevEvents_Domain(), "[dbo].[Spu_Sponsor]", parameters);
+
+                return result.ErrorMessage; 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public async Task<SponsorDto> SponsorExists(int id)
+        {
+            try
+            {
+                var parameters = new DynamicParameters();
+
+                parameters.Add("@Id", id);
+
+                return await _dapper.ExecuteProcedureScalarAsync<SponsorDto>(DefaultKeys.DevEvents_Domain(), "[dbo].[Spu_SponsorById]", parameters);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

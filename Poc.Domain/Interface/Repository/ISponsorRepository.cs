@@ -7,6 +7,11 @@ namespace Poc.Domain.Interface.Repository
     public interface ISponsorRepository
     {
         Task<IEnumerable<SponsorDto>> GetAll();
-        Task<int> AddAsync(SponsorDto dto); 
+
+        Task<int> AddAsync(SponsorDto dto);
+
+        Task<string> RemoveAsync(int id);
+
+        Task<SponsorDto> SponsorExists(int id);
     }
 }

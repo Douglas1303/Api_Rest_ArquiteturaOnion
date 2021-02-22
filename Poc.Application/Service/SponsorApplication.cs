@@ -67,5 +67,20 @@ namespace Poc.Application.Service
                 throw ex;
             }
         }
+
+        public async Task<IResult> RemoveAsync(int id)
+        {
+            try
+            {
+                var command = new RemoveSponsorCommand(id);
+
+                return await _mediator.Send(command); 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

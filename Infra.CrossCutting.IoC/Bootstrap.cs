@@ -78,6 +78,7 @@ namespace Infra.CrossCutting.IoC
             services.AddTransient<IRequestHandler<AddCategoryCommand, IResult>, AddCategoryCommandHandler>();
             services.AddTransient<IRequestHandler<AddUserCommand, IResult>, AddUserCommandHandler>();
             services.AddTransient<IRequestHandler<AddSponsorCommand, IResult>, AddSponsorCommandHandler>();
+            services.AddTransient<IRequestHandler<RemoveSponsorCommand, IResult>, RemoveSponsorCommandHandler>();
 
             //Logger
             services.AddScoped<ILogModel, LogModel>();
@@ -95,6 +96,7 @@ namespace Infra.CrossCutting.IoC
             services.AddScoped(typeof(IRequestExceptionHandler<AddCategoryCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
             services.AddScoped(typeof(IRequestExceptionHandler<AddUserCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
             services.AddScoped(typeof(IRequestExceptionHandler<AddSponsorCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
+            services.AddScoped(typeof(IRequestExceptionHandler<RemoveSponsorCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
 
             ServiceProvider = services.BuildServiceProvider();
         }
