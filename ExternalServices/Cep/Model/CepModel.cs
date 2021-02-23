@@ -14,9 +14,9 @@ namespace ExternalServices.Cep.Model
         public string Complemento { get; set; }
 
 
-        [JsonProperty("localidade")]
+        [JsonProperty("cidade")]
         public string Localidade { get; set; }
-
+        
         [JsonProperty("bairro")]
         public string Bairro { get; set; }
 
