@@ -9,6 +9,7 @@ using Poc.Domain.Interface.Repository;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Infra.Data.Repository
@@ -92,6 +93,25 @@ namespace Infra.Data.Repository
                 parameters.Add("@Id", id);
 
                 return await _dapper.ExecuteProcedureScalarAsync<SponsorDto>(DefaultKeys.DevEvents_Domain(), "[dbo].[Spu_SponsorById]", parameters);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public bool NameSponsorExists(string name)
+        {
+            try
+            {
+                var parameters = new DynamicParameters();
+
+                parameters.Add("@Name", name);
+
+                var result = _dapper.ExecuteProcedure<SponsorDto>(DefaultKeys.DevEvents_Domain(), "[dbo].[SpS_SponsorByName]", parameters).Count();
+
+                return result <= 0; 
             }
             catch (Exception ex)
             {

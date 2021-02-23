@@ -13,5 +13,7 @@ namespace Poc.Domain.Interface.Repository
         Task<string> RemoveAsync(int id);
 
         Task<SponsorDto> SponsorExists(int id);
+
+        bool NameSponsorExists(string name); 
     }
 }

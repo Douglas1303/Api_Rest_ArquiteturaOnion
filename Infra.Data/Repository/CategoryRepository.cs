@@ -26,9 +26,9 @@ namespace Infra.Data.Repository
 
                 return categories;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 

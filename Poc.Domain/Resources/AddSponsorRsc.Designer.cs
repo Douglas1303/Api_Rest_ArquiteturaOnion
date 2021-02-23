@@ -104,5 +104,14 @@ namespace Poc.Domain.Resources {
                 return ResourceManager.GetString("DocumentNotExistsError", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nome do patrocinador já existe. .
+        /// </summary>
+        internal static string NamesSponsorExistsError {
+            get {
+                return ResourceManager.GetString("NamesSponsorExistsError", resourceCulture);
+            }
+        }
     }
 }

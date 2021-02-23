@@ -132,4 +132,7 @@
   <data name="DocumentNotExistsError" xml:space="preserve">
     <value>Tipo de documento não existe. </value>
   </data>
+  <data name="NamesSponsorExistsError" xml:space="preserve">
+    <value>Nome do patrocinador já existe. </value>
+  </data>
 </root>
