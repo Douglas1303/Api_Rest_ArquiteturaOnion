@@ -6,8 +6,10 @@ Dot Net Core 3.1, DDD, Linq, Solid, Cqrs, Entity framework, Code First, Dapper, 
 
 O objetivo desse projeto é desenvolver uma solução que atenda o nicho de desenvolvedores e o dominio "Evento". Nele o usuário faz o cadastro e com esse cadastro o mesmo consegue acessar os serviços do sistema. Como: ver e se candidatar a um evento. Ver livros em pdf. Ver e se candidatar a cursos. 
 
+Linguagem ubíqua: Eventos, Cursos, Livros, Categoria, Usuário(documento, cep), Patrocinador.  
+
 Bounded Contexts:
-Evento, Cursos, Livros, Usuário, Pagamento, Categoria, Cep, Autenticação
+Evento, Cursos, Livros, Usuário, Pagamento, Categoria, Autenticação
 
 Modelo estratégico dos Bounded Contexts: 
 Diminio Principal: Evento, Cursos, Livros.
