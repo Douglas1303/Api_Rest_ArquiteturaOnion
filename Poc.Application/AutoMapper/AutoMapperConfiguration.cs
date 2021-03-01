@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using ExternalServices.Cep;
+using ExternalServices.Cep.Model;
+using Poc.Application.ViewModel;
+using Poc.Domain.Dtos;
+using Poc.Domain.Entities;
 
 namespace Poc.Application.AutoMapper
 {
@@ -9,7 +11,14 @@ namespace Poc.Application.AutoMapper
     {
         public AutoMapperConfiguration()
         {
+            //ModelToViewModel
+            CreateMap<CategoryModel, CategoryViewModel>();
+            CreateMap<CepModel, CepViewModel>(); 
+            CreateMap<EventModel, EventViewModel>();
+            CreateMap<UserModel, UserViewModel>(); 
 
+            //DataTransferObjectToViewModel
+            CreateMap<SponsorDto, SponsorViewModel>(); 
         }
     }
 }

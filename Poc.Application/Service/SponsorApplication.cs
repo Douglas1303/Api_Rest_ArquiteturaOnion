@@ -1,4 +1,5 @@
-﻿using ExternalServices.Cep.Interface;
+﻿using AutoMapper;
+using ExternalServices.Cep.Interface;
 using Infra.CrossCutting.Core.CQRS;
 using Infra.CrossCutting.Models;
 using MediatR;
@@ -8,6 +9,7 @@ using Poc.Domain.Commands.Sponsor;
 using Poc.Domain.Enum;
 using Poc.Domain.Interface.Repository;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Poc.Application.Service
@@ -17,14 +19,28 @@ namespace Poc.Application.Service
         private readonly ISponsorRepository _sponsorRepository;
         private readonly IMediator _mediator;
         private readonly ILogModel _logModel;
+        protected readonly IMapper _mapper;
         private readonly ICepService _cepService;
 
-        public SponsorApplication(ISponsorRepository sponsorRepository, IMediator mediator, ILogModel logModel, ICepService cepService)
+        public SponsorApplication(ISponsorRepository sponsorRepository, IMediator mediator, ILogModel logModel, IMapper mapper, ICepService cepService)
         {
             _sponsorRepository = sponsorRepository;
             _mediator = mediator;
             _logModel = logModel;
+            _mapper = mapper;
             _cepService = cepService;
+        }
+
+        public async Task<IResult> GetAllAsync()
+        {
+            try
+            {
+                return new QueryResult(_mapper.Map<IEnumerable<SponsorViewModel>>(await _sponsorRepository.GetAll()));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public async Task<IResult> AddAsync(AddSponsorViewModel viewModel)
@@ -47,18 +63,6 @@ namespace Poc.Application.Service
                     );
 
                 return await _mediator.Send(command);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public async Task<IResult> GetAllAsync()
-        {
-            try
-            {
-                return new QueryResult(await _sponsorRepository.GetAll());
             }
             catch (Exception ex)
             {

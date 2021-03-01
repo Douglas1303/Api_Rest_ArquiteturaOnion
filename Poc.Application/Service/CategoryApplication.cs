@@ -8,6 +8,7 @@ using Poc.Application.ViewModel;
 using Poc.Domain.Commands.Categories;
 using Poc.Domain.Interface.Repository;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Poc.Application.Service
@@ -25,7 +26,7 @@ namespace Poc.Application.Service
         {
             try
             {
-                return new QueryResult(await _categoryRepository.GetAllAsync());
+                return new QueryResult(_mapper.Map<IEnumerable<CategoryViewModel>>(await _categoryRepository.GetAllAsync()));
             }
             catch (Exception)
             {

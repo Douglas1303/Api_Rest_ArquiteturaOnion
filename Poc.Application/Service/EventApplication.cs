@@ -8,6 +8,7 @@ using Poc.Application.ViewModel;
 using Poc.Domain.Commands.Events;
 using Poc.Domain.Interface.Repository;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Poc.Application.Service
@@ -25,7 +26,7 @@ namespace Poc.Application.Service
         {
             try
             {
-                return new QueryResult(await _eventRepository.GetAllAsync());
+                return new QueryResult(_mapper.Map<IEnumerable<EventViewModel>>(await _eventRepository.GetAllAsync()));
             }
             catch (Exception ex)
             {
@@ -37,7 +38,11 @@ namespace Poc.Application.Service
         {
             try
             {
-                return new QueryResult(await _eventRepository.GetByIdAsync(eventId));
+                var result = _mapper.Map<EventViewModel>(await _eventRepository.GetByIdAsync(eventId)); 
+
+                if(result == null) return new QueryResult("Evento não existe."); 
+
+                return new QueryResult(result);
             }
             catch (Exception ex)
             {
