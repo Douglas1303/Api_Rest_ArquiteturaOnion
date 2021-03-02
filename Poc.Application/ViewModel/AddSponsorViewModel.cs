@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Poc.Domain.Enum;
 using System.ComponentModel.DataAnnotations;
 
 namespace Poc.Application.ViewModel

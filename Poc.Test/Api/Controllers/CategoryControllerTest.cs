@@ -33,7 +33,7 @@ namespace Poc.Test.Api.Controllers
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 
-            ////Assert
+            //Assert
             Assert.NotNull(response);
             Assert.IsType<OkObjectResult>(objectResult);
             Assert.NotEmpty(content.Messages);
