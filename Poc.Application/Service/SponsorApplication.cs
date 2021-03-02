@@ -53,6 +53,7 @@ namespace Poc.Application.Service
                     (ETipoPatrocinador)viewModel.TipoPatrocinador,
                     viewModel.NomePatrocinador,
                     viewModel.Documento,
+                    viewModel.Telefone,
                     address.Cep,
                     viewModel.Logradouro,
                     viewModel.Complemento,

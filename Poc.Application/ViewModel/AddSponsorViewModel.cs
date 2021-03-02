@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace Poc.Application.ViewModel
 {
@@ -13,6 +14,9 @@ namespace Poc.Application.ViewModel
         public string Documento { get; set; }
 
         [Required]
+        public string Telefone { get; set; }
+
+        [Required]
         public string Cep { get; set; }
 
         [Required]
@@ -24,7 +28,6 @@ namespace Poc.Application.ViewModel
         public string Bairro { get; set; }
 
         [Required]
-        [Display(Name = "Cidade")]
         public string Localidade { get; set; }
 
         [Required]

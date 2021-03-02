@@ -28,6 +28,7 @@ namespace Poc.Domain.CommandHandlers.Sponsor
             var dto = new SponsorDto(
                     request.NomePatrocinador,
                     request.Documento,
+                    request.Telefone,
                     cepNumber,
                     request.Logradouro,
                     request.Complemento,

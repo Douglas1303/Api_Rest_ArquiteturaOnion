@@ -5,11 +5,12 @@ namespace Poc.Domain.Commands.Sponsor
 {
     public class AddSponsorCommand : Command
     {
-        public AddSponsorCommand(ETipoPatrocinador tipoPatrocinador, string nomePatrocinador, string documento, string cep, string logradouro, string complemento, string bairro, string localidade, string uf, int ddd)
+        public AddSponsorCommand(ETipoPatrocinador tipoPatrocinador, string nomePatrocinador, string documento, string telefone, string cep, string logradouro, string complemento, string bairro, string localidade, string uf, int ddd)
         {
             TipoPatrocinador = tipoPatrocinador;
             NomePatrocinador = nomePatrocinador;
             Documento = documento;
+            Telefone = telefone; 
             Cep = cep;
             Logradouro = logradouro;
             Complemento = complemento;
@@ -22,6 +23,7 @@ namespace Poc.Domain.Commands.Sponsor
         public ETipoPatrocinador TipoPatrocinador { get; set; }
         public string NomePatrocinador { get; private set; }
         public string Documento { get; private set; }
+        public string Telefone { get; private set; }
         public string Cep { get; private set; }
         public string Logradouro { get; private set; }
         public string Complemento { get; private set; }
