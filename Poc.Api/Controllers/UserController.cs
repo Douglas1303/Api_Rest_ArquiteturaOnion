@@ -12,12 +12,10 @@ namespace Poc.Api.Controllers
     public class UserController : BaseController
     {
         private readonly IUserApplication _userApplication;
-        private readonly IMapper _mapper; 
 
-        public UserController(IUserApplication userApplication, IMapper mapper)
+        public UserController(IUserApplication userApplication)
         {
             _userApplication = userApplication;
-            _mapper = mapper; 
         }
 
         [HttpGet("Usuarios")]

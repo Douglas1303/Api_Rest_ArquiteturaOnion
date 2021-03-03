@@ -25,7 +25,7 @@ namespace Poc.Application.Service
             {
                 var address = _mapper.Map<CepViewModel>(await _cepService.GetAddressAsync(cep));
 
-                if (address.Cep == null) return new QueryResult("Endereço não encontrado");
+                if (address.Cep == null) return new QueryResult("Endereço não encontrado.");
 
                 return new QueryResult(address);
             }

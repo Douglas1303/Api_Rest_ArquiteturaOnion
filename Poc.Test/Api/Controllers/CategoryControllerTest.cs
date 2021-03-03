@@ -64,7 +64,7 @@ namespace Poc.Test.Api.Controllers
         }
 
         [Fact]
-        public void PostAsync_WhenServiceIsValid_ReturnShouldBeOk()
+        public void AddCategory_WhenServiceIsValid_ReturnShouldBeOk()
         {
             IResult commandResult = new CommandResult();
 
@@ -84,7 +84,7 @@ namespace Poc.Test.Api.Controllers
         }
 
         [Fact]
-        public void PostAsync_WhenServiceIsInvalid_ReturnShouldBeError()
+        public void AddCategory_WhenServiceIsInvalid_ReturnShouldBeError()
         {
             IResult commandResult = new CommandResult();
             commandResult.AddErrorMessage("Error");

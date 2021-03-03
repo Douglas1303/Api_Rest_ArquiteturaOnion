@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Poc.Api.Controllers;
 using Poc.Application.Interface;
-using System;
 using Xunit;
 
 namespace Poc.Test.Api.Controllers
@@ -48,7 +47,7 @@ namespace Poc.Test.Api.Controllers
             IResult result = new CommandResult();
             result.AddErrorMessage("Error");
 
-            _mockedCepApplication.Setup(x => x.GetCepAsync(It.IsAny<string>())).ReturnsAsync(result); 
+            _mockedCepApplication.Setup(x => x.GetCepAsync(It.IsAny<string>())).ReturnsAsync(result);
 
             //Act
             var response = _cepController.GetByCepAsync(It.IsAny<string>());
@@ -68,14 +67,13 @@ namespace Poc.Test.Api.Controllers
             return new CepModel
             {
                 Cep = "69086692",
-                Logradouro = "Rua Garça Azul", 
+                Logradouro = "Rua Garça Azul",
                 Complemento = "Casa 2",
                 Localidade = "Manaus",
                 Bairro = "Jd. Paulo Mauro",
-                UF = "AM", 
+                UF = "AM",
                 DDD = "12"
-
-            }; 
+            };
         }
     }
 }
