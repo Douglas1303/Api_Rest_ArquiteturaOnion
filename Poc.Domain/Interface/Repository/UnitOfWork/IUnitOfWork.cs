@@ -5,6 +5,6 @@ namespace Poc.Domain.Interface.Repository.UnitOfWork
     public interface IUnitOfWork
     {
         Task Commit();
-        Task Rollback(); 
+        void Rollback(); 
     }
 }

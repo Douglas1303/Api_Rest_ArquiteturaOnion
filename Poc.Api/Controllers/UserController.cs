@@ -1,10 +1,8 @@
-﻿using AutoMapper;
-using ExternalServices.Cep.Interface;
+﻿using ExternalServices.Cep.Interface;
 using Infra.CrossCutting.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Poc.Application.Interface;
 using Poc.Application.ViewModel;
-using Refit;
 using System.Threading.Tasks;
 
 namespace Poc.Api.Controllers
@@ -12,10 +10,12 @@ namespace Poc.Api.Controllers
     public class UserController : BaseController
     {
         private readonly IUserApplication _userApplication;
+        private readonly ICepService _cepService;
 
-        public UserController(IUserApplication userApplication)
+        public UserController(IUserApplication userApplication, ICepService cepService)
         {
             _userApplication = userApplication;
+            _cepService = cepService;
         }
 
         [HttpGet("Usuarios")]
@@ -27,11 +27,9 @@ namespace Poc.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Add([FromBody] AddUserViewModel addUserViewModel)
         {
-            var cepClient = RestService.For<ICepService>("http://viacep.com.br");
+            var address = await _cepService.GetAddressAsync(addUserViewModel.Cep);
 
-            var address = await cepClient.GetAddressAsync(addUserViewModel.Cep);
-
-            var cep = new CepUserViewModel(address.Cep, address.Logradouro, address.Complemento, address.Bairro, address.Localidade, address.UF, address.DDD); 
+            var cep = new CepUserViewModel(address.Cep, address.Logradouro, address.Complemento, address.Bairro, address.Localidade, address.UF, address.DDD);
 
             return Ok(await _userApplication.AddAsync(addUserViewModel, User.Identity.GetEmailUser()));
         }
@@ -42,6 +40,7 @@ namespace Poc.Api.Controllers
         {
             var tt = User.Identity.GetId();
             var aaaa = User.Identity.GetEmailUser();
+            var user = User?.Claims;
 
             return Ok();
         }

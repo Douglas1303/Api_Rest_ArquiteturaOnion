@@ -8,6 +8,8 @@ namespace Poc.Application.ViewModel
 
         public string Documento { get; set; }
 
+        public string Telefone { get; set; }
+
         public string Cep { get; set; }
 
         public string Logradouro { get; set; }
