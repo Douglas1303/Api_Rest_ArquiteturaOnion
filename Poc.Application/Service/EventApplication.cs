@@ -2,11 +2,14 @@
 using Infra.CrossCutting.Core.CQRS;
 using Infra.CrossCutting.Mediator;
 using Infra.CrossCutting.Models;
+using Microsoft.Extensions.Localization;
 using Poc.Application.Interface;
 using Poc.Application.Service.Base;
 using Poc.Application.ViewModel;
 using Poc.Domain.Commands.Events;
 using Poc.Domain.Interface.Repository;
+using Poc.Domain.Resources.Application;
+using Poc.Domain.Resources.ExtensionMethods;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -16,10 +19,23 @@ namespace Poc.Application.Service
     public class EventApplication : BaseApplicationService, IEventApplication
     {
         private readonly IEventRepository _eventRepository;
+        private readonly IStringLocalizer<EventAppRsc> Localizer;
 
-        public EventApplication(IEventRepository eventRepository, IMediatorHandler mediatorHandler, IMapper mapper, ILogModel logModel) : base(mediatorHandler, mapper, logModel)
+        #region Constantes
+        private const string GetAllEventError = "GetAllEventError";
+        private const string GetByIdEventError = "GetByIdEventError";
+        private const string AddEventError = "AddEventError"; 
+        private const string UpdateEventError = "UpdateEventError"; 
+        private const string RegisterUserEventError = "RegisterUserEventError"; 
+        private const string CancelEventError = "CancelEventError"; 
+        private const string RemoveEventError = "RemoveEventError";
+        #endregion
+
+        public EventApplication(IEventRepository eventRepository, IMediatorHandler mediatorHandler, IMapper mapper, 
+                                ILogModel logModel, IStringLocalizer<EventAppRsc> localizer) : base(mediatorHandler, mapper, logModel)
         {
             _eventRepository = eventRepository;
+            Localizer = localizer; 
         }
 
         public async Task<IResult> GetAllAsync()
@@ -30,6 +46,7 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                return new QueryResult(Localizer.GetMsg(GetAllEventError)); 
                 throw ex;
             }
         }
@@ -46,6 +63,7 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                return new QueryResult(Localizer.GetMsg(GetByIdEventError)); 
                 throw ex;
             }
         }
@@ -65,6 +83,7 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                return new QueryResult(Localizer.GetMsg(AddEventError)); 
                 throw ex;
             }
         }
@@ -86,6 +105,7 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                return new QueryResult(Localizer.GetMsg(UpdateEventError)); 
                 throw ex;
             }
         }
@@ -102,6 +122,7 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                return new QueryResult(Localizer.GetMsg(RegisterUserEventError)); 
                 throw ex;
             }
         }
@@ -116,6 +137,7 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                return new QueryResult(Localizer.GetMsg(CancelEventError));
                 throw ex;
             }
         }
@@ -130,6 +152,7 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                return new QueryResult(Localizer.GetMsg(RemoveEventError)); 
                 throw ex;
             }
         }

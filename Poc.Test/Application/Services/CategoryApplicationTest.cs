@@ -13,7 +13,6 @@ using Poc.Domain.Interface.Repository;
 using Poc.Domain.Resources.Application;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Poc.Test.Application.Services
@@ -32,7 +31,7 @@ namespace Poc.Test.Application.Services
             _mockedCategoryRepository = new Mock<ICategoryRepository>();
             _mockedMediatorHandler = new Mock<IMediatorHandler>();
             _mockedLog = new Mock<ILogModel>();
-            _mockedLocalizer = new Mock<IStringLocalizer<CategoryAppRsc>>(); 
+            _mockedLocalizer = new Mock<IStringLocalizer<CategoryAppRsc>>();
 
             var config = new MapperConfiguration(cfg =>
             {
@@ -42,13 +41,13 @@ namespace Poc.Test.Application.Services
             _mapperFake = new Mapper(config);
 
             _categoryApplication = new CategoryApplication(_mockedCategoryRepository.Object, _mockedMediatorHandler.Object,
-                                                            _mapperFake, _mockedLog.Object, _mockedLocalizer.Object); 
+                                                            _mapperFake, _mockedLog.Object, _mockedLocalizer.Object);
         }
 
         [Fact]
         public void GetAllAsync_WhenRepositoryIsValid_ReturnShouldBeOkWithList()
         {
-            //Arrange 
+            //Arrange
             _mockedCategoryRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(GetCategoryModel());
 
             //Act
@@ -60,13 +59,13 @@ namespace Poc.Test.Application.Services
             Assert.NotNull(requestResult.Result.Data);
             Assert.Equal(StatusResult.Ok, requestResult.Result.Status);
 
-            _mockedCategoryRepository.Verify(x => x.GetAllAsync(), Times.Once); 
+            _mockedCategoryRepository.Verify(x => x.GetAllAsync(), Times.Once);
         }
 
         [Fact]
         public void GetAllAsync_WhenRepositoryReturnException_ReturnShouldBeError()
         {
-            //Arrange 
+            //Arrange
             _mockedCategoryRepository.Setup(x => x.GetAllAsync()).Throws(new Exception());
 
             //Act
@@ -100,7 +99,7 @@ namespace Poc.Test.Application.Services
         }
 
         [Fact]
-        public void AddCategory_WhenRepositoryReturnException_ReturnShouldBeError()
+        public void AddCategory_WhenMediatorReturnException_ReturnShouldBeError()
         {
             //Arrange
             IResult commandResult = new CommandResult();
@@ -121,16 +120,16 @@ namespace Poc.Test.Application.Services
             return new AddCategoryViewModel
             {
                 Descricao = "Bootcamp"
-            }; 
+            };
         }
 
         private List<CategoryModel> GetCategoryModel()
         {
             return new List<CategoryModel>
             {
-                new CategoryModel("Bootcamp"), 
+                new CategoryModel("Bootcamp"),
                 new CategoryModel("Live")
-            }; 
+            };
         }
     }
 }

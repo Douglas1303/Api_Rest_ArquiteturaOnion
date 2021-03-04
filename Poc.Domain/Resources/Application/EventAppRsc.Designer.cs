@@ -22,14 +22,14 @@ namespace Poc.Domain.Resources.Application {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class CategoryAppRsc {
+    public class EventAppRsc {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal CategoryAppRsc() {
+        internal EventAppRsc() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Poc.Domain.Resources.Application {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Poc.Domain.Resources.Application.CategoryAppRsc", typeof(CategoryAppRsc).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Poc.Domain.Resources.Application.EventAppRsc", typeof(EventAppRsc).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,24 +57,6 @@ namespace Poc.Domain.Resources.Application {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Erro ao adicionar categoria. .
-        /// </summary>
-        internal static string AddCategoryError {
-            get {
-                return ResourceManager.GetString("AddCategoryError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Erro ao consultar categorias. .
-        /// </summary>
-        internal static string GetAllCategoryError {
-            get {
-                return ResourceManager.GetString("GetAllCategoryError", resourceCulture);
             }
         }
     }

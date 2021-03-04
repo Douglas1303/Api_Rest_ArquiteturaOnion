@@ -21,15 +21,17 @@ namespace Poc.Application.Service
         private readonly ICategoryRepository _categoryRepository;
         private readonly IStringLocalizer<CategoryAppRsc> Localizer;
 
+        #region Constantes
         private const string GetAllCategoryError = "GetAllCategoryError";
         private const string AddCategoryError = "AddCategoryError";
+        #endregion
 
         public CategoryApplication(ICategoryRepository categoryRepository, IMediatorHandler mediatorHandler, 
-                                    IMapper mapper, ILogModel logModel, IStringLocalizer<CategoryAppRsc> stringSerializer) 
+                                    IMapper mapper, ILogModel logModel, IStringLocalizer<CategoryAppRsc> localizer) 
                                         : base(mediatorHandler, mapper, logModel)
         {
             _categoryRepository = categoryRepository;
-            Localizer = stringSerializer; 
+            Localizer = localizer; 
         }
 
         public async Task<IResult> GetAllAsync()
