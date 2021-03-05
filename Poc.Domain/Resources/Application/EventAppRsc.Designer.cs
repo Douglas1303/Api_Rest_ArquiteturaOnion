@@ -59,5 +59,68 @@ namespace Poc.Domain.Resources.Application {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao adicionar evento. .
+        /// </summary>
+        internal static string AddEventError {
+            get {
+                return ResourceManager.GetString("AddEventError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao desativar evento. .
+        /// </summary>
+        internal static string CancelEventError {
+            get {
+                return ResourceManager.GetString("CancelEventError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao consultar eventos. .
+        /// </summary>
+        internal static string GetAllEventError {
+            get {
+                return ResourceManager.GetString("GetAllEventError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao consultar evento..
+        /// </summary>
+        internal static string GetByIdEventError {
+            get {
+                return ResourceManager.GetString("GetByIdEventError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao registrar usuário no evento. .
+        /// </summary>
+        internal static string RegisterUserEventError {
+            get {
+                return ResourceManager.GetString("RegisterUserEventError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao excluir evento. .
+        /// </summary>
+        internal static string RemoveEventError {
+            get {
+                return ResourceManager.GetString("RemoveEventError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Erro ao atualizar evento. .
+        /// </summary>
+        internal static string UpdateEventError {
+            get {
+                return ResourceManager.GetString("UpdateEventError", resourceCulture);
+            }
+        }
     }
 }

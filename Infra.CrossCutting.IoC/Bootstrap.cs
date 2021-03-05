@@ -21,10 +21,12 @@ using Poc.Application.Service;
 using Poc.Application.Service.Identity;
 using Poc.Domain.CommandHandlers.Categories;
 using Poc.Domain.CommandHandlers.Events;
+using Poc.Domain.CommandHandlers.FIle;
 using Poc.Domain.CommandHandlers.Sponsor;
 using Poc.Domain.CommandHandlers.Users;
 using Poc.Domain.Commands.Categories;
 using Poc.Domain.Commands.Events;
+using Poc.Domain.Commands.File;
 using Poc.Domain.Commands.Sponsor;
 using Poc.Domain.Commands.Users;
 using Poc.Domain.Helper;
@@ -58,6 +60,7 @@ namespace Infra.CrossCutting.IoC
             services.AddScoped<IEventApplication, EventApplication>();
             services.AddScoped<ICepApplication, CepApplication>();
             services.AddScoped<ISponsorApplication, SponsorApplication>();
+            services.AddScoped<IFileApplication, FileApplication>();
 
             //Repository
             services.AddScoped<IDapperBase, DapperBase>();
@@ -66,6 +69,7 @@ namespace Infra.CrossCutting.IoC
             services.AddScoped<IEventRepository, EventRepository>();
             services.AddScoped<ICustomUserManagerRepository, CustomUserManagerRepository>();
             services.AddScoped<ISponsorRepository, SponsorRepository>();
+            services.AddScoped<IFileRepository, FileRepository>();
 
             //Automapper
             services.AddAutoMapper(typeof(AutoMapperConfiguration));
@@ -81,6 +85,7 @@ namespace Infra.CrossCutting.IoC
             services.AddTransient<IRequestHandler<AddUserCommand, IResult>, AddUserCommandHandler>();
             services.AddTransient<IRequestHandler<AddSponsorCommand, IResult>, AddSponsorCommandHandler>();
             services.AddTransient<IRequestHandler<RemoveSponsorCommand, IResult>, RemoveSponsorCommandHandler>();
+            services.AddTransient<IRequestHandler<AddFileCommand, IResult>, AddFileCommandHandler>();
 
             //Logger
             services.AddScoped<ILogModel, LogModel>();
@@ -99,9 +104,10 @@ namespace Infra.CrossCutting.IoC
             services.AddScoped(typeof(IRequestExceptionHandler<AddUserCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
             services.AddScoped(typeof(IRequestExceptionHandler<AddSponsorCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
             services.AddScoped(typeof(IRequestExceptionHandler<RemoveSponsorCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
+            services.AddScoped(typeof(IRequestExceptionHandler<AddFileCommand, IResult, Exception>), typeof(HandlerExceptionBehavior));
 
             //ExternalService
-            services.AddScoped<ICepService, CepService>(); 
+            services.AddScoped<ICepService, CepService>();
 
             ServiceProvider = services.BuildServiceProvider();
         }
