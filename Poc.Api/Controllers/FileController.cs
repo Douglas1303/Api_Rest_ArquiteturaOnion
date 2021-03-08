@@ -15,7 +15,7 @@ namespace Poc.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add([FromBody] AddFileViewModel viewModel)
+        public async Task<IActionResult> Add([FromForm] AddFileViewModel viewModel)
         {
             return Ok(await _fileApplication.AddAsync(viewModel));
         }

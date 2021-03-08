@@ -34,7 +34,7 @@ namespace Poc.Application.Service
             {
                 var command = new AddFileCommand(
                     viewModel.TipoArquivoId,
-                    viewModel.Arquivo.Name,
+                    viewModel.Arquivo.ContentType,
                     viewModel.Arquivo.FileName
                     );
 
