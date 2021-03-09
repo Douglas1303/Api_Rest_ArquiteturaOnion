@@ -23,7 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\" />
+    <Folder Include="Domain\Category\" />
+    <Folder Include="Domain\Event\" />
+    <Folder Include="Domain\File\" />
+    <Folder Include="Domain\User\" />
+    <Folder Include="Domain\Sponsor\" />
   </ItemGroup>
 
   <ItemGroup>
