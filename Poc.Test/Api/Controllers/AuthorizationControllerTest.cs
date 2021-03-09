@@ -4,7 +4,6 @@ using Moq;
 using Poc.Api.Controllers;
 using Poc.Application.Interface.Identity;
 using Poc.Application.ViewModel.Identity;
-using System;
 using Xunit;
 
 namespace Poc.Test.Api.Controllers
@@ -18,7 +17,7 @@ namespace Poc.Test.Api.Controllers
         {
             _mockedAuthorizationApplication = new Mock<IAuthorizationApplication>();
 
-            _authorizationController = new AuthorizationController(_mockedAuthorizationApplication.Object); 
+            _authorizationController = new AuthorizationController(_mockedAuthorizationApplication.Object);
         }
 
         [Fact]
@@ -107,10 +106,10 @@ namespace Poc.Test.Api.Controllers
         {
             return new UserIdentityViewModel
             {
-                Email = "test@gmail.com", 
-                Password = "Test@123", 
+                Email = "test@gmail.com",
+                Password = "Test@123",
                 ConfirmPassword = "Test@123"
-            }; 
+            };
         }
 
         private LoginIdentityViewModel GetValidLoginIdentityViewModel()
@@ -119,7 +118,7 @@ namespace Poc.Test.Api.Controllers
             {
                 Email = "test@gmail.com",
                 Password = "Test@123"
-            }; 
+            };
         }
     }
 }
