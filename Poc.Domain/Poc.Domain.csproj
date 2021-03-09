@@ -54,6 +54,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>FileAppRsc.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Application\SponsorAppRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SponsorAppRsc.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Application\UserAppRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UserAppRsc.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\DisableEventRsc.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -108,6 +118,14 @@
     <EmbeddedResource Update="Resources\Application\FileAppRsc.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>FileAppRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Application\SponsorAppRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SponsorAppRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Application\UserAppRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UserAppRsc.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\DisableEventRsc.resx">
       <Generator>ResXFileCodeGenerator</Generator>
