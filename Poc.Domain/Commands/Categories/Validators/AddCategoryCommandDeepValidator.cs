@@ -4,7 +4,9 @@ using Microsoft.Extensions.Localization;
 using Poc.Domain.Commands.BaseValidators;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Resources;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("Poc.Test")]
 namespace Poc.Domain.Commands.Categories.Validators
 {
     internal class AddCategoryCommandDeepValidator : BaseValidator<AddCategoryCommand, AddCategoryRsc>, IDeepValidator<AddCategoryCommand>
