@@ -8,6 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("Poc.Domain")]
 namespace Poc.Domain.Resources {
     using System;
     

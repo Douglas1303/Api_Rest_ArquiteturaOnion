@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Poc.Application.Interface;
 using Poc.Application.ViewModel;
-using Poc.Domain.Entities.Identity;
 using System.Threading.Tasks;
 
 namespace Poc.Api.Controllers
@@ -54,7 +53,6 @@ namespace Poc.Api.Controllers
         {
             return Ok(await _eventApplication.CancelAsync(id));
         }
-
 
         [HttpDelete("Excluir/{id=int}")]
         public async Task<IActionResult> Remove(int id)

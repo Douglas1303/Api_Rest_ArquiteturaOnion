@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "EdF6aFAhKXsg/zGZRFo9kGaBr0b4iKc4AzKn1vv/VjRmB/HWSuQRR/4616hY8My23W03BlP85sLa27ULYD6AFw==",
+  "dgSpecHash": "W9veoU3E0VdS2gXqS9Hbxc/DFPRSqZ7hcQCzHswFaV19MIuT9QzhdumnOO0lmNjxc+c+bbBwVtCQQ/ZLNU9g3g==",
   "success": true,
   "projectFilePath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\Infra.CrossCutting\\Infra.CrossCutting.csproj",
   "expectedPackageFiles": [
