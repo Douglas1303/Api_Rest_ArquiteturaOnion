@@ -26,8 +26,9 @@ namespace Infra.Data.Repository
 
                 return users;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _log.RecLog(ex);
                 throw;
             }
         }
@@ -40,7 +41,8 @@ namespace Infra.Data.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
+                _log.RecLog(ex);
+                throw;
             }
         }
 
@@ -54,8 +56,8 @@ namespace Infra.Data.Repository
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _log.RecLog(ex);
+                throw;
             }
         }
     }

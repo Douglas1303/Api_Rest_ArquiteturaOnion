@@ -42,8 +42,8 @@ namespace Infra.Data.Repository
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _log.RecLog(ex);
+                throw;
             }
         }
     }

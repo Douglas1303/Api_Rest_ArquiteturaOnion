@@ -28,7 +28,8 @@ namespace Infra.Data.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
+                _log.RecLog(ex);
+                throw;
             }
         }
 
@@ -43,8 +44,9 @@ namespace Infra.Data.Repository
 
                 return user;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _log.RecLog(ex);
                 throw;
             }
         }
@@ -57,7 +59,8 @@ namespace Infra.Data.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
+                _log.RecLog(ex);
+                throw;
             }
         }
 
@@ -72,6 +75,7 @@ namespace Infra.Data.Repository
             }
             catch (Exception ex)
             {
+                _log.RecLog(ex);
                 throw;
             }
         }
@@ -84,7 +88,8 @@ namespace Infra.Data.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
+                _log.RecLog(ex);
+                throw;
             }
         }
 
@@ -96,7 +101,8 @@ namespace Infra.Data.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
+                _log.RecLog(ex);
+                throw;
             }
         }
 
@@ -110,7 +116,8 @@ namespace Infra.Data.Repository
             }
             catch (Exception ex)
             {
-                throw ex;
+                _log.RecLog(ex);
+                throw;
             }
         }
 
@@ -122,8 +129,8 @@ namespace Infra.Data.Repository
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _log.RecLog(ex);
+                throw;
             }
         }
 
@@ -135,8 +142,8 @@ namespace Infra.Data.Repository
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _log.RecLog(ex);
+                throw;
             }
         }
 
@@ -150,8 +157,8 @@ namespace Infra.Data.Repository
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _log.RecLog(ex);
+                throw;
             }
         }
 
@@ -165,8 +172,8 @@ namespace Infra.Data.Repository
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _log.RecLog(ex);
+                throw;
             }
         }
 
@@ -180,8 +187,8 @@ namespace Infra.Data.Repository
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _log.RecLog(ex);
+                throw;
             }
         }
 
@@ -198,9 +205,9 @@ namespace Infra.Data.Repository
 
                 return count > 0; //Se for maior que zero retorna True
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                _log.RecLog(ex);
                 throw;
             }
         }
@@ -215,8 +222,8 @@ namespace Infra.Data.Repository
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                _log.RecLog(ex);
+                throw;
             }
         }
     }

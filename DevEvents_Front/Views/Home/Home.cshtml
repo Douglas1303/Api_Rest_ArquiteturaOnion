@@ -1,0 +1,261 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Pagina Inicial</title>
+</head>
+
+<body class="intro">
+
+    <header>
+        <section class="py-8 text-muted">
+            <div class="collapse bg-dark" id="navbarHeader">
+                <div class="container">
+                    <div class="row">
+                        <!-- <div class="col-sm-8 col-md-7 py-4">
+                            <h4 class="text-white">About</h4>
+                            <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+                        </div> -->
+                        <!-- <div class="col-sm-4 offset-md-1 py-4">
+                            <h4 class="text-white">Contato</h4>
+                            <ul class="list-unstyled">
+                            <li><a href="#" class="text-white">Twitter</a></li>
+                            <li><a href="#" class="text-white">Facebook</a></li>
+                            <li><a href="#" class="text-white">Email</a></li>
+                            <li><a href="#" class="text-white">Telefone</a></li>
+                            </ul>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+                <!-- <nav class="navbar navbar-dark bg-dark"> -->
+                <div class="container">
+                    <a href="#" class="navbar-brand d-flex align-items-center">
+                        <img src="img/oie_transparent.png" height="50">
+                        <b> Dev Events</b>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                        <input type="checkbox" id="checkbox-menu">
+                        <label for="checkbox-menu">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </label>
+                    </button>
+                </div>
+            </nav>
+        </section>
+        <div>
+            <div class="row">
+                <div class="colorLetter col-6 mt-5 ml-4">
+                    <h3 class="display-4 fw-normal">Bem vindo ao <b>Dev Events</b></h3>
+                    <p class="lead fw-normal ml-2 custom-p">Plataforma desenvolvida para desenvolvedores encontrarem os melhores eventos, cursos, livros e bootcamps da área de tecnologia.</p>
+                    <a class="btn btn-light" href="#cursos">Cursos</a>
+                    <a class="btn btn-light" href="#eventos">Eventos</a>
+                    <a class="btn btn-light" href="#livros">Livros</a>
+                    <div class="product-device shadow-sm d-none d-md-block"></div>
+                    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    </div>
+
+    <div class="album py-5 bg-light">
+        <div class="container colorBlack">
+            <h4 class="text-align" id="cursos">Cursos</h4>
+            <hr>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow">
+                        <img src="img/Java.jpg" width="100%" height="225">
+
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Visualizar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Me Inscrever</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow">
+                        <img src="img/CSharp.png" width="100%" height="225">
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Visualizar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Me Inscrever</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow">
+                        <img src="img/Node.png" width="100%" height="225">
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Visualizar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Me Inscrever</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="album py-5 bg-light">
+        <div class="container colorBlack">
+            <h4 class="text-align" id="eventos">Eventos</h4>
+            <hr>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow">
+                        <img src="img/bootcampPro.jpg" width="100%" height="225">
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Visualizar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Me Inscrever</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow">
+                        <img src="img/Dotnet.png" width="100%" height="225">
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Visualizar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Me Inscrever</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow">
+                        <img src="img/bancoDeDados.jpg" width="100%" height="225">
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Visualizar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Me Inscrever</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="album py-5 bg-light">
+        <div class="container colorBlack">
+            <h4 class="text-align" id="livros">Livros</h4>
+            <hr>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow">
+                        <img src="img/logica.jpg" width="100%" height="225">
+
+                        <div class="card-body">
+                            <b>
+                                <p class="card-text">
+                                    ...Aprender programação ajuda muito a forma como as pessoas pensam,
+                                    principalmente por desenvolver a disciplina da lógica...
+                                </p>
+                            </b>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="pdf/ebook-logica-de-programacao-para-iniciantes.pdf" target="_blank">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Visualizar</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow">
+                        <img src="img/codigoLimpo.jpg" width="100%" height="225">
+                        <div class="card-body">
+                            <b>
+                                <p class="card-text">
+                                    ...Há duas razões pelas quais você está lendo esse livro: você é programador e deseja
+                                    se tornar ainda melhor. Ótimp. Precisamos de programadores melhores.
+                                </p>
+                            </b>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="pdf/Codigo Limpo - Completo PT.pdf" target="_blank">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Visualizar</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow">
+                        <img src="img/JavaOrientadoAObjetos.jpg" width="100%" height="225">
+                        <div class="card-body">
+                            <b>
+                                <p class="card-text">
+                                    Esta apostila da Caelum	visa ensinar de uma	maneira	elegante, mostrando	apenas o que é necessário e
+                                    quando é necessário, no	momento	certo.
+                                </p>
+                            </b>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="pdf/apostila-java-orientacao-objetos.pdf" target="_blank">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Visualizar</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <hr>
+    <footer>
+    </footer>
+    <hr>
+
+</body>

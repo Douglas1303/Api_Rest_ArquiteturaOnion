@@ -21,8 +21,8 @@ namespace Poc.Application.Service
     {
         private readonly ISponsorRepository _sponsorRepository;
         private readonly IMediator _mediator;
-        private readonly ILogModel _logModel;
-        protected readonly IMapper _mapper;
+        private readonly ILogModel _log;
+        private readonly IMapper _mapper;
         private readonly ICepService _cepService;
         private readonly IStringLocalizer<SponsorAppRsc> Localizer;
 
@@ -37,7 +37,7 @@ namespace Poc.Application.Service
         {
             _sponsorRepository = sponsorRepository;
             _mediator = mediator;
-            _logModel = logModel;
+            _log = logModel;
             _mapper = mapper;
             _cepService = cepService;
             Localizer = localizer;
@@ -51,8 +51,8 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                _log.RecLog(ex);
                 return new QueryResult(Localizer.GetMsg(GetAllSponsorError)); 
-                throw ex;
             }
         }
 
@@ -80,8 +80,8 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                _log.RecLog(ex);
                 return new QueryResult(Localizer.GetMsg(AddSponsorError)); 
-                throw ex;
             }
         }
 
@@ -95,8 +95,8 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                _log.RecLog(ex);
                 return new QueryResult(Localizer.GetMsg(RemoveSponsorError)); 
-                throw ex;
             }
         }
     }

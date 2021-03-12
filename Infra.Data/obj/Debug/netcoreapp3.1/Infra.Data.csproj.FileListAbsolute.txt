@@ -15,10 +15,6 @@ C:\Users\douglas.sousa\Desktop\POC\PocProject\Infra.Data\obj\Debug\netcoreapp3.1
 C:\Users\douglas.sousa\Desktop\POC\PocProject\Infra.Data\bin\Debug\netcoreapp3.1\Infra.Data.runtimeconfig.json
 C:\Users\douglas.sousa\Desktop\POC\PocProject\Infra.Data\bin\Debug\netcoreapp3.1\Infra.Data.runtimeconfig.dev.json
 C:\Users\douglas.sousa\Desktop\POC\PocProject\Infra.Data\obj\Debug\netcoreapp3.1\Infra.Data.genruntimeconfig.cache
-C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\obj\Debug\netcoreapp3.1\Infra.Data.csprojAssemblyReference.cache
-C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\obj\Debug\netcoreapp3.1\Infra.Data.AssemblyInfoInputs.cache
-C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\obj\Debug\netcoreapp3.1\Infra.Data.AssemblyInfo.cs
-C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\obj\Debug\netcoreapp3.1\Infra.Data.csproj.CoreCompileInputs.cache
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\bin\Debug\netcoreapp3.1\Infra.Data.deps.json
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\bin\Debug\netcoreapp3.1\Infra.Data.runtimeconfig.json
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\bin\Debug\netcoreapp3.1\Infra.Data.runtimeconfig.dev.json
@@ -28,6 +24,10 @@ C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\bin\Debu
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\bin\Debug\netcoreapp3.1\Poc.Domain.dll
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\bin\Debug\netcoreapp3.1\Infra.CrossCutting.pdb
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\bin\Debug\netcoreapp3.1\Poc.Domain.pdb
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\obj\Debug\netcoreapp3.1\Infra.Data.csprojAssemblyReference.cache
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\obj\Debug\netcoreapp3.1\Infra.Data.AssemblyInfoInputs.cache
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\obj\Debug\netcoreapp3.1\Infra.Data.AssemblyInfo.cs
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\obj\Debug\netcoreapp3.1\Infra.Data.csproj.CoreCompileInputs.cache
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\obj\Debug\netcoreapp3.1\Infra.Data.csproj.CopyComplete
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\obj\Debug\netcoreapp3.1\Infra.Data.dll
 C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\Infra.Data\obj\Debug\netcoreapp3.1\Infra.Data.pdb

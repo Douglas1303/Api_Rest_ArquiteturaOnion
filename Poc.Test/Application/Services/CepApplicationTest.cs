@@ -2,6 +2,7 @@
 using ExternalServices.Cep.Interface;
 using ExternalServices.Cep.Model;
 using Infra.CrossCutting.Core.CQRS;
+using Infra.CrossCutting.Models;
 using Microsoft.Extensions.Localization;
 using Moq;
 using Poc.Application.AutoMapper;
@@ -17,12 +18,14 @@ namespace Poc.Test.Application.Services
         private readonly Mock<ICepService> _mockedCepService;
         private readonly Mock<IStringLocalizer<CepAppRsc>> _mockedLocalizer;
         private readonly IMapper _mapperFake;
+        private readonly Mock<ILogModel> _mockedLog;
         private readonly CepApplication _cepApplication;
 
         public CepApplicationTest()
         {
             _mockedCepService = new Mock<ICepService>();
-            _mockedLocalizer = new Mock<IStringLocalizer<CepAppRsc>>(); 
+            _mockedLocalizer = new Mock<IStringLocalizer<CepAppRsc>>();
+            _mockedLog = new Mock<ILogModel>(); 
 
             var config = new MapperConfiguration(cfg =>
             {
@@ -31,7 +34,7 @@ namespace Poc.Test.Application.Services
 
             _mapperFake = new Mapper(config);  
 
-            _cepApplication = new CepApplication(_mockedCepService.Object, _mapperFake, _mockedLocalizer.Object);
+            _cepApplication = new CepApplication(_mockedCepService.Object, _mapperFake, _mockedLocalizer.Object, _mockedLog.Object);
         }
 
         [Fact]

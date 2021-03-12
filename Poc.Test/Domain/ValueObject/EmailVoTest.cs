@@ -1,7 +1,4 @@
 ﻿using Poc.Domain.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace Poc.Test.Domain.ValueObject

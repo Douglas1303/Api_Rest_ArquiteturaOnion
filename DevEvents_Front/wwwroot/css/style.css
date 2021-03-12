@@ -1,0 +1,98 @@
+﻿.containerMenu {
+    height: 100%;
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+#checkbox-menu {
+    position: absolute;
+    opacity: 0;
+}
+
+label {
+    cursor: pointer;
+    position: relative;
+    display: block;
+    height: 22px;
+    width: 30px;
+}
+
+    label span {
+        position: absolute;
+        display: block;
+        height: 5px;
+        width: 100%;
+        border-radius: 30px;
+        background: black;
+        transition: 0.25s ease-in-out;
+    }
+
+        label span:nth-child(1) {
+            top: 0;
+        }
+
+        label span:nth-child(2) {
+            top: 8px;
+        }
+
+        label span:nth-child(3) {
+            top: 16px;
+        }
+
+#checkbox-menu:checked + label span:nth-child(1) {
+    transform: rotate(-45deg);
+    top: 8px;
+}
+
+#checkbox-menu:checked + label span:nth-child(2) {
+    opacity: 0;
+}
+
+#checkbox-menu:checked + label span:nth-child(3) {
+    transform: rotate(45deg);
+    top: 8px;
+}
+
+.intro {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    color: white;
+    /* background: url('../img/paginaInicial.png') no-repeat bottom center scroll; */
+    /* background-position: 30% 45%;
+        background-size: cover; */
+}
+
+.colorLetter {
+    color: white;
+}
+
+.colorBlack {
+    color: black;
+}
+
+input[type="email"] {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+input[type="password"] {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-top: 0px;
+}
+
+header {
+    width: 100%;
+    background: url('../img/paginaInicial.png') no-repeat bottom center scroll;
+    background-position: 51% 10%;
+    background-size: cover;
+    height: 85%;
+}
+
+.custom-p {
+    text-align: center;
+    margin: 20px;
+}

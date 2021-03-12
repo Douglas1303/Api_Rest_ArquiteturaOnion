@@ -46,8 +46,8 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                _log.RecLog(ex);
                 return new QueryResult(Localizer.GetMsg(GetAllEventError)); 
-                throw ex;
             }
         }
 
@@ -63,8 +63,8 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                _log.RecLog(ex);
                 return new QueryResult(Localizer.GetMsg(GetByIdEventError)); 
-                throw ex;
             }
         }
 
@@ -83,8 +83,9 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                _log.RecLog(ex);
                 return new QueryResult(Localizer.GetMsg(AddEventError)); 
-                throw ex;
+
             }
         }
 
@@ -105,8 +106,8 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                _log.RecLog(ex);
                 return new QueryResult(Localizer.GetMsg(UpdateEventError)); 
-                throw ex;
             }
         }
 
@@ -122,8 +123,8 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                _log.RecLog(ex);
                 return new QueryResult(Localizer.GetMsg(RegisterUserEventError)); 
-                throw ex;
             }
         }
 
@@ -137,8 +138,8 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                _log.RecLog(ex);
                 return new QueryResult(Localizer.GetMsg(CancelEventError));
-                throw ex;
             }
         }
 
@@ -152,8 +153,8 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                _log.RecLog(ex);
                 return new QueryResult(Localizer.GetMsg(RemoveEventError)); 
-                throw ex;
             }
         }
     }

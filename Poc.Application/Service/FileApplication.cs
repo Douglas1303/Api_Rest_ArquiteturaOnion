@@ -1,4 +1,5 @@
 ﻿using Infra.CrossCutting.Core.CQRS;
+using Infra.CrossCutting.Models;
 using MediatR;
 using Microsoft.Extensions.Localization;
 using Poc.Application.Interface;
@@ -15,6 +16,7 @@ namespace Poc.Application.Service
     {
         private readonly IMediator _mediator;
         private readonly IStringLocalizer<FileAppRsc> Localizer;
+        private readonly ILogModel _log;
 
         #region Constantes
 
@@ -22,10 +24,11 @@ namespace Poc.Application.Service
 
         #endregion Constantes
 
-        public FileApplication(IMediator mediator, IStringLocalizer<FileAppRsc> localizer)
+        public FileApplication(IMediator mediator, IStringLocalizer<FileAppRsc> localizer, ILogModel log)
         {
             _mediator = mediator;
             Localizer = localizer;
+            _log = log;
         }
 
         public async Task<IResult> AddAsync(AddFileViewModel viewModel)
@@ -42,8 +45,8 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                _log.RecLog(ex);
                 return new QueryResult(Localizer.GetMsg(AddFileError));
-                throw ex;
             }
         }
     }

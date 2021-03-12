@@ -45,8 +45,8 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                _log.RecLog(ex);
                 return new QueryResult(Localizer.GetMsg(GetAllUserError));
-                throw ex;
             }
         }
 
@@ -65,8 +65,8 @@ namespace Poc.Application.Service
             }
             catch (Exception ex)
             {
+                _log.RecLog(ex);
                 return new QueryResult(Localizer.GetMsg(AddUserError)); 
-                throw ex;
             }
         }
     }
