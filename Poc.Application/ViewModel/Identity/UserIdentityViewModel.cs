@@ -14,7 +14,7 @@ namespace Poc.Application.ViewModel.Identity
 
         [Required]
         [DataType(DataType.Password)]
-        [Compare("Senha", ErrorMessage = "Senhas informadas não conferem.")]
+        [Compare("Password", ErrorMessage = "Senhas informadas não conferem.")]
         public string ConfirmPassword { get; set; }
     }
 }

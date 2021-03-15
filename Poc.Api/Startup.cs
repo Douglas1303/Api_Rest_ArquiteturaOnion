@@ -1,20 +1,12 @@
 using Infra.CrossCutting.IoC;
-using Infra.Data.Context;
 using MediatR;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Poc.Api.Configuration;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Poc.Api
 {
@@ -36,66 +28,13 @@ namespace Poc.Api
                 options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             }).AddDataAnnotationsLocalization(); ;
 
-            services.AddDbContext<ServiceIdentityDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContextConfiguration(Configuration);
 
-            services.AddDbContext<DevEventsDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnectionDomain_DevEvents")));
+            services.AddIdentitytConfiguration();
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<ServiceIdentityDbContext>()
-                .AddDefaultTokenProviders();
+            services.AddSwaggerConfiguration();
 
-            services.AddAuthentication(x =>
-                {
-                    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-                })
-               .AddJwtBearer(options =>
-               {
-                   options.RequireHttpsMetadata = true;
-                   options.SaveToken = true;
-                   options.TokenValidationParameters = new TokenValidationParameters
-                   {
-                       ValidateIssuer = true,
-                       ValidateAudience = true,
-                       ValidateLifetime = true,
-                       ValidAudience = Configuration["TokenConfiguration:Audience"],
-                       ValidIssuer = Configuration["TokenConfiguration:Issuer"],
-                       ValidateIssuerSigningKey = true,
-                       IssuerSigningKey = new SymmetricSecurityKey(
-                       Encoding.UTF8.GetBytes(Configuration["Jwt:key"]))
-                   };
-               });
-
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Dev Events", Version = "v1" });
-
-                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-                {
-                    In = ParameterLocation.Header,
-                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Bearer {token}\"",
-                    Name = "Authorization",
-                    Type = SecuritySchemeType.ApiKey,
-                    Scheme = "Bearer"
-                });
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement
-                {
-                    {
-                        new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                            {
-                                Type = ReferenceType.SecurityScheme,
-                                Id = "Bearer"
-                            },
-                            Scheme = "oauth2",
-                            Name = "Bearer",
-                            In = ParameterLocation.Header
-                        },
-                        new List<string>()
-                    }
-                });
-            });
+            services.AddAuthenticationConfiguration(Configuration);
 
             Bootstrap.RegisterService(services);
 
