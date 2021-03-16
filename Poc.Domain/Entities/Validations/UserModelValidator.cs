@@ -10,6 +10,7 @@ namespace Poc.Domain.Entities.Validations
         {
             RuleFor(x => x.NomeCompleto).NotNull().NotEmpty().MinimumLength(2).MaximumLength(300);
             RuleFor(x => x.Cpf.Length).Equal(CpfVo.LengthCpf).NotNull().NotEmpty();
+            RuleFor(x => CpfVo.IsValid(x.Cpf)).Equal(true);
             RuleFor(x => x.DataCadastro).NotNull().NotEmpty().LessThan(DateTime.Now).GreaterThan(DateTime.Now.AddYears(-130));
             RuleFor(x => x.Email).NotNull().NotEmpty().EmailAddress(); 
         }

@@ -68,6 +68,8 @@ namespace Poc.Api
 
             app.UseAuthorization();
 
+            app.UseGlobalizationConfig();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
