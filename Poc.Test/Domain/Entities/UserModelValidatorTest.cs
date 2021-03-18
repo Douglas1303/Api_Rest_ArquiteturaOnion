@@ -1,4 +1,6 @@
-﻿using Poc.Domain.Entities;
+﻿using Bogus;
+using Bogus.Extensions.Brazil;
+using Poc.Domain.Entities;
 using Poc.Domain.Entities.Validations;
 using System;
 using Xunit;
@@ -7,6 +9,11 @@ namespace Poc.Test.Domain.Entities
 {
     public class UserModelValidatorTest
     {
+        private readonly Faker _faker;
+        public UserModelValidatorTest()
+        {
+            _faker = new Faker(); 
+        }
         [Fact]
         public void UserModel_WhenModelIsValid_ReturnShouldBeOk()
         {
@@ -37,7 +44,7 @@ namespace Poc.Test.Domain.Entities
 
         private UserModel GetValidUserModel()
         {
-            return new UserModel("UserTest", "29245351076", DateTime.Parse("10/01/1996"), "teste@gmail.com");
+            return new UserModel(_faker.Person.FirstName, _faker.Person.Cpf().Replace("-", "").Replace(".", ""), DateTime.Parse("10/01/1996"), "teste@gmail.com");
         }
 
         private UserModel GetInvalidUserModel()

@@ -11,6 +11,8 @@ using Poc.Application.ViewModel;
 using Poc.Domain.Entities;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Resources.Application;
+using Poc.Test.ObjectsFakers.Entities;
+using Poc.Test.ObjectsFakers.ViewModel;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -26,12 +28,18 @@ namespace Poc.Test.Application.Services
         private readonly Mock<IStringLocalizer<CategoryAppRsc>> _mockedLocalizer;
         private readonly CategoryApplication _categoryApplication;
 
+        private readonly AddCategoryViewModel _addCategoryViewModel;
+        private readonly List<CategoryModel> _categoryModel; 
+
         public CategoryApplicationTest()
         {
             _mockedCategoryRepository = new Mock<ICategoryRepository>();
             _mockedMediatorHandler = new Mock<IMediatorHandler>();
             _mockedLog = new Mock<ILogModel>();
             _mockedLocalizer = new Mock<IStringLocalizer<CategoryAppRsc>>();
+
+            _addCategoryViewModel = new AddCategoryViewModelFaker().Generate();
+            //_categoryModel = new CategoryModelFaker().Generate(4); 
 
             var config = new MapperConfiguration(cfg =>
             {
@@ -89,7 +97,7 @@ namespace Poc.Test.Application.Services
             _mockedCategoryRepository.Setup(x => x.Add(It.IsAny<CategoryModel>())).Verifiable();
 
             //Act
-            var requestResult = _categoryApplication.AddCategory(GetvalidAddCategoryViewModel());
+            var requestResult = _categoryApplication.AddCategory(_addCategoryViewModel);
 
             // Assert
             Assert.NotNull(requestResult);
@@ -106,21 +114,13 @@ namespace Poc.Test.Application.Services
             _mockedMediatorHandler.Setup(x => x.SendCommand(It.IsAny<Command>())).Throws(new Exception());
 
             //Act
-            var requestResult = _categoryApplication.AddCategory(GetvalidAddCategoryViewModel());
+            var requestResult = _categoryApplication.AddCategory(_addCategoryViewModel);
 
             //Assert
             Assert.NotNull(requestResult);
             Assert.NotEmpty(requestResult.Result.Messages);
             Assert.Null(requestResult.Result.Data);
             Assert.Equal(StatusResult.Error, requestResult.Result.Status);
-        }
-
-        private AddCategoryViewModel GetvalidAddCategoryViewModel()
-        {
-            return new AddCategoryViewModel
-            {
-                Descricao = "Bootcamp"
-            };
         }
 
         private List<CategoryModel> GetCategoryModel()

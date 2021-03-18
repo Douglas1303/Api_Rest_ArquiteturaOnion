@@ -6,6 +6,7 @@ using Moq;
 using Poc.Api.Controllers;
 using Poc.Application.Interface;
 using Poc.Application.ViewModel;
+using Poc.Test.ObjectsFakers.ViewModel;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -15,22 +16,24 @@ namespace Poc.Test.Api.Controllers
     public class UserControllerTest
     {
         private readonly Mock<IUserApplication> _mockedUserApplication;
-        private readonly Mock<ICepService> _mockedCepService; 
+        private readonly Mock<ICepService> _mockedCepService;
         private readonly UserController _userController;
+        private readonly List<UserViewModel> _listUserViewModel;
 
         public UserControllerTest()
         {
+            _listUserViewModel = new UserViewModelFaker().Generate(10);
+
             _mockedUserApplication = new Mock<IUserApplication>();
-            _mockedCepService = new Mock<ICepService>(); 
+            _mockedCepService = new Mock<ICepService>();
             _userController = new UserController(_mockedUserApplication.Object, _mockedCepService.Object);
         }
-
 
         [Fact]
         public void GetAll_WhenServiceReturnsItems_ReturnShouldBeOk()
         {
             //Arrange
-            IResult result = new QueryResult(GetuserViewModelValid());
+            IResult result = new QueryResult(_listUserViewModel);
 
             _mockedUserApplication.Setup(x => x.GetAllAsync()).ReturnsAsync(result);
 
@@ -53,7 +56,7 @@ namespace Poc.Test.Api.Controllers
         //    IResult commandResult = new CommandResult();
 
         //    //Arrange
-        //    _mockedCepService.Setup(x => x.GetAddressAsync("57300180")).ReturnsAsync(new CepModel()); 
+        //    _mockedCepService.Setup(x => x.GetAddressAsync("57300180")).ReturnsAsync(new CepModel());
         //    _mockedUserApplication.Setup(x => x.AddAsync(It.IsAny<AddUserViewModel>(), "teste@gmail.com")).ReturnsAsync(commandResult);
 
         //    //Act
@@ -76,34 +79,7 @@ namespace Poc.Test.Api.Controllers
                 Cpf = "12883245029",
                 DataNascimento = "01/08/1990",
                 Cep = "57300180"
-            }; 
-        }
-
-        private List<UserViewModel> GetuserViewModelValid()
-        {
-            return new List<UserViewModel>
-            {
-                new UserViewModel
-                {
-                    Id = 1,
-                    DataCadastro = DateTime.Parse("10/01/2021"),
-                    NomeCompleto = "Name User",
-                    Cpf = "12883245029",
-                    DataNascimento = DateTime.Parse("01/08/1990"),
-                    Email = "teste@gmail.com",
-                    Ativo = true
-                },
-                new UserViewModel
-                {
-                    Id = 2,
-                    DataCadastro = DateTime.Parse("05/10/2020"),
-                    NomeCompleto = "Example User",
-                    Cpf = "10360575005",
-                    DataNascimento = DateTime.Parse("01/08/2000"),
-                    Email = "teste2@gmail.com",
-                    Ativo = true
-                }
-            }; 
+            };
         }
     }
 }

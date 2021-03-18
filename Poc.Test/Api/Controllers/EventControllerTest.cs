@@ -5,6 +5,7 @@ using Poc.Api.Controllers;
 using Poc.Application.Interface;
 using Poc.Application.ViewModel;
 using Poc.Domain.Entities;
+using Poc.Test.ObjectsFakers.ViewModel;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -15,9 +16,20 @@ namespace Poc.Test.Api.Controllers
     {
         private readonly Mock<IEventApplication> _mockedEventApplication;
         private readonly EventController _eventController;
+        private readonly EventViewModel _eventViewModel;
+        private readonly List<EventViewModel> _listEventViewModel;
+        private readonly AddEventViewModel _addEventViewModel;
+        private readonly UpdateEventViewModel _updateEventViewModel;
+        private readonly AddUserEventViewModel _addUserEventViewModel; 
 
         public EventControllerTest()
         {
+            _eventViewModel = new EventViewModelFaker().Generate(); 
+            _listEventViewModel = new EventViewModelFaker().Generate(5);
+            _addEventViewModel = new AddEventViewModelFaker().Generate();
+            _updateEventViewModel = new UpdateEventViewModelFaker().Generate();
+            _addUserEventViewModel = new AddUserEventViewModelFaker().Generate(); 
+
             _mockedEventApplication = new Mock<IEventApplication>();
 
             _eventController = new EventController(_mockedEventApplication.Object);
@@ -27,7 +39,7 @@ namespace Poc.Test.Api.Controllers
         public void GetAll_WhenServiceReturnsItems_ReturnShouldBeOk()
         {
             //Arrange
-            IResult result = new QueryResult(GetEventModelValid());
+            IResult result = new QueryResult(_listEventViewModel);
 
             _mockedEventApplication.Setup(x => x.GetAllAsync()).ReturnsAsync(result);
 
@@ -70,7 +82,7 @@ namespace Poc.Test.Api.Controllers
         public void GetByIdAsync_WhenServiceReturnsItems_ReturnShouldBeOk()
         {
             //Arrange
-            IResult result = new QueryResult(GetByIdEventModelValid());
+            IResult result = new QueryResult(_eventViewModel);
 
             _mockedEventApplication.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(result);
 
@@ -96,7 +108,7 @@ namespace Poc.Test.Api.Controllers
             _mockedEventApplication.Setup(x => x.AddAsync(It.IsAny<AddEventViewModel>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _eventController.Add(AddAddEventViewModelValid());
+            var response = _eventController.Add(_addEventViewModel);
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 
@@ -116,7 +128,7 @@ namespace Poc.Test.Api.Controllers
             _mockedEventApplication.Setup(x => x.UpdateAsync(It.IsAny<UpdateEventViewModel>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _eventController.Update(UpdateEventViewModelValid());
+            var response = _eventController.Update(_updateEventViewModel);
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 
@@ -136,7 +148,7 @@ namespace Poc.Test.Api.Controllers
             _mockedEventApplication.Setup(x => x.RegisterAsync(It.IsAny<AddUserEventViewModel>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _eventController.RegisterUserEvent(AddUserEventViewModelValid());
+            var response = _eventController.RegisterUserEvent(_addUserEventViewModel);
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 
@@ -185,54 +197,6 @@ namespace Poc.Test.Api.Controllers
             Assert.IsType<OkObjectResult>(objectResult);
             Assert.NotEmpty(content.Messages);
             Assert.Equal(StatusResult.Ok, content.Status);
-        }
-
-        private List<EventModel> GetEventModelValid()
-        {
-            return new List<EventModel>
-            { 
-                new EventModel("BootCamp", "BootCamp para devs DotNet", DateTime.Parse("10/05/2030"), DateTime.Parse("10/06/2030"), 1),
-                new EventModel("Aulão", "Aulão sobre banco de dados", DateTime.Parse("10/05/2030"), DateTime.Parse("10/06/2030"), 1)
-            }; 
-        }
-
-        private EventModel GetByIdEventModelValid()
-        {
-            return new EventModel(1,"BootCamp", "BootCamp para devs DotNet", DateTime.Parse("10/05/2030"), DateTime.Parse("10/06/2030"), 1);
-        }
-
-        private AddEventViewModel AddAddEventViewModelValid()
-        {
-            return new AddEventViewModel
-            {
-                Titulo = "BootCamp", 
-                Descricao = "BootCamp para devs DotNet",
-                DataInicio = "10/05/2030",
-                DataFim = "10/06/2030",
-                CategoriaId = 1
-            }; 
-        }
-
-        private UpdateEventViewModel UpdateEventViewModelValid()
-        {
-            return new UpdateEventViewModel
-            {
-                Id = 1, 
-                Titulo = "BootCamp C#",
-                Descricao = "BootCamp para devs .net",
-                DataInicio = "10/05/2030",
-                DataFim = "10/06/2030",
-                CategoriaId = 1
-            }; 
-        }
-
-        private AddUserEventViewModel AddUserEventViewModelValid()
-        {
-            return new AddUserEventViewModel
-            {
-                EventoId = 1,
-                UsuarioId = 1
-            };
         }
     }
 }

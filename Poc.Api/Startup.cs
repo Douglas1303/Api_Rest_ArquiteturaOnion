@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json;
 using Poc.Api.Configuration;
 
 namespace Poc.Api
@@ -22,11 +21,7 @@ namespace Poc.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddNewtonsoftJson(options =>
-            {
-                options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
-            }).AddDataAnnotationsLocalization(); ;
+            services.AddFluentValidationConfiguration();
 
             services.AddDbContextConfiguration(Configuration);
 

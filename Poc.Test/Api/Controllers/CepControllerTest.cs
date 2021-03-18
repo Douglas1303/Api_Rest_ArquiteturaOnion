@@ -1,9 +1,11 @@
-﻿using ExternalServices.Cep.Model;
+﻿using ExternalServices.Cep;
+using ExternalServices.Cep.Model;
 using Infra.CrossCutting.Core.CQRS;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Poc.Api.Controllers;
 using Poc.Application.Interface;
+using Poc.Test.ObjectsFakers.ViewModel;
 using Xunit;
 
 namespace Poc.Test.Api.Controllers
@@ -12,9 +14,12 @@ namespace Poc.Test.Api.Controllers
     {
         private readonly Mock<ICepApplication> _mockedCepApplication;
         private readonly CepController _cepController;
+        private readonly CepViewModel _cepViewModel; 
 
         public CepControllerTest()
         {
+            _cepViewModel = new CepViewModelFaker().Generate(); 
+             
             _mockedCepApplication = new Mock<ICepApplication>();
             _cepController = new CepController(_mockedCepApplication.Object);
         }
@@ -23,12 +28,12 @@ namespace Poc.Test.Api.Controllers
         public void GetByCepAsync_WhenServiceReturnsItems_ReturnShouldBeOk()
         {
             //Arrange
-            IResult result = new QueryResult(GetCepModelValid());
+            IResult result = new QueryResult(_cepViewModel);
 
-            _mockedCepApplication.Setup(x => x.GetCepAsync("69086692")).ReturnsAsync(result);
+            _mockedCepApplication.Setup(x => x.GetCepAsync(_cepViewModel.Cep)).ReturnsAsync(result);
 
             //Act
-            var response = _cepController.GetByCepAsync("69086692");
+            var response = _cepController.GetByCepAsync(_cepViewModel.Cep);
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 
@@ -60,20 +65,6 @@ namespace Poc.Test.Api.Controllers
             Assert.NotEmpty(content.Messages);
             Assert.Null(content.Data);
             Assert.Equal(StatusResult.Error, content.Status);
-        }
-
-        private CepModel GetCepModelValid()
-        {
-            return new CepModel
-            {
-                Cep = "69086692",
-                Logradouro = "Rua Garça Azul",
-                Complemento = "Casa 2",
-                Localidade = "Manaus",
-                Bairro = "Jd. Paulo Mauro",
-                UF = "AM",
-                DDD = "12"
-            };
         }
     }
 }

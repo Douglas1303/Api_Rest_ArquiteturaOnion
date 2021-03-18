@@ -4,7 +4,6 @@ using Moq;
 using Poc.Api.Controllers;
 using Poc.Application.Interface;
 using Poc.Application.ViewModel;
-using System;
 using Xunit;
 
 namespace Poc.Test.Api.Controllers

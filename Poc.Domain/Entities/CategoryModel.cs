@@ -10,7 +10,7 @@ namespace Poc.Domain.Entities
         }
 
         //ctor protected para EF
-        protected CategoryModel() {}
+        protected CategoryModel() { }
 
         public string Descricao { get; private set; }
     }
