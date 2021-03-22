@@ -1,9 +1,12 @@
 ﻿using Infra.CrossCutting.Core.CQRS;
 using MediatR;
+using Microsoft.Extensions.Localization;
 using Poc.Domain.Commands.Events;
 using Poc.Domain.Entities;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Interface.Repository.UnitOfWork;
+using Poc.Domain.Resources.CommandHandler;
+using Poc.Domain.Resources.ExtensionMethods;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,11 +17,16 @@ namespace Poc.Domain.CommandHandlers.Events
     {
         private readonly IEventRepository _eventRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IStringLocalizer<RegisterEventUserCommandHandlerRsc> Localizer;
 
-        public RegisterEventUserCommandHandler(IEventRepository eventRepository, IUnitOfWork unitOfWork)
+        private const string RegisterEventError = "RegisterEventError"; 
+        private const string RegisteredUserInfo  = "RegisteredUserInfo"; 
+
+        public RegisterEventUserCommandHandler(IEventRepository eventRepository, IUnitOfWork unitOfWork, IStringLocalizer<RegisterEventUserCommandHandlerRsc> localizer)
         {
             _eventRepository = eventRepository;
             _unitOfWork = unitOfWork;
+            Localizer = localizer; 
         }
 
         public async Task<IResult> Handle(RegisterEventUserCommand request, CancellationToken cancellationToken)
@@ -29,16 +37,19 @@ namespace Poc.Domain.CommandHandlers.Events
             {
                 if (_eventRepository.HasEventToUser(request.EventoId, request.UsuarioId))
                 {
-                    return new CommandResult("Usuario já cadastrado para o evento.");
+                    return new CommandResult(Localizer.GetMsg(RegisteredUserInfo));
                 }
 
                 _eventRepository.Register(model);
 
                 await _unitOfWork.Commit();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                var cmdResult = new CommandResult();
+                cmdResult.AddErrorMessage(Localizer.GetMsg(RegisterEventError));
+
+                return cmdResult; 
             }
 
             return CommandResult.Empty();

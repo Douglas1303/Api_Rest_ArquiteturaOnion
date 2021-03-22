@@ -69,6 +69,31 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>AddCategoryCommandHandlerRsc.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\CommandHandler\AddEventCommandHandlerRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AddEventCommandHandlerRsc.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\CommandHandler\DisableEventCommandHandlerRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DisableEventCommandHandlerRsc.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\CommandHandler\RegisterEventUserCommandHandlerRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RegisterEventUserCommandHandlerRsc.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\CommandHandler\RemoveEventCommandHandlerRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RemoveEventCommandHandlerRsc.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\CommandHandler\UpdateEventCommandHandlerRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>UpdateEventCommandHandlerRsc.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\DisableEventRsc.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -135,6 +160,26 @@
     <EmbeddedResource Update="Resources\CommandHandler\AddCategoryCommandHandlerRsc.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AddCategoryCommandHandlerRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CommandHandler\AddEventCommandHandlerRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddEventCommandHandlerRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CommandHandler\DisableEventCommandHandlerRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DisableEventCommandHandlerRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CommandHandler\RegisterEventUserCommandHandlerRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RegisterEventUserCommandHandlerRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CommandHandler\RemoveEventCommandHandlerRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RemoveEventCommandHandlerRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CommandHandler\UpdateEventCommandHandlerRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>UpdateEventCommandHandlerRsc.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\DisableEventRsc.resx">
       <Generator>ResXFileCodeGenerator</Generator>

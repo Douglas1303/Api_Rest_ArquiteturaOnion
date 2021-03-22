@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\Event\CommandHandler\" />
     <Folder Include="Domain\File\CommandHandler\" />
     <Folder Include="Domain\File\Command\Validators\" />
     <Folder Include="Domain\Sponsor\CommandHandler\" />
