@@ -7,6 +7,8 @@ namespace Poc.Test.ObjectsFakers.ViewModel
     {
         public UpdateEventViewModelFaker()
         {
+            var lorem = new Bogus.DataSets.Lorem(locale: "pt_BR"); 
+
             var id = new Faker().Random.Number(1, 999999);
             var categoriaId = new Faker().Random.Number(1, 10);
 

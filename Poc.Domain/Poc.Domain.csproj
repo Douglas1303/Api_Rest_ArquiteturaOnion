@@ -64,6 +64,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>UserAppRsc.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\CommandHandler\AddCategoryCommandHandlerRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AddCategoryCommandHandlerRsc.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\DisableEventRsc.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -126,6 +131,10 @@
     <EmbeddedResource Update="Resources\Application\UserAppRsc.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>UserAppRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CommandHandler\AddCategoryCommandHandlerRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddCategoryCommandHandlerRsc.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\DisableEventRsc.resx">
       <Generator>ResXFileCodeGenerator</Generator>

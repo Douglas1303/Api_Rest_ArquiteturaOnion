@@ -33,7 +33,18 @@ namespace Poc.Test.ObjectsFakers.Command
             return new Faker<AddUserCommand>("pt_BR")
                 .CustomInstantiator(f => new AddUserCommand(
                     f.Person.FullName,
-                    "1111111111111",
+                    "11111111111",
+                    f.Date.Past(20).AddYears(-18),
+                    f.Person.Email
+                    )).Generate();
+        }
+
+        public static AddUserCommand GetCommandCpfLengthInvalid()
+        {
+            return new Faker<AddUserCommand>("pt_BR")
+                .CustomInstantiator(f => new AddUserCommand(
+                    f.Person.FullName,
+                    "4338976987458774",
                     f.Date.Past(20).AddYears(-18),
                     f.Person.Email
                     )).Generate();

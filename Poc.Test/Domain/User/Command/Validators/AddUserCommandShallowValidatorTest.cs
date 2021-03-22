@@ -43,9 +43,19 @@ namespace Poc.Test.Domain.User.Command.Validators
         }
 
         [Fact]
-        public void Validate_WhenCpfFormatIvalid_ReturnShouldBeError()
+        public void Validate_WhenCpfFormatInvalid_ReturnShouldBeError()
         {
             var cmd = AddUserCommandFaker.GetCommandCpfFormatInvalid();
+
+            ValidationResult result = Validator.Validate(cmd);
+
+            Assert.False(result.IsValid);
+        }
+
+        [Fact]
+        public void Validate_WhenCpfLengthIvalid_ReturnShouldBeError()
+        {
+            var cmd = AddUserCommandFaker.GetCommandCpfLengthInvalid();
 
             ValidationResult result = Validator.Validate(cmd);
 
