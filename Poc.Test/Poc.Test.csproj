@@ -28,9 +28,7 @@
     <Folder Include="Domain\File\CommandHandler\" />
     <Folder Include="Domain\File\Command\Validators\" />
     <Folder Include="Domain\Sponsor\CommandHandler\" />
-    <Folder Include="Domain\Sponsor\Command\Validators\" />
     <Folder Include="Domain\User\CommandHandler\" />
-    <Folder Include="Domain\User\Command\Validators\" />
   </ItemGroup>
 
   <ItemGroup>

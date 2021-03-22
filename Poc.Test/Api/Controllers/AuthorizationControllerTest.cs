@@ -4,6 +4,7 @@ using Moq;
 using Poc.Api.Controllers;
 using Poc.Application.Interface.Identity;
 using Poc.Application.ViewModel.Identity;
+using Poc.Test.ObjectsFakers.ViewModel;
 using Xunit;
 
 namespace Poc.Test.Api.Controllers
@@ -13,9 +14,15 @@ namespace Poc.Test.Api.Controllers
         private readonly Mock<IAuthorizationApplication> _mockedAuthorizationApplication;
         private readonly AuthorizationController _authorizationController;
 
+        private readonly UserIdentityViewModel _userIdentityViewModel;
+        private readonly LoginIdentityViewModel _loginIdentityViewModel; 
+
         public AuthorizationControllerTest()
         {
             _mockedAuthorizationApplication = new Mock<IAuthorizationApplication>();
+
+            _userIdentityViewModel = new UserIdentityViewModelFaker().Generate();
+            _loginIdentityViewModel = new LoginIdentityViewModelFaker().Generate(); 
 
             _authorizationController = new AuthorizationController(_mockedAuthorizationApplication.Object);
         }
@@ -29,7 +36,7 @@ namespace Poc.Test.Api.Controllers
             _mockedAuthorizationApplication.Setup(x => x.RegisterUserAsync(It.IsAny<UserIdentityViewModel>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _authorizationController.RegisterUser(GetValidUserIdentityViewModel());
+            var response = _authorizationController.RegisterUser(_userIdentityViewModel);
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 
@@ -50,7 +57,7 @@ namespace Poc.Test.Api.Controllers
             _mockedAuthorizationApplication.Setup(x => x.RegisterUserAsync(It.IsAny<UserIdentityViewModel>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _authorizationController.RegisterUser(GetValidUserIdentityViewModel());
+            var response = _authorizationController.RegisterUser(_userIdentityViewModel);
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 
@@ -70,7 +77,7 @@ namespace Poc.Test.Api.Controllers
             _mockedAuthorizationApplication.Setup(x => x.LoginAsync(It.IsAny<LoginIdentityViewModel>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _authorizationController.Login(GetValidLoginIdentityViewModel());
+            var response = _authorizationController.Login(_loginIdentityViewModel);
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 
@@ -91,7 +98,7 @@ namespace Poc.Test.Api.Controllers
             _mockedAuthorizationApplication.Setup(x => x.LoginAsync(It.IsAny<LoginIdentityViewModel>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _authorizationController.Login(GetValidLoginIdentityViewModel());
+            var response = _authorizationController.Login(_loginIdentityViewModel);
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 
@@ -100,25 +107,6 @@ namespace Poc.Test.Api.Controllers
             Assert.IsType<OkObjectResult>(objectResult);
             Assert.NotEmpty(content.Messages);
             Assert.Equal(StatusResult.Error, content.Status);
-        }
-
-        private UserIdentityViewModel GetValidUserIdentityViewModel()
-        {
-            return new UserIdentityViewModel
-            {
-                Email = "test@gmail.com",
-                Password = "Test@123",
-                ConfirmPassword = "Test@123"
-            };
-        }
-
-        private LoginIdentityViewModel GetValidLoginIdentityViewModel()
-        {
-            return new LoginIdentityViewModel
-            {
-                Email = "test@gmail.com",
-                Password = "Test@123"
-            };
         }
     }
 }

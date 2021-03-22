@@ -8,6 +8,7 @@ using Moq;
 using Poc.Application.AutoMapper;
 using Poc.Application.Service;
 using Poc.Domain.Resources.Application;
+using Poc.Test.ObjectsFakers.Entities;
 using System;
 using Xunit;
 
@@ -21,11 +22,14 @@ namespace Poc.Test.Application.Services
         private readonly Mock<ILogModel> _mockedLog;
         private readonly CepApplication _cepApplication;
 
+        private readonly CepModel _cepModel; 
+
         public CepApplicationTest()
         {
             _mockedCepService = new Mock<ICepService>();
             _mockedLocalizer = new Mock<IStringLocalizer<CepAppRsc>>();
-            _mockedLog = new Mock<ILogModel>(); 
+            _mockedLog = new Mock<ILogModel>();
+            _cepModel = new CepModelFaker().Generate(); 
 
             var config = new MapperConfiguration(cfg =>
             {
@@ -41,10 +45,10 @@ namespace Poc.Test.Application.Services
         public void GetCepAsync_WhenRepositoryIsValid_ReturnShouldBeOk()
         {
             //Arrange 
-            _mockedCepService.Setup(x => x.GetAddressAsync("08151150")).ReturnsAsync(GetCepModel());
+            _mockedCepService.Setup(x => x.GetAddressAsync(_cepModel.Cep)).ReturnsAsync(_cepModel);
 
             //Act
-            var requestResult = _cepApplication.GetCepAsync("08151150");
+            var requestResult = _cepApplication.GetCepAsync(_cepModel.Cep);
 
             //Assert
             Assert.NotNull(requestResult);
@@ -59,10 +63,10 @@ namespace Poc.Test.Application.Services
         public void GetCepAsync_WhenRepositoryReturnException_ReturnShouldBeError()
         {
             //Arrange 
-            _mockedCepService.Setup(x => x.GetAddressAsync("08151150")).Throws(new Exception());
+            _mockedCepService.Setup(x => x.GetAddressAsync(_cepModel.Cep)).Throws(new Exception());
 
             //Act
-            var requestResult = _cepApplication.GetCepAsync("08151150");
+            var requestResult = _cepApplication.GetCepAsync(_cepModel.Cep);
 
             //Assert
             Assert.NotNull(requestResult);
@@ -71,20 +75,6 @@ namespace Poc.Test.Application.Services
             Assert.Equal(StatusResult.Error, requestResult.Result.Status);
 
             _mockedCepService.Verify(x => x.GetAddressAsync(It.IsAny<string>()), Times.Once);
-        }
-
-        private CepModel GetCepModel()
-        {
-            return new CepModel
-            {
-                Cep = "08151150",
-                Logradouro = "Rua da Paz, 5020",
-                Complemento = "Casa 2",
-                Localidade = "Rio de Janeiro",
-                Bairro = "Jd. das flores",
-                UF = "RJ",
-                DDD = "17"
-            }; 
         }
     }
 }

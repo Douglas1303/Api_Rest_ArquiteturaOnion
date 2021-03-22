@@ -11,6 +11,7 @@ using Poc.Application.ViewModel;
 using Poc.Domain.Entities;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Resources.Application;
+using Poc.Test.ObjectsFakers.ViewModel;
 using System;
 using System.Collections.Generic;
 using Xunit;
@@ -26,12 +27,20 @@ namespace Poc.Test.Application.Services
         private readonly Mock<IStringLocalizer<EventAppRsc>> _mockedLocalizer;
         private readonly EventApplication _eventApplication;
 
+        private readonly AddEventViewModel _addEventViewModel;
+        private readonly UpdateEventViewModel _updateEventViewModel;
+        private readonly AddUserEventViewModel _addUserEventViewModel; 
+
         public EventApplicationTest()
         {
             _mockedEventRepository = new Mock<IEventRepository>();
             _mockedMediatorHandler = new Mock<IMediatorHandler>();
             _mockedLog = new Mock<ILogModel>();
             _mockedLocalizer = new Mock<IStringLocalizer<EventAppRsc>>();
+
+            _addEventViewModel = new AddEventViewModelFaker().Generate();
+            _updateEventViewModel = new UpdateEventViewModelFaker().Generate();
+            _addUserEventViewModel = new AddUserEventViewModelFaker().Generate(); 
 
             var config = new MapperConfiguration(cfg =>
             {
@@ -143,7 +152,7 @@ namespace Poc.Test.Application.Services
             _mockedEventRepository.Setup(x => x.Add(It.IsAny<EventModel>())).Verifiable();
 
             //Act
-            var requestResult = _eventApplication.AddAsync(GetValidAddEventViewModel());
+            var requestResult = _eventApplication.AddAsync(_addEventViewModel);
 
             // Assert
             Assert.NotNull(requestResult);
@@ -160,7 +169,7 @@ namespace Poc.Test.Application.Services
             _mockedMediatorHandler.Setup(x => x.SendCommand(It.IsAny<Command>())).Throws(new Exception());
 
             //Act
-            var requestResult = _eventApplication.AddAsync(GetValidAddEventViewModel());
+            var requestResult = _eventApplication.AddAsync(_addEventViewModel);
 
             //Assert
             Assert.NotNull(requestResult);
@@ -178,7 +187,7 @@ namespace Poc.Test.Application.Services
             _mockedEventRepository.Setup(x => x.Update(It.IsAny<EventModel>())).Verifiable();
 
             //Act
-            var requestResult = _eventApplication.UpdateAsync(GetValidUpdateEventViewModel());
+            var requestResult = _eventApplication.UpdateAsync(_updateEventViewModel);
 
             // Assert
             Assert.NotNull(requestResult);
@@ -195,7 +204,7 @@ namespace Poc.Test.Application.Services
             _mockedMediatorHandler.Setup(x => x.SendCommand(It.IsAny<Command>())).Throws(new Exception());
 
             //Act
-            var requestResult = _eventApplication.UpdateAsync(GetValidUpdateEventViewModel());
+            var requestResult = _eventApplication.UpdateAsync(_updateEventViewModel);
 
             //Assert
             Assert.NotNull(requestResult);
@@ -213,7 +222,7 @@ namespace Poc.Test.Application.Services
             _mockedEventRepository.Setup(x => x.Register(It.IsAny<SubscriptionModel>())).Verifiable();
 
             //Act
-            var requestResult = _eventApplication.RegisterAsync(GetValidAddUserEventViewModel());
+            var requestResult = _eventApplication.RegisterAsync(_addUserEventViewModel);
 
             // Assert
             Assert.NotNull(requestResult);
@@ -230,7 +239,7 @@ namespace Poc.Test.Application.Services
             _mockedMediatorHandler.Setup(x => x.SendCommand(It.IsAny<Command>())).Throws(new Exception());
 
             //Act
-            var requestResult = _eventApplication.RegisterAsync(GetValidAddUserEventViewModel());
+            var requestResult = _eventApplication.RegisterAsync(_addUserEventViewModel);
 
             //Assert
             Assert.NotNull(requestResult);
@@ -321,41 +330,6 @@ namespace Poc.Test.Application.Services
         private EventModel GetValidEventModel()
         {
             return new EventModel("Aulão", "Aulão de banco de dados", DateTime.Parse("10/01/2030"), DateTime.Parse("14/01/2030"), 1);
-        }
-
-        private AddEventViewModel GetValidAddEventViewModel()
-        {
-            return new AddEventViewModel
-            {
-                Titulo = "Bootcamp",
-                Descricao = "Bootcamp DotNet",
-                DataInicio = "10/01/2030",
-                DataFim = "14/01/2030",
-                CategoriaId = 1
-            };
-        }
-
-        private UpdateEventViewModel GetValidUpdateEventViewModel()
-        {
-            return new UpdateEventViewModel
-            {
-                Id = 1,
-                Titulo = "Bootcamp",
-                Descricao = "Bootcamp para iniciantes em DotNet",
-                DataInicio = "10/01/2030",
-                DataFim = "14/01/2030",
-                Ativo = true,
-                CategoriaId = 1
-            };
-        }
-
-        private AddUserEventViewModel GetValidAddUserEventViewModel()
-        {
-            return new AddUserEventViewModel
-            {
-                EventoId = 1,
-                UsuarioId = 2
-            };
         }
     }
 }

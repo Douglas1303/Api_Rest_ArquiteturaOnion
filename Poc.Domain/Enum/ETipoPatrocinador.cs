@@ -3,7 +3,7 @@
     public enum ETipoPatrocinador
     {
         PessoaFisica = 1,
-        PessoaJuridica = 2,
+        PessoaJuridica = 2, 
         NaoExiste
     }
 }

@@ -10,18 +10,15 @@ using Xunit;
 
 namespace Poc.Test.Api.Controllers
 {
-    public class SponsorControllerTest
+    public class SponsorControllerTest : AddSponsorViewModelFaker
     {
         private readonly Mock<ISponsorApplication> _mockedSponsorApplication;
         private readonly SponsorController _sponsorController;
-        private readonly AddSponsorViewModel _addSponsorViewModel;
         private readonly List<SponsorViewModel> _listSponsorViewModel; 
 
         public SponsorControllerTest()
         {
             _listSponsorViewModel = new SponsorViewModelFaker().Generate(5); 
-
-            _addSponsorViewModel = new AddSponsorViewModelFaker().Generate(); 
 
             _mockedSponsorApplication = new Mock<ISponsorApplication>();
 
@@ -58,7 +55,7 @@ namespace Poc.Test.Api.Controllers
             _mockedSponsorApplication.Setup(x => x.AddAsync(It.IsAny<AddSponsorViewModel>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _sponsorController.AddAsync(_addSponsorViewModel);
+            var response = _sponsorController.AddAsync(GetAddSponsorViewModelFaker());
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 

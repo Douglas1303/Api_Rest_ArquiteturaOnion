@@ -20,7 +20,7 @@ namespace Poc.Test.ObjectsFakers.ViewModel
             RuleFor(x => x.Localidade, f => f.Address.City());
             RuleFor(x => x.Bairro, f => f.Lorem.Sentence(2));
             RuleFor(x => x.UF, f => f.PickRandom<EStates>().ToString());
-            RuleFor(x => x.DDD, f => ddd);
+            RuleFor(x => x.DDD, f => ddd).Generate();
         }
     }
 }

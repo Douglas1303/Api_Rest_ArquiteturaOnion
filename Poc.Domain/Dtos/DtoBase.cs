@@ -2,7 +2,7 @@
 
 namespace Poc.Domain.Dtos
 {
-    public class DtoBase
+    public abstract class DtoBase
     {
         public int Id { get; set; }
         public DateTime DataCadastro { get; set; }

@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Bogus;
+using Bogus.Extensions.Brazil;
 using Infra.CrossCutting.Core.CQRS;
 using Infra.CrossCutting.Core.CQRS.Command;
 using Infra.CrossCutting.Mediator;
@@ -12,6 +14,7 @@ using Poc.Application.ViewModel;
 using Poc.Domain.Entities;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Resources.Application;
+using Poc.Test.ObjectsFakers.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -29,13 +32,19 @@ namespace Poc.Test.Application.Services
         private readonly Mock<IStringLocalizer<UserAppRsc>> _mockedLocalizer;
         private readonly UserApplication _userApplication;
 
+        private readonly Faker _faker;
+        private readonly AddUserViewModel _addUserViewModel; 
+
         public UserApplicationTest()
         {
             _mockedUserRepository = new Mock<IUserRepository>();
             _mockedMediator = new Mock<IMediator>();
             _mockedMediatorHandler = new Mock<IMediatorHandler>();
             _mockedLog = new Mock<ILogModel>();
-            _mockedLocalizer = new Mock<IStringLocalizer<UserAppRsc>>(); 
+            _mockedLocalizer = new Mock<IStringLocalizer<UserAppRsc>>();
+
+            _faker = new Faker(); 
+            _addUserViewModel = new AddUserViewModelFaker().Generate(); 
 
             var config = new MapperConfiguration(cfg =>
             {
@@ -95,7 +104,7 @@ namespace Poc.Test.Application.Services
             _mockedUserRepository.Setup(x => x.UserExists(It.IsAny<string>())).Returns(true); 
 
             //Act
-            var requestResult = _userApplication.AddAsync(GetValidAddUserViewModel(), "Test@gmail.com");
+            var requestResult = _userApplication.AddAsync(_addUserViewModel, _faker.Person.Email);
 
             // Assert
             Assert.NotNull(requestResult);
@@ -112,7 +121,7 @@ namespace Poc.Test.Application.Services
             _mockedMediator.Setup(x => x.Send(It.IsAny<Command>(), It.IsAny<CancellationToken>())).Throws(new Exception());
 
             //Act
-            var requestResult = _userApplication.AddAsync(GetValidAddUserViewModel(), "Test@gmail.com");
+            var requestResult = _userApplication.AddAsync(_addUserViewModel, _faker.Person.Email);
 
             //Assert
             Assert.NotNull(requestResult);
@@ -125,18 +134,7 @@ namespace Poc.Test.Application.Services
         {
             return new List<UserModel>
             {
-                new UserModel("Novo Usuario", "84731782031", DateTime.Parse("01/02/1990"), "teste@gmail.com")
-            };
-        }
-
-        private AddUserViewModel GetValidAddUserViewModel()
-        {
-            return new AddUserViewModel
-            {
-                NomeCompleto = "Nome Test",
-                Cpf = "84731782031",
-                DataNascimento = "10/04/2000",
-                Cep = "69307500"
+                new UserModel(_faker.Person.FullName, _faker.Person.Cpf(), _faker.Date.Past().AddYears(-18), _faker.Person.Email)
             };
         }
     }

@@ -14,6 +14,7 @@ using Poc.Domain.Dtos;
 using Poc.Domain.Enum;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Resources.Application;
+using Poc.Test.ObjectsFakers.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -21,7 +22,7 @@ using Xunit;
 
 namespace Poc.Test.Application.Services
 {
-    public class SponsorApplicationTest
+    public class SponsorApplicationTest : AddSponsorViewModelFaker
     {
         private readonly Mock<ISponsorRepository> _mockedSponsorRepository;
         private readonly Mock<IMediator> _mockedMediator;
@@ -37,7 +38,7 @@ namespace Poc.Test.Application.Services
             _mockedMediator = new Mock<IMediator>();
             _mockedLogModel = new Mock<ILogModel>();
             _mockedCepService = new Mock<ICepService>();
-            _mockedLocalizer = new Mock<IStringLocalizer<SponsorAppRsc>>(); 
+            _mockedLocalizer = new Mock<IStringLocalizer<SponsorAppRsc>>();
 
             var config = new MapperConfiguration(cfg =>
             {
@@ -93,11 +94,12 @@ namespace Poc.Test.Application.Services
             IResult commandResult = new CommandResult();
             _mockedMediator.Setup(x => x.Send(It.IsAny<Command>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(commandResult);
-            _mockedCepService.Setup(x => x.GetAddressAsync("69908738")).ReturnsAsync(new CepModel { Cep = "69908738" }); 
+            var viewModel = GetAddSponsorViewModelFaker(); 
+            _mockedCepService.Setup(x => x.GetAddressAsync(viewModel.Cep)).ReturnsAsync(new CepModel { Cep = viewModel.Cep }); 
             _mockedSponsorRepository.Setup(x => x.AddAsync(It.IsAny<SponsorDto>())).Verifiable();
 
             //Act
-            var requestResult = _sponsorApplication.AddAsync(GetValidAddSponsorViewModel());
+            var requestResult = _sponsorApplication.AddAsync(viewModel);
 
             // Assert
             Assert.NotNull(requestResult);
@@ -111,10 +113,12 @@ namespace Poc.Test.Application.Services
         {
             //Arrange
             IResult commandResult = new CommandResult();
+            var viewModel = GetAddSponsorViewModelFaker();
+            _mockedCepService.Setup(x => x.GetAddressAsync(viewModel.Cep)).ReturnsAsync(new CepModel { Cep = viewModel.Cep });
             _mockedMediator.Setup(x => x.Send(It.IsAny<Command>(), It.IsAny<CancellationToken>())).Throws(new Exception());
 
             //Act
-            var requestResult = _sponsorApplication.AddAsync(GetValidAddSponsorViewModel());
+            var requestResult = _sponsorApplication.AddAsync(viewModel);
 
             //Assert
             Assert.NotNull(requestResult);
@@ -157,24 +161,6 @@ namespace Poc.Test.Application.Services
             Assert.NotEmpty(requestResult.Result.Messages);
             Assert.Null(requestResult.Result.Data);
             Assert.Equal(StatusResult.Error, requestResult.Result.Status);
-        }
-
-        private AddSponsorViewModel GetValidAddSponsorViewModel()
-        {
-            return new AddSponsorViewModel
-            {
-                TipoPatrocinador = (int)ETipoPatrocinador.PessoaFisica,
-                NomePatrocinador = "DevTest", 
-                Documento = "03867908095", 
-                Telefone = "989675748", 
-                Cep = "69908738", 
-                Logradouro = "Loteamento Santa Helena", 
-                Complemento = string.Empty,
-                Bairro = "Jd. Fatima", 
-                Localidade = "Rio Branco", 
-                UF = "AC",
-                DDD = 17
-            }; 
         }
 
         private IEnumerable<SponsorDto> GetListValidSponsorDto()
