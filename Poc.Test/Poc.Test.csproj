@@ -23,10 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\File\CommandHandler\" />
     <Folder Include="Domain\File\Command\Validators\" />
-    <Folder Include="Domain\Sponsor\CommandHandler\" />
-    <Folder Include="Domain\User\CommandHandler\" />
   </ItemGroup>
 
   <ItemGroup>

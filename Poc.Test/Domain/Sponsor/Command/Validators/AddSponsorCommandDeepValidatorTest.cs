@@ -12,7 +12,7 @@ using Xunit;
 
 namespace Poc.Test.Domain.Sponsor.Command.Validators
 {
-    public class AddSponsorCommandDeepValidatorTest : AddSponsorCommandFaker
+    public class AddSponsorCommandDeepValidatorTest
     {
         private readonly Mock<ISponsorRepository> _mockedSponsorRepository;
         private readonly AddSponsorCommandDeepValidator Validator;
@@ -33,7 +33,7 @@ namespace Poc.Test.Domain.Sponsor.Command.Validators
         {
             _mockedSponsorRepository.Setup(x => x.NameSponsorExists(It.IsAny<string>())).Returns(true);
 
-            var cmd = GetAddSponsorCommand();
+            var cmd = AddSponsorCommandFaker.GetCommandValid(); 
 
             FluentValidation.Results.ValidationResult result = Validator.Validate(cmd);
 
@@ -45,7 +45,7 @@ namespace Poc.Test.Domain.Sponsor.Command.Validators
         {
             _mockedSponsorRepository.Setup(x => x.NameSponsorExists(It.IsAny<string>())).Returns(false);
 
-            var cmd = GetAddSponsorCommand();
+            var cmd = AddSponsorCommandFaker.GetCommandValid(); 
 
             FluentValidation.Results.ValidationResult result = Validator.Validate(cmd);
 

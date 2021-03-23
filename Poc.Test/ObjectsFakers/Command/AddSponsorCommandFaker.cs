@@ -5,13 +5,9 @@ using Poc.Domain.Enum;
 
 namespace Poc.Test.ObjectsFakers.Command
 {
-    public abstract class AddSponsorCommandFaker
+    public static class AddSponsorCommandFaker
     {
-        protected AddSponsorCommandFaker()
-        {
-
-        }
-        public AddSponsorCommand GetAddSponsorCommand()
+        public static AddSponsorCommand GetCommandValid()
         {
             return new Faker<AddSponsorCommand>("pt_BR")
                 .CustomInstantiator(f => new AddSponsorCommand(

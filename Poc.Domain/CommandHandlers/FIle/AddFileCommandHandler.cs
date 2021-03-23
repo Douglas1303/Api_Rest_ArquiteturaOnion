@@ -1,9 +1,12 @@
 ﻿using Infra.CrossCutting.Core.CQRS;
 using MediatR;
+using Microsoft.Extensions.Localization;
 using Poc.Domain.Commands.File;
 using Poc.Domain.Dtos;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Interface.Repository.UnitOfWork;
+using Poc.Domain.Resources.CommandHandler;
+using Poc.Domain.Resources.ExtensionMethods;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,11 +17,15 @@ namespace Poc.Domain.CommandHandlers.FIle
     {
         private readonly IFileRepository _fileRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IStringLocalizer<AddFileCommandHandlerRsc> Localizer;
 
-        public AddFileCommandHandler(IFileRepository fileRepository, IUnitOfWork unitOfWork)
+        private const string AddFileError = "AddFileError"; 
+
+        public AddFileCommandHandler(IFileRepository fileRepository, IUnitOfWork unitOfWork, IStringLocalizer<AddFileCommandHandlerRsc> localizer)
         {
             _fileRepository = fileRepository;
             _unitOfWork = unitOfWork;
+            Localizer = localizer; 
         }
 
         public async Task<IResult> Handle(AddFileCommand request, CancellationToken cancellationToken)
@@ -30,10 +37,12 @@ namespace Poc.Domain.CommandHandlers.FIle
 
                 await _unitOfWork.Commit(); 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
+                var cmdResult = new CommandResult();
+                cmdResult.AddErrorMessage(Localizer.GetMsg(AddFileError));
 
-                throw ex;
+                return cmdResult; 
             }
 
             return CommandResult.Empty(); 

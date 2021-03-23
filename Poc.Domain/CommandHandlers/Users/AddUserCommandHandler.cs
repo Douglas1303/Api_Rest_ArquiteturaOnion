@@ -1,9 +1,12 @@
 ﻿using Infra.CrossCutting.Core.CQRS;
 using MediatR;
+using Microsoft.Extensions.Localization;
 using Poc.Domain.Commands.Users;
 using Poc.Domain.Entities;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Interface.Repository.UnitOfWork;
+using Poc.Domain.Resources.CommandHandler;
+using Poc.Domain.Resources.ExtensionMethods;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -14,11 +17,15 @@ namespace Poc.Domain.CommandHandlers.Users
     {
         private readonly IUserRepository _userRepository;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IStringLocalizer<AddUserCommandHandlerRsc> Localizer;
 
-        public AddUserCommandHandler(IUserRepository userRepository, IUnitOfWork unitOfWork)
+        private const string AddUserError = "AddUserError"; 
+
+        public AddUserCommandHandler(IUserRepository userRepository, IUnitOfWork unitOfWork, IStringLocalizer<AddUserCommandHandlerRsc> localizer)
         {
             _userRepository = userRepository;
             _unitOfWork = unitOfWork;
+            Localizer = localizer; 
         }
 
         public async Task<IResult> Handle(AddUserCommand request, CancellationToken cancellationToken)
@@ -31,9 +38,12 @@ namespace Poc.Domain.CommandHandlers.Users
 
                 await _unitOfWork.Commit();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                var cmdResult = new CommandResult();
+                cmdResult.AddErrorMessage(Localizer.GetMsg(AddUserError));
+
+                return cmdResult; 
             }
 
             return CommandResult.Empty();

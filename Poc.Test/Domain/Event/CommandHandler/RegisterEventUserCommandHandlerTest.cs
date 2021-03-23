@@ -33,7 +33,7 @@ namespace Poc.Test.Domain.Event.CommandHandler
         public void Handler_WhenCommandIsValid_ReturnShoulBeOk()
         {
             //Arrange
-            var command = RegisterEventUserCommandFaker.GetRegisterEventUserCommand(); 
+            var command = RegisterEventUserCommandFaker.GetCommandValid(); 
             _mockedEventRepository.Setup(x => x.HasEventToUser(200, 300)).Returns(true);
             _mockedEventRepository.Setup(x => x.Register(It.IsAny<SubscriptionModel>())).Verifiable();
 
@@ -49,7 +49,7 @@ namespace Poc.Test.Domain.Event.CommandHandler
         public void Handler_WhenHasEventToUser_ReturnShoulBeError()
         {
             //Arrange
-            var command = RegisterEventUserCommandFaker.GetRegisterEventUserCommand();
+            var command = RegisterEventUserCommandFaker.GetCommandValid();
             _mockedEventRepository.Setup(x => x.HasEventToUser(command.EventoId, command.UsuarioId)).Returns(true);
             _mockedEventRepository.Setup(x => x.Register(It.IsAny<SubscriptionModel>())).Verifiable();
 
@@ -65,7 +65,7 @@ namespace Poc.Test.Domain.Event.CommandHandler
         public void Handler_WhenRepositoryReturnError_ReturnShoulBeException()
         {
             //Arrange
-            var command = RegisterEventUserCommandFaker.GetRegisterEventUserCommand();
+            var command = RegisterEventUserCommandFaker.GetCommandValid();
             _mockedEventRepository.Setup(x => x.HasEventToUser(It.IsAny<int>(), It.IsAny<int>())).Throws(new Exception());
 
             //Act

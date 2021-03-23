@@ -74,6 +74,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>AddEventCommandHandlerRsc.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\CommandHandler\AddFileCommandHandlerRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AddFileCommandHandlerRsc.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\CommandHandler\AddSponsorCommandHandlerRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AddSponsorCommandHandlerRsc.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\CommandHandler\AddUserCommandHandlerRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AddUserCommandHandlerRsc.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\CommandHandler\DisableEventCommandHandlerRsc.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -88,6 +103,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>RemoveEventCommandHandlerRsc.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\CommandHandler\RemoveSponsorCommandHandlerRsc.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RemoveSponsorCommandHandlerRsc.resx</DependentUpon>
     </Compile>
     <Compile Update="Resources\CommandHandler\UpdateEventCommandHandlerRsc.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -165,6 +185,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AddEventCommandHandlerRsc.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CommandHandler\AddFileCommandHandlerRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddFileCommandHandlerRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CommandHandler\AddSponsorCommandHandlerRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddSponsorCommandHandlerRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CommandHandler\AddUserCommandHandlerRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddUserCommandHandlerRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\CommandHandler\DisableEventCommandHandlerRsc.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DisableEventCommandHandlerRsc.Designer.cs</LastGenOutput>
@@ -176,6 +208,10 @@
     <EmbeddedResource Update="Resources\CommandHandler\RemoveEventCommandHandlerRsc.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>RemoveEventCommandHandlerRsc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CommandHandler\RemoveSponsorCommandHandlerRsc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RemoveSponsorCommandHandlerRsc.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\CommandHandler\UpdateEventCommandHandlerRsc.resx">
       <Generator>ResXFileCodeGenerator</Generator>

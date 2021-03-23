@@ -5,7 +5,7 @@ namespace Poc.Test.ObjectsFakers.Command
 {
     public static class RegisterEventUserCommandFaker
     {
-        public static RegisterEventUserCommand GetRegisterEventUserCommand()
+        public static RegisterEventUserCommand GetCommandValid()
         {
             return new Faker<RegisterEventUserCommand>("pt_BR")
                 .CustomInstantiator(f => new RegisterEventUserCommand(

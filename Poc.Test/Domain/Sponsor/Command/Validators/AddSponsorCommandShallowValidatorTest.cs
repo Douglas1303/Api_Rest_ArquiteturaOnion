@@ -1,7 +1,5 @@
-﻿using Bogus;
-using Microsoft.Extensions.Localization;
+﻿using Microsoft.Extensions.Localization;
 using Moq;
-using Poc.Domain.Commands.Sponsor;
 using Poc.Domain.Commands.Sponsor.Validators;
 using Poc.Domain.Resources;
 using Poc.Test.ObjectsFakers.Command;
@@ -9,7 +7,7 @@ using Xunit;
 
 namespace Poc.Test.Domain.Sponsor.Command.Validators
 {
-    public class AddSponsorCommandShallowValidatorTest : AddSponsorCommandFaker
+    public class AddSponsorCommandShallowValidatorTest
     {
         private readonly AddSponsorCommandShallowValidator Validator;
 
@@ -22,7 +20,7 @@ namespace Poc.Test.Domain.Sponsor.Command.Validators
         [Fact]
         public void Validate_WhenCommandIsValid_ReturnShouldBeOk()
         {
-            var cmd = GetAddSponsorCommand();
+            var cmd = AddSponsorCommandFaker.GetCommandValid();
 
             FluentValidation.Results.ValidationResult result = Validator.Validate(cmd);
 
