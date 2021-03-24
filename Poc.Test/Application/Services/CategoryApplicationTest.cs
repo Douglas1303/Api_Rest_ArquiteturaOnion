@@ -7,7 +7,6 @@ using Microsoft.Extensions.Localization;
 using Moq;
 using Poc.Application.AutoMapper;
 using Poc.Application.Service;
-using Poc.Application.ViewModel;
 using Poc.Domain.Entities;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Resources.Application;
@@ -28,18 +27,12 @@ namespace Poc.Test.Application.Services
         private readonly Mock<IStringLocalizer<CategoryAppRsc>> _mockedLocalizer;
         private readonly CategoryApplication _categoryApplication;
 
-        private readonly AddCategoryViewModel _addCategoryViewModel;
-        private readonly List<CategoryModel> _categoryModel; 
-
         public CategoryApplicationTest()
         {
             _mockedCategoryRepository = new Mock<ICategoryRepository>();
             _mockedMediatorHandler = new Mock<IMediatorHandler>();
             _mockedLog = new Mock<ILogModel>();
             _mockedLocalizer = new Mock<IStringLocalizer<CategoryAppRsc>>();
-
-            _addCategoryViewModel = new AddCategoryViewModelFaker().Generate();
-            //_categoryModel = new CategoryModelFaker().Generate(4); 
 
             var config = new MapperConfiguration(cfg =>
             {
@@ -56,7 +49,7 @@ namespace Poc.Test.Application.Services
         public void GetAllAsync_WhenRepositoryIsValid_ReturnShouldBeOkWithList()
         {
             //Arrange
-            _mockedCategoryRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(GetCategoryModel());
+            _mockedCategoryRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(CategoryModelFaker.GetListModelValid());
 
             //Act
             var requestResult = _categoryApplication.GetAllAsync();
@@ -93,11 +86,12 @@ namespace Poc.Test.Application.Services
         {
             //Arrange
             IResult commandResult = new CommandResult();
+            var viewModel = AddCategoryViewModelFaker.GetViewModelValid();
             _mockedMediatorHandler.Setup(x => x.SendCommand(It.IsAny<Command>())).ReturnsAsync(commandResult);
             _mockedCategoryRepository.Setup(x => x.Add(It.IsAny<CategoryModel>())).Verifiable();
 
             //Act
-            var requestResult = _categoryApplication.AddCategory(_addCategoryViewModel);
+            var requestResult = _categoryApplication.AddCategory(viewModel);
 
             // Assert
             Assert.NotNull(requestResult);
@@ -111,25 +105,17 @@ namespace Poc.Test.Application.Services
         {
             //Arrange
             IResult commandResult = new CommandResult();
+            var viewModel = AddCategoryViewModelFaker.GetViewModelValid();
             _mockedMediatorHandler.Setup(x => x.SendCommand(It.IsAny<Command>())).Throws(new Exception());
 
             //Act
-            var requestResult = _categoryApplication.AddCategory(_addCategoryViewModel);
+            var requestResult = _categoryApplication.AddCategory(viewModel);
 
             //Assert
             Assert.NotNull(requestResult);
             Assert.NotEmpty(requestResult.Result.Messages);
             Assert.Null(requestResult.Result.Data);
             Assert.Equal(StatusResult.Error, requestResult.Result.Status);
-        }
-
-        private List<CategoryModel> GetCategoryModel()
-        {
-            return new List<CategoryModel>
-            {
-                new CategoryModel("Bootcamp"),
-                new CategoryModel("Live")
-            };
         }
     }
 }

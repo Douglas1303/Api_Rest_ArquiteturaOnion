@@ -4,10 +4,7 @@ using Moq;
 using Poc.Api.Controllers;
 using Poc.Application.Interface;
 using Poc.Application.ViewModel;
-using Poc.Domain.Entities;
 using Poc.Test.ObjectsFakers.ViewModel;
-using System;
-using System.Collections.Generic;
 using Xunit;
 
 namespace Poc.Test.Api.Controllers
@@ -16,20 +13,9 @@ namespace Poc.Test.Api.Controllers
     {
         private readonly Mock<IEventApplication> _mockedEventApplication;
         private readonly EventController _eventController;
-        private readonly EventViewModel _eventViewModel;
-        private readonly List<EventViewModel> _listEventViewModel;
-        private readonly AddEventViewModel _addEventViewModel;
-        private readonly UpdateEventViewModel _updateEventViewModel;
-        private readonly AddUserEventViewModel _addUserEventViewModel; 
 
         public EventControllerTest()
         {
-            _eventViewModel = new EventViewModelFaker().Generate(); 
-            _listEventViewModel = new EventViewModelFaker().Generate(5);
-            _addEventViewModel = new AddEventViewModelFaker().Generate();
-            _updateEventViewModel = new UpdateEventViewModelFaker().Generate();
-            _addUserEventViewModel = new AddUserEventViewModelFaker().Generate(); 
-
             _mockedEventApplication = new Mock<IEventApplication>();
 
             _eventController = new EventController(_mockedEventApplication.Object);
@@ -39,7 +25,7 @@ namespace Poc.Test.Api.Controllers
         public void GetAll_WhenServiceReturnsItems_ReturnShouldBeOk()
         {
             //Arrange
-            IResult result = new QueryResult(_listEventViewModel);
+            IResult result = new QueryResult(EventViewModelFaker.GetListViewModelValid());
 
             _mockedEventApplication.Setup(x => x.GetAllAsync()).ReturnsAsync(result);
 
@@ -82,7 +68,7 @@ namespace Poc.Test.Api.Controllers
         public void GetByIdAsync_WhenServiceReturnsItems_ReturnShouldBeOk()
         {
             //Arrange
-            IResult result = new QueryResult(_eventViewModel);
+            IResult result = new QueryResult(EventViewModelFaker.GetViewModelValid());
 
             _mockedEventApplication.Setup(x => x.GetByIdAsync(1)).ReturnsAsync(result);
 
@@ -103,12 +89,12 @@ namespace Poc.Test.Api.Controllers
         public void Add_WhenServiceIsValid_ReturnShouldBeOk()
         {
             IResult commandResult = new CommandResult();
-
+            var viewModel = AddEventViewModelFaker.GetViewModelValid();
             //Arrange
             _mockedEventApplication.Setup(x => x.AddAsync(It.IsAny<AddEventViewModel>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _eventController.Add(_addEventViewModel);
+            var response = _eventController.Add(viewModel);
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 
@@ -128,7 +114,7 @@ namespace Poc.Test.Api.Controllers
             _mockedEventApplication.Setup(x => x.UpdateAsync(It.IsAny<UpdateEventViewModel>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _eventController.Update(_updateEventViewModel);
+            var response = _eventController.Update(UpdateEventViewModelFaker.GetViewModelValid());
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 
@@ -148,7 +134,7 @@ namespace Poc.Test.Api.Controllers
             _mockedEventApplication.Setup(x => x.RegisterAsync(It.IsAny<AddUserEventViewModel>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _eventController.RegisterUserEvent(_addUserEventViewModel);
+            var response = _eventController.RegisterUserEvent(AddUserEventViewModelFaker.GetViewModelValid());
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 

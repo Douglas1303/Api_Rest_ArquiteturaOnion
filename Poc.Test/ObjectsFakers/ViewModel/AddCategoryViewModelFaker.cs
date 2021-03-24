@@ -3,11 +3,13 @@ using Poc.Application.ViewModel;
 
 namespace Poc.Test.ObjectsFakers.ViewModel
 {
-    public class AddCategoryViewModelFaker : Faker<AddCategoryViewModel>
+    public static class AddCategoryViewModelFaker 
     {
-        public AddCategoryViewModelFaker()
+        public static AddCategoryViewModel GetViewModelValid()
         {
-            RuleFor(x => x.Descricao, f => f.Lorem.Sentence(3)); 
+            return new Faker<AddCategoryViewModel>("pt_BR")
+                .RuleFor(x => x.Descricao, f => f.Lorem.Sentence(3))
+                .Generate(); 
         }
     }
 }

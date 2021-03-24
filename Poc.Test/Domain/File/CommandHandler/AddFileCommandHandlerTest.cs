@@ -37,7 +37,7 @@ namespace Poc.Test.Domain.File.CommandHandler
             _mockedFileRepository.Setup(x => x.AddAsync(It.IsAny<FileDto>())).Verifiable();
 
             //Act
-            var response = _commandHandler.Handle(command, new System.Threading.CancellationToken()).Result;
+            var response = _commandHandler.Handle(command, new CancellationToken()).Result;
 
             //Assert
             Assert.NotNull(response);

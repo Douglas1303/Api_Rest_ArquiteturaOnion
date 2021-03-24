@@ -1,6 +1,4 @@
-﻿using ExternalServices.Cep;
-using ExternalServices.Cep.Model;
-using Infra.CrossCutting.Core.CQRS;
+﻿using Infra.CrossCutting.Core.CQRS;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Poc.Api.Controllers;
@@ -14,12 +12,9 @@ namespace Poc.Test.Api.Controllers
     {
         private readonly Mock<ICepApplication> _mockedCepApplication;
         private readonly CepController _cepController;
-        private readonly CepViewModel _cepViewModel; 
 
         public CepControllerTest()
         {
-            _cepViewModel = new CepViewModelFaker().Generate(); 
-             
             _mockedCepApplication = new Mock<ICepApplication>();
             _cepController = new CepController(_mockedCepApplication.Object);
         }
@@ -28,12 +23,13 @@ namespace Poc.Test.Api.Controllers
         public void GetByCepAsync_WhenServiceReturnsItems_ReturnShouldBeOk()
         {
             //Arrange
-            IResult result = new QueryResult(_cepViewModel);
+            var viewModel = CepViewModelFaker.GetViewModelValid(); 
+            IResult result = new QueryResult(viewModel);
 
-            _mockedCepApplication.Setup(x => x.GetCepAsync(_cepViewModel.Cep)).ReturnsAsync(result);
+            _mockedCepApplication.Setup(x => x.GetCepAsync(viewModel.Cep)).ReturnsAsync(result);
 
             //Act
-            var response = _cepController.GetByCepAsync(_cepViewModel.Cep);
+            var response = _cepController.GetByCepAsync(viewModel.Cep);
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 

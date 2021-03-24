@@ -1,16 +1,18 @@
 ﻿using Bogus;
 using Poc.Application.ViewModel;
+using System.Collections.Generic;
 
 namespace Poc.Test.ObjectsFakers.ViewModel
 {
-    public class CategoryViewModelFaker : Faker<CategoryViewModel>
+    public static class CategoryViewModelFaker 
     {
-        public CategoryViewModelFaker()
+        public static List<CategoryViewModel> GetViewModelValid()
         {
-            var id = new Faker().Random.Number(1, 999999);
-            RuleFor(x => x.Id, f => id);
-            RuleFor(x => x.Descricao, f => f.Lorem.Sentence(20));
-            RuleFor(x => x.DataCadastro, f => f.Date.Recent()); 
+            return new Faker<CategoryViewModel>("pt_BR")
+            .RuleFor(x => x.Id, f => f.Random.Number(1, 9999999))
+            .RuleFor(x => x.Descricao, f => f.Lorem.Sentence(20))
+            .RuleFor(x => x.DataCadastro, f => f.Date.Recent())
+            .Generate(6); 
         }
     }
 }

@@ -6,6 +6,7 @@ using Poc.Domain.Commands.Categories.Validators;
 using Poc.Domain.Entities;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Resources;
+using Poc.Test.ObjectsFakers.Command;
 using Xunit;
 
 namespace Poc.Test.Domain.Category.Command.Validators
@@ -27,7 +28,7 @@ namespace Poc.Test.Domain.Category.Command.Validators
         public void Description_WhenDescriptionNotExist_ReturnShouldBeOk()
         {
             //Arrange
-            var cmd = new AddCategoryCommand("Curso");
+            var cmd = AddCategoryCommandFaker.GetCommandValid(); 
             _mockedCategoryRepository.Setup(x => x.DescriptionExists(It.IsAny<string>())).Returns(true);
 
             //Act
@@ -41,7 +42,7 @@ namespace Poc.Test.Domain.Category.Command.Validators
         public void Description_WhenDescriptionAlreadyExist_ReturnShouldBeOk()
         {
             //Arrange
-            var cmd = new AddCategoryCommand("Curso");
+            var cmd = AddCategoryCommandFaker.GetCommandValid();
             _mockedCategoryRepository.Setup(x => x.DescriptionExists(It.IsAny<string>())).Returns(false);
 
             //Act

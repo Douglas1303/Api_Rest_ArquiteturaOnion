@@ -4,9 +4,7 @@ using Moq;
 using Poc.Api.Controllers;
 using Poc.Application.Interface;
 using Poc.Application.ViewModel;
-using Poc.Domain.Entities;
 using Poc.Test.ObjectsFakers.ViewModel;
-using System.Collections.Generic;
 using Xunit;
 
 namespace Poc.Test.Api.Controllers
@@ -15,12 +13,9 @@ namespace Poc.Test.Api.Controllers
     {
         private readonly Mock<ICategoryApplication> _mockedCategoryApplication;
         private readonly CategoryController _categoryController;
-        private readonly List<CategoryViewModel> _listCategoryViewModel; 
 
         public CategoryControllerTest()
         {
-            _listCategoryViewModel = new CategoryViewModelFaker().Generate(5); 
-
             _mockedCategoryApplication = new Mock<ICategoryApplication>();
             _categoryController = new CategoryController(_mockedCategoryApplication.Object);
         }
@@ -29,7 +24,7 @@ namespace Poc.Test.Api.Controllers
         public void GetAll_WhenServiceReturnsItems_ReturnShouldBeOk()
         {
             //Arrange
-            IResult result = new QueryResult(_listCategoryViewModel);
+            IResult result = new QueryResult(CategoryViewModelFaker.GetViewModelValid());
 
             _mockedCategoryApplication.Setup(x => x.GetAllAsync()).ReturnsAsync(result);
 
@@ -77,7 +72,7 @@ namespace Poc.Test.Api.Controllers
             _mockedCategoryApplication.Setup(x => x.AddCategory(It.IsAny<AddCategoryViewModel>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _categoryController.AddCategoryAsync(GetAddCategoryViewModel());
+            var response = _categoryController.AddCategoryAsync(AddCategoryViewModelFaker.GetViewModelValid());
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 
@@ -106,14 +101,6 @@ namespace Poc.Test.Api.Controllers
             Assert.IsType<OkObjectResult>(objectResult);
             Assert.NotEmpty(content.Messages);
             Assert.Equal(StatusResult.Error, content.Status);
-        }
-
-        private AddCategoryViewModel GetAddCategoryViewModel()
-        {
-            return new AddCategoryViewModel
-            {
-                Descricao = "Evento para programadores"
-            };
         }
     }
 }

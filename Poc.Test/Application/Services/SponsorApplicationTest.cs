@@ -9,27 +9,25 @@ using Microsoft.Extensions.Localization;
 using Moq;
 using Poc.Application.AutoMapper;
 using Poc.Application.Service;
-using Poc.Application.ViewModel;
 using Poc.Domain.Dtos;
-using Poc.Domain.Enum;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Resources.Application;
+using Poc.Test.ObjectsFakers.Dtos;
 using Poc.Test.ObjectsFakers.ViewModel;
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using Xunit;
 
 namespace Poc.Test.Application.Services
 {
-    public class SponsorApplicationTest : AddSponsorViewModelFaker
+    public class SponsorApplicationTest
     {
         private readonly Mock<ISponsorRepository> _mockedSponsorRepository;
         private readonly Mock<IMediator> _mockedMediator;
         private readonly Mock<ILogModel> _mockedLogModel;
         private readonly IMapper _mapperFake;
         private readonly Mock<ICepService> _mockedCepService;
-        private readonly Mock<IStringLocalizer<SponsorAppRsc>> _mockedLocalizer; 
+        private readonly Mock<IStringLocalizer<SponsorAppRsc>> _mockedLocalizer;
         private readonly SponsorApplication _sponsorApplication;
 
         public SponsorApplicationTest()
@@ -45,7 +43,7 @@ namespace Poc.Test.Application.Services
                 cfg.AddProfile(new AutoMapperConfiguration());
             });
 
-            _mapperFake = new Mapper(config); 
+            _mapperFake = new Mapper(config);
 
             _sponsorApplication = new SponsorApplication(_mockedSponsorRepository.Object, _mockedMediator.Object, _mockedLogModel.Object,
                                                          _mapperFake, _mockedCepService.Object, _mockedLocalizer.Object);
@@ -55,7 +53,7 @@ namespace Poc.Test.Application.Services
         public void GetAllAsync_WhenRepositoryIsValid_ReturnShouldBeOkWithList()
         {
             //Arrange
-            _mockedSponsorRepository.Setup(x => x.GetAll()).ReturnsAsync(GetListValidSponsorDto());
+            _mockedSponsorRepository.Setup(x => x.GetAll()).ReturnsAsync(SponsorDtoFaker.GetListDtoValid());
 
             //Act
             var requestResult = _sponsorApplication.GetAllAsync();
@@ -94,8 +92,8 @@ namespace Poc.Test.Application.Services
             IResult commandResult = new CommandResult();
             _mockedMediator.Setup(x => x.Send(It.IsAny<Command>(), It.IsAny<CancellationToken>()))
                 .ReturnsAsync(commandResult);
-            var viewModel = GetAddSponsorViewModelFaker(); 
-            _mockedCepService.Setup(x => x.GetAddressAsync(viewModel.Cep)).ReturnsAsync(new CepModel { Cep = viewModel.Cep }); 
+            var viewModel = AddSponsorViewModelFaker.GetViewModelValid();
+            _mockedCepService.Setup(x => x.GetAddressAsync(viewModel.Cep)).ReturnsAsync(new CepModel { Cep = viewModel.Cep });
             _mockedSponsorRepository.Setup(x => x.AddAsync(It.IsAny<SponsorDto>())).Verifiable();
 
             //Act
@@ -113,7 +111,7 @@ namespace Poc.Test.Application.Services
         {
             //Arrange
             IResult commandResult = new CommandResult();
-            var viewModel = GetAddSponsorViewModelFaker();
+            var viewModel = AddSponsorViewModelFaker.GetViewModelValid();
             _mockedCepService.Setup(x => x.GetAddressAsync(viewModel.Cep)).ReturnsAsync(new CepModel { Cep = viewModel.Cep });
             _mockedMediator.Setup(x => x.Send(It.IsAny<Command>(), It.IsAny<CancellationToken>())).Throws(new Exception());
 
@@ -161,16 +159,6 @@ namespace Poc.Test.Application.Services
             Assert.NotEmpty(requestResult.Result.Messages);
             Assert.Null(requestResult.Result.Data);
             Assert.Equal(StatusResult.Error, requestResult.Result.Status);
-        }
-
-        private IEnumerable<SponsorDto> GetListValidSponsorDto()
-        {
-            return new List<SponsorDto>
-            {
-                new SponsorDto("DevTest", "03867908095", "989675748", "69908738",
-                               "Loteamento Santa Helena", string.Empty, "Jd. Fatima",
-                               "Rio Branco", "AC", 17)
-            }; 
         }
     }
 }

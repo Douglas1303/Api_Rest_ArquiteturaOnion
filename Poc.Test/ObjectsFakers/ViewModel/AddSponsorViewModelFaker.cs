@@ -5,13 +5,9 @@ using Poc.Domain.Enum;
 
 namespace Poc.Test.ObjectsFakers.ViewModel
 {
-    public abstract class AddSponsorViewModelFaker 
+    public static class AddSponsorViewModelFaker 
     {
-        protected AddSponsorViewModelFaker()
-        {
-            
-        }
-        public AddSponsorViewModel GetAddSponsorViewModelFaker()
+        public static AddSponsorViewModel GetViewModelValid()
         {
             var ddd = new Faker().Random.Number(10, 60);
             var typeSponsor = new Faker().Random.Number(1, 2);
@@ -27,7 +23,7 @@ namespace Poc.Test.ObjectsFakers.ViewModel
             .RuleFor(x => x.Localidade, f => f.Address.City())
             .RuleFor(x => x.Bairro, f => f.Lorem.Sentence(2))
             .RuleFor(x => x.UF, f => f.PickRandom<EStates>().ToString())
-            .RuleFor(x => x.DDD, f => ddd);
+            .RuleFor(x => x.DDD, f => ddd).Generate();
 
             return cmd; 
         }

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Bogus;
-using Bogus.Extensions.Brazil;
 using Infra.CrossCutting.Core.CQRS;
 using Infra.CrossCutting.Core.CQRS.Command;
 using Infra.CrossCutting.Mediator;
@@ -10,13 +9,12 @@ using Microsoft.Extensions.Localization;
 using Moq;
 using Poc.Application.AutoMapper;
 using Poc.Application.Service;
-using Poc.Application.ViewModel;
 using Poc.Domain.Entities;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Resources.Application;
+using Poc.Test.ObjectsFakers.Entities;
 using Poc.Test.ObjectsFakers.ViewModel;
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using Xunit;
 
@@ -33,7 +31,6 @@ namespace Poc.Test.Application.Services
         private readonly UserApplication _userApplication;
 
         private readonly Faker _faker;
-        private readonly AddUserViewModel _addUserViewModel; 
 
         public UserApplicationTest()
         {
@@ -43,18 +40,17 @@ namespace Poc.Test.Application.Services
             _mockedLog = new Mock<ILogModel>();
             _mockedLocalizer = new Mock<IStringLocalizer<UserAppRsc>>();
 
-            _faker = new Faker(); 
-            _addUserViewModel = new AddUserViewModelFaker().Generate(); 
+            _faker = new Faker();
 
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new AutoMapperConfiguration());
             });
 
-            _mapperFake = new Mapper(config); 
+            _mapperFake = new Mapper(config);
 
             _userApplication = new UserApplication(_mockedUserRepository.Object, _mockedMediatorHandler.Object,
-                                                    _mapperFake, _mockedLog.Object, _mockedMediator.Object, 
+                                                    _mapperFake, _mockedLog.Object, _mockedMediator.Object,
                                                     _mockedLocalizer.Object);
         }
 
@@ -62,7 +58,8 @@ namespace Poc.Test.Application.Services
         public void GetAllAsync_WhenRepositoryIsValid_ReturnShouldBeOkWithList()
         {
             //Arrange
-            _mockedUserRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(GetListValidUserModel());
+            var model = UserModelFaker.GetModelValid();
+            _mockedUserRepository.Setup(x => x.GetAllAsync()).ReturnsAsync(model);
 
             //Act
             var requestResult = _userApplication.GetAllAsync();
@@ -101,10 +98,10 @@ namespace Poc.Test.Application.Services
             IResult commandResult = new CommandResult();
             _mockedMediator.Setup(x => x.Send(It.IsAny<Command>(), It.IsAny<CancellationToken>())).ReturnsAsync(commandResult);
             _mockedUserRepository.Setup(x => x.Add(It.IsAny<UserModel>())).Verifiable();
-            _mockedUserRepository.Setup(x => x.UserExists(It.IsAny<string>())).Returns(true); 
+            _mockedUserRepository.Setup(x => x.UserExists(It.IsAny<string>())).Returns(true);
 
             //Act
-            var requestResult = _userApplication.AddAsync(_addUserViewModel, _faker.Person.Email);
+            var requestResult = _userApplication.AddAsync(AddUserViewModelFaker.GetViewModelValid(), _faker.Person.Email);
 
             // Assert
             Assert.NotNull(requestResult);
@@ -121,21 +118,13 @@ namespace Poc.Test.Application.Services
             _mockedMediator.Setup(x => x.Send(It.IsAny<Command>(), It.IsAny<CancellationToken>())).Throws(new Exception());
 
             //Act
-            var requestResult = _userApplication.AddAsync(_addUserViewModel, _faker.Person.Email);
+            var requestResult = _userApplication.AddAsync(AddUserViewModelFaker.GetViewModelValid(), _faker.Person.Email);
 
             //Assert
             Assert.NotNull(requestResult);
             Assert.NotEmpty(requestResult.Result.Messages);
             Assert.Null(requestResult.Result.Data);
             Assert.Equal(StatusResult.Error, requestResult.Result.Status);
-        }
-
-        private IEnumerable<UserModel> GetListValidUserModel()
-        {
-            return new List<UserModel>
-            {
-                new UserModel(_faker.Person.FullName, _faker.Person.Cpf(), _faker.Date.Past().AddYears(-18), _faker.Person.Email)
-            };
         }
     }
 }

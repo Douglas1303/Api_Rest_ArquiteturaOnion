@@ -14,15 +14,9 @@ namespace Poc.Test.Api.Controllers
         private readonly Mock<IAuthorizationApplication> _mockedAuthorizationApplication;
         private readonly AuthorizationController _authorizationController;
 
-        private readonly UserIdentityViewModel _userIdentityViewModel;
-        private readonly LoginIdentityViewModel _loginIdentityViewModel; 
-
         public AuthorizationControllerTest()
         {
             _mockedAuthorizationApplication = new Mock<IAuthorizationApplication>();
-
-            _userIdentityViewModel = new UserIdentityViewModelFaker().Generate();
-            _loginIdentityViewModel = new LoginIdentityViewModelFaker().Generate(); 
 
             _authorizationController = new AuthorizationController(_mockedAuthorizationApplication.Object);
         }
@@ -36,7 +30,7 @@ namespace Poc.Test.Api.Controllers
             _mockedAuthorizationApplication.Setup(x => x.RegisterUserAsync(It.IsAny<UserIdentityViewModel>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _authorizationController.RegisterUser(_userIdentityViewModel);
+            var response = _authorizationController.RegisterUser(UserIdentityViewModelFaker.GetViewModelValid());
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 
@@ -57,7 +51,7 @@ namespace Poc.Test.Api.Controllers
             _mockedAuthorizationApplication.Setup(x => x.RegisterUserAsync(It.IsAny<UserIdentityViewModel>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _authorizationController.RegisterUser(_userIdentityViewModel);
+            var response = _authorizationController.RegisterUser(UserIdentityViewModelFaker.GetViewModelValid());
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 
@@ -77,7 +71,7 @@ namespace Poc.Test.Api.Controllers
             _mockedAuthorizationApplication.Setup(x => x.LoginAsync(It.IsAny<LoginIdentityViewModel>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _authorizationController.Login(_loginIdentityViewModel);
+            var response = _authorizationController.Login(LoginIdentityViewModelFaker.GetViewModelValid());
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 
@@ -98,7 +92,7 @@ namespace Poc.Test.Api.Controllers
             _mockedAuthorizationApplication.Setup(x => x.LoginAsync(It.IsAny<LoginIdentityViewModel>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _authorizationController.Login(_loginIdentityViewModel);
+            var response = _authorizationController.Login(LoginIdentityViewModelFaker.GetViewModelValid());
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 

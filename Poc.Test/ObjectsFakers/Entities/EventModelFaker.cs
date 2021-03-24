@@ -1,5 +1,6 @@
 ﻿using Bogus;
 using Poc.Domain.Entities;
+using System.Collections.Generic;
 
 namespace Poc.Test.ObjectsFakers.Entities
 {
@@ -16,6 +17,19 @@ namespace Poc.Test.ObjectsFakers.Entities
                     f.Date.Recent().AddDays(4),
                     f.Random.Number(1, 10)
                     )).Generate();
+        }
+
+        public static List<EventModel> GetListModelValid()
+        {
+            return new Faker<EventModel>("pt_BR")
+                .CustomInstantiator(f => new EventModel(
+                    f.Random.Number(1, 100),
+                    f.Lorem.Sentence(2),
+                    f.Lorem.Sentence(4),
+                    f.Date.Recent().AddDays(1),
+                    f.Date.Recent().AddDays(4),
+                    f.Random.Number(1, 10)
+                    )).Generate(4);
         }
     }
 }

@@ -5,6 +5,7 @@ using Poc.Domain.Commands.Events;
 using Poc.Domain.Commands.Events.Validators;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Resources;
+using Poc.Test.ObjectsFakers.Command;
 using System;
 using Xunit;
 
@@ -27,7 +28,7 @@ namespace Poc.Test.Domain.Event.Command.Validators
         public void CheckEventExists_WhenTitleNotExist_ReturnShouldBeOk()
         {
             //Arrange 
-            var cmd = new AddEventCommand("Curso C#", "Curso para devs", DateTime.Parse("10/01/2021"), DateTime.Parse("11/01/2021"), 1);
+            var cmd = AddEventCommandFaker.GetCommandValid(); 
             _mockedEventRepository.Setup(x => x.TitleExists(It.IsAny<string>())).Returns(true);
 
             //Act
@@ -41,7 +42,7 @@ namespace Poc.Test.Domain.Event.Command.Validators
         public void CheckEventExists_WhenTitleExist_ReturnShouldBeError()
         {
             //Arrange 
-            var cmd = new AddEventCommand("Curso C#", "Curso para devs", DateTime.Parse("10/01/2021"), DateTime.Parse("11/01/2021"), 1);
+            var cmd = AddEventCommandFaker.GetCommandValid();
             _mockedEventRepository.Setup(x => x.TitleExists(It.IsAny<string>())).Returns(false);
 
             //Act

@@ -3,15 +3,14 @@ using Poc.Application.ViewModel;
 
 namespace Poc.Test.ObjectsFakers.ViewModel
 {
-    public class AddUserEventViewModelFaker : Faker<AddUserEventViewModel>
+    public static class AddUserEventViewModelFaker 
     {
-        public AddUserEventViewModelFaker()
+        public static AddUserEventViewModel GetViewModelValid()
         {
-            var eventId = new Faker().Random.Number(1, 99999);
-            var userId = new Faker().Random.Number(1, 99999);
-
-            RuleFor(x => x.EventoId, f => eventId);
-            RuleFor(x => x.UsuarioId, f => userId);
+            return new Faker<AddUserEventViewModel>("pt_BR")
+                 .RuleFor(x => x.EventoId, f => f.Random.Number(1, 99999))
+                 .RuleFor(x => x.UsuarioId, f => f.Random.Number(1, 99999))
+                 .Generate(); 
         }
     }
 }

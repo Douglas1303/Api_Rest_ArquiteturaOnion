@@ -61,7 +61,6 @@ namespace Poc.Application.Service
                     email);
 
                 return await _mediator.Send(command);
-                //if (!new EmailVo(addUserViewModel.Email).IsValid()) return new QueryResult("Email invalido.");
             }
             catch (Exception ex)
             {

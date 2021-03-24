@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using ExternalServices.Cep.Interface;
-using ExternalServices.Cep.Model;
 using Infra.CrossCutting.Core.CQRS;
 using Infra.CrossCutting.Models;
 using Microsoft.Extensions.Localization;
@@ -22,21 +21,18 @@ namespace Poc.Test.Application.Services
         private readonly Mock<ILogModel> _mockedLog;
         private readonly CepApplication _cepApplication;
 
-        private readonly CepModel _cepModel; 
-
         public CepApplicationTest()
         {
             _mockedCepService = new Mock<ICepService>();
             _mockedLocalizer = new Mock<IStringLocalizer<CepAppRsc>>();
             _mockedLog = new Mock<ILogModel>();
-            _cepModel = new CepModelFaker().Generate(); 
 
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile(new AutoMapperConfiguration());
             });
 
-            _mapperFake = new Mapper(config);  
+            _mapperFake = new Mapper(config);
 
             _cepApplication = new CepApplication(_mockedCepService.Object, _mapperFake, _mockedLocalizer.Object, _mockedLog.Object);
         }
@@ -44,11 +40,12 @@ namespace Poc.Test.Application.Services
         [Fact]
         public void GetCepAsync_WhenRepositoryIsValid_ReturnShouldBeOk()
         {
-            //Arrange 
-            _mockedCepService.Setup(x => x.GetAddressAsync(_cepModel.Cep)).ReturnsAsync(_cepModel);
+            //Arrange
+            var model = CepModelFaker.GetModelValid(); 
+            _mockedCepService.Setup(x => x.GetAddressAsync(model.Cep)).ReturnsAsync(model);
 
             //Act
-            var requestResult = _cepApplication.GetCepAsync(_cepModel.Cep);
+            var requestResult = _cepApplication.GetCepAsync(model.Cep);
 
             //Assert
             Assert.NotNull(requestResult);
@@ -62,11 +59,12 @@ namespace Poc.Test.Application.Services
         [Fact]
         public void GetCepAsync_WhenRepositoryReturnException_ReturnShouldBeError()
         {
-            //Arrange 
-            _mockedCepService.Setup(x => x.GetAddressAsync(_cepModel.Cep)).Throws(new Exception());
+            //Arrange
+            var model = CepModelFaker.GetModelValid();
+            _mockedCepService.Setup(x => x.GetAddressAsync(model.Cep)).Throws(new Exception());
 
             //Act
-            var requestResult = _cepApplication.GetCepAsync(_cepModel.Cep);
+            var requestResult = _cepApplication.GetCepAsync(model.Cep);
 
             //Assert
             Assert.NotNull(requestResult);

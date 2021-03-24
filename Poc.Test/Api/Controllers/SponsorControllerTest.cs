@@ -5,21 +5,17 @@ using Poc.Api.Controllers;
 using Poc.Application.Interface;
 using Poc.Application.ViewModel;
 using Poc.Test.ObjectsFakers.ViewModel;
-using System.Collections.Generic;
 using Xunit;
 
 namespace Poc.Test.Api.Controllers
 {
-    public class SponsorControllerTest : AddSponsorViewModelFaker
+    public class SponsorControllerTest
     {
         private readonly Mock<ISponsorApplication> _mockedSponsorApplication;
         private readonly SponsorController _sponsorController;
-        private readonly List<SponsorViewModel> _listSponsorViewModel; 
 
         public SponsorControllerTest()
         {
-            _listSponsorViewModel = new SponsorViewModelFaker().Generate(5); 
-
             _mockedSponsorApplication = new Mock<ISponsorApplication>();
 
             _sponsorController = new SponsorController(_mockedSponsorApplication.Object);
@@ -29,7 +25,7 @@ namespace Poc.Test.Api.Controllers
         public void GetAll_WhenServiceReturnsItems_ReturnShouldBeOk()
         {
             //Arrange
-            IResult result = new QueryResult(_listSponsorViewModel);
+            IResult result = new QueryResult(SponsorViewModelFaker.GetViewModelValid());
 
             _mockedSponsorApplication.Setup(x => x.GetAllAsync()).ReturnsAsync(result);
 
@@ -55,7 +51,7 @@ namespace Poc.Test.Api.Controllers
             _mockedSponsorApplication.Setup(x => x.AddAsync(It.IsAny<AddSponsorViewModel>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _sponsorController.AddAsync(GetAddSponsorViewModelFaker());
+            var response = _sponsorController.AddAsync(AddSponsorViewModelFaker.GetViewModelValid());
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 

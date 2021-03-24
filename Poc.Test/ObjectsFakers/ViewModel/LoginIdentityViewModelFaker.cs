@@ -3,12 +3,14 @@ using Poc.Application.ViewModel.Identity;
 
 namespace Poc.Test.ObjectsFakers.ViewModel
 {
-    public class LoginIdentityViewModelFaker : Faker<LoginIdentityViewModel>
+    public static class LoginIdentityViewModelFaker 
     {
-        public LoginIdentityViewModelFaker()
+        public static LoginIdentityViewModel GetViewModelValid()
         {
-            RuleFor(x => x.Email, f => f.Person.Email);
-            RuleFor(x => x.Password, f => f.Internet.Password());
+            return new Faker<LoginIdentityViewModel>("pt_BR")
+            .RuleFor(x => x.Email, f => f.Person.Email)
+            .RuleFor(x => x.Password, f => f.Internet.Password())
+            .Generate(); 
         }
     }
 }

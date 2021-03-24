@@ -1,10 +1,6 @@
-﻿using Bogus;
-using Bogus.Extensions.Brazil;
-using Microsoft.Extensions.Localization;
+﻿using Microsoft.Extensions.Localization;
 using Moq;
-using Poc.Domain.Commands.Sponsor;
 using Poc.Domain.Commands.Sponsor.Validators;
-using Poc.Domain.Enum;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Resources;
 using Poc.Test.ObjectsFakers.Command;
@@ -16,14 +12,11 @@ namespace Poc.Test.Domain.Sponsor.Command.Validators
     {
         private readonly Mock<ISponsorRepository> _mockedSponsorRepository;
         private readonly AddSponsorCommandDeepValidator Validator;
-        private readonly Faker _faker;
 
         public AddSponsorCommandDeepValidatorTest()
         {
             _mockedSponsorRepository = new Mock<ISponsorRepository>();
             var mockLocalizer = new Mock<IStringLocalizer<AddSponsorRsc>>();
-
-            _faker = new Faker();
 
             Validator = new AddSponsorCommandDeepValidator(_mockedSponsorRepository.Object, mockLocalizer.Object);
         }
@@ -33,7 +26,7 @@ namespace Poc.Test.Domain.Sponsor.Command.Validators
         {
             _mockedSponsorRepository.Setup(x => x.NameSponsorExists(It.IsAny<string>())).Returns(true);
 
-            var cmd = AddSponsorCommandFaker.GetCommandValid(); 
+            var cmd = AddSponsorCommandFaker.GetCommandValid();
 
             FluentValidation.Results.ValidationResult result = Validator.Validate(cmd);
 
@@ -45,7 +38,7 @@ namespace Poc.Test.Domain.Sponsor.Command.Validators
         {
             _mockedSponsorRepository.Setup(x => x.NameSponsorExists(It.IsAny<string>())).Returns(false);
 
-            var cmd = AddSponsorCommandFaker.GetCommandValid(); 
+            var cmd = AddSponsorCommandFaker.GetCommandValid();
 
             FluentValidation.Results.ValidationResult result = Validator.Validate(cmd);
 

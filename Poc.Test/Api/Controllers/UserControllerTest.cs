@@ -1,14 +1,13 @@
 ﻿using ExternalServices.Cep.Interface;
 using ExternalServices.Cep.Model;
 using Infra.CrossCutting.Core.CQRS;
+using Infra.CrossCutting.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Poc.Api.Controllers;
 using Poc.Application.Interface;
 using Poc.Application.ViewModel;
 using Poc.Test.ObjectsFakers.ViewModel;
-using System;
-using System.Collections.Generic;
 using Xunit;
 
 namespace Poc.Test.Api.Controllers
@@ -17,15 +16,14 @@ namespace Poc.Test.Api.Controllers
     {
         private readonly Mock<IUserApplication> _mockedUserApplication;
         private readonly Mock<ICepService> _mockedCepService;
+        private readonly Mock<ControllerContext> _mockedControllerContext;
         private readonly UserController _userController;
-        private readonly List<UserViewModel> _listUserViewModel;
 
         public UserControllerTest()
         {
-            _listUserViewModel = new UserViewModelFaker().Generate(10);
-
             _mockedUserApplication = new Mock<IUserApplication>();
             _mockedCepService = new Mock<ICepService>();
+            _mockedControllerContext = new Mock<ControllerContext>();
             _userController = new UserController(_mockedUserApplication.Object, _mockedCepService.Object);
         }
 
@@ -33,7 +31,7 @@ namespace Poc.Test.Api.Controllers
         public void GetAll_WhenServiceReturnsItems_ReturnShouldBeOk()
         {
             //Arrange
-            IResult result = new QueryResult(_listUserViewModel);
+            IResult result = new QueryResult(UserViewModelFaker.GetListViewModelValid());
 
             _mockedUserApplication.Setup(x => x.GetAllAsync()).ReturnsAsync(result);
 
@@ -54,13 +52,15 @@ namespace Poc.Test.Api.Controllers
         //public void Add_WhenServiceIsValid_ReturnShouldBeOk()
         //{
         //    IResult commandResult = new CommandResult();
+        //    var viewModel = AddUserViewModelFaker.GetViewModelValid();
 
         //    //Arrange
-        //    _mockedCepService.Setup(x => x.GetAddressAsync("57300180")).ReturnsAsync(new CepModel());
+        //    _mockedCepService.Setup(x => x.GetAddressAsync(viewModel.Cep)).ReturnsAsync(new CepModel());
+        //    _mockedControllerContext.Setup(x => x.HttpContext.User.Identity.GetEmailUser()).Returns("teste@gmail.com");
         //    _mockedUserApplication.Setup(x => x.AddAsync(It.IsAny<AddUserViewModel>(), "teste@gmail.com")).ReturnsAsync(commandResult);
 
         //    //Act
-        //    var response = _userController.Add(GetAddUserViewModel());
+        //    var response = _userController.Add(viewModel);
         //    var objectResult = response.Result as OkObjectResult;
         //    var content = objectResult.Value as IResult;
 
@@ -70,16 +70,5 @@ namespace Poc.Test.Api.Controllers
         //    Assert.NotEmpty(content.Messages);
         //    Assert.Equal(StatusResult.Ok, content.Status);
         //}
-
-        private AddUserViewModel GetAddUserViewModel()
-        {
-            return new AddUserViewModel
-            {
-                NomeCompleto = "Name User",
-                Cpf = "12883245029",
-                DataNascimento = "01/08/1990",
-                Cep = "57300180"
-            };
-        }
     }
 }
