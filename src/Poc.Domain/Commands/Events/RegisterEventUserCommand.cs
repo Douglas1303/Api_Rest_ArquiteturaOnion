@@ -5,13 +5,13 @@ namespace Poc.Domain.Commands.Events
 {
     public class RegisterEventUserCommand : Command
     {
-        public RegisterEventUserCommand(int usuarioId, int eventoId)
+        public RegisterEventUserCommand(string userId, int eventId)
         {
-            UsuarioId = usuarioId;
-            EventoId = eventoId;
+            UserId = userId;
+            EventId = eventId;
         }
 
-        public int UsuarioId { get; private set; }
-        public int EventoId { get; private set; }
+        public string UserId { get; private set; }
+        public int EventId { get; private set; }
     }
 }

@@ -7,6 +7,7 @@ using Poc.Application.Interface;
 using Poc.Application.Service.Base;
 using Poc.Application.ViewModel;
 using Poc.Domain.Commands.Events;
+using Poc.Domain.Helper.Interface;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Resources.Application;
 using Poc.Domain.Resources.ExtensionMethods;
@@ -19,6 +20,7 @@ namespace Poc.Application.Service
     public class EventApplication : BaseApplicationService, IEventApplication
     {
         private readonly IEventRepository _eventRepository;
+        private readonly IAuthenticatedUser _user;
         private readonly IStringLocalizer<EventAppRsc> Localizer;
 
         #region Constantes
@@ -31,10 +33,11 @@ namespace Poc.Application.Service
         private const string RemoveEventError = "RemoveEventError";
         #endregion
 
-        public EventApplication(IEventRepository eventRepository, IMediatorHandler mediatorHandler, IMapper mapper, 
+        public EventApplication(IEventRepository eventRepository, IAuthenticatedUser user, IMediatorHandler mediatorHandler, IMapper mapper, 
                                 ILogModel logModel, IStringLocalizer<EventAppRsc> localizer) : base(mediatorHandler, mapper, logModel)
         {
             _eventRepository = eventRepository;
+            _user = user; 
             Localizer = localizer; 
         }
 
@@ -111,13 +114,13 @@ namespace Poc.Application.Service
             }
         }
 
-        public async Task<IResult> RegisterAsync(AddUserEventViewModel addUserEventViewModel)
+        public async Task<IResult> RegisterAsync(int eventId)
         {
             try
             {
                 var command = new RegisterEventUserCommand(
-                    addUserEventViewModel.UsuarioId,
-                    addUserEventViewModel.EventoId);
+                    _user.UserId,
+                    eventId);
 
                 return await _mediatorHandler.SendCommand(command);
             }

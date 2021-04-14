@@ -11,6 +11,7 @@ namespace Poc.Test.ObjectsFakers.Entities
         {
             return new Faker<UserModel>("pt_BR")
                 .CustomInstantiator(f => new UserModel(
+                    f.Random.Guid(),
                     f.Person.FullName, 
                     f.Person.Cpf(),
                     f.Date.Past().AddYears(-18),

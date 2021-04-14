@@ -131,10 +131,10 @@ namespace Poc.Test.Api.Controllers
             IResult commandResult = new CommandResult();
 
             //Arrange
-            _mockedEventApplication.Setup(x => x.RegisterAsync(It.IsAny<AddUserEventViewModel>())).ReturnsAsync(commandResult);
+            _mockedEventApplication.Setup(x => x.RegisterAsync(It.IsAny<int>())).ReturnsAsync(commandResult);
 
             //Act
-            var response = _eventController.RegisterUserEvent(AddUserEventViewModelFaker.GetViewModelValid());
+            var response = _eventController.RegisterUserEvent(1);
             var objectResult = response.Result as OkObjectResult;
             var content = objectResult.Value as IResult;
 

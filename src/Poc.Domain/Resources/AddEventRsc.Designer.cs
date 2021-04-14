@@ -61,6 +61,15 @@ namespace Poc.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Id da categoria não existe. .
+        /// </summary>
+        internal static string CategoryExists {
+            get {
+                return ResourceManager.GetString("CategoryExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CategoriaId precisa ser informado. .
         /// </summary>
         internal static string CategoryIdNullErrror {
@@ -93,6 +102,15 @@ namespace Poc.Domain.Resources {
         internal static string InitialDateIsEmptyErrror {
             get {
                 return ResourceManager.GetString("InitialDateIsEmptyErrror", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Id da categoria não existe. .
+        /// </summary>
+        internal static string String1 {
+            get {
+                return ResourceManager.GetString("String1", resourceCulture);
             }
         }
         

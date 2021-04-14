@@ -34,7 +34,7 @@ namespace Poc.Test.Domain.Event.CommandHandler
         {
             //Arrange
             var command = RegisterEventUserCommandFaker.GetCommandValid(); 
-            _mockedEventRepository.Setup(x => x.HasEventToUser(200, 300)).Returns(true);
+            _mockedEventRepository.Setup(x => x.HasEventToUser(200, new Guid())).Returns(true);
             _mockedEventRepository.Setup(x => x.Register(It.IsAny<SubscriptionModel>())).Verifiable();
 
             //Act
@@ -50,7 +50,7 @@ namespace Poc.Test.Domain.Event.CommandHandler
         {
             //Arrange
             var command = RegisterEventUserCommandFaker.GetCommandValid();
-            _mockedEventRepository.Setup(x => x.HasEventToUser(command.EventoId, command.UsuarioId)).Returns(true);
+            _mockedEventRepository.Setup(x => x.HasEventToUser(command.EventId, Guid.Parse(command.UserId))).Returns(true);
             _mockedEventRepository.Setup(x => x.Register(It.IsAny<SubscriptionModel>())).Verifiable();
 
             //Act
@@ -66,7 +66,7 @@ namespace Poc.Test.Domain.Event.CommandHandler
         {
             //Arrange
             var command = RegisterEventUserCommandFaker.GetCommandValid();
-            _mockedEventRepository.Setup(x => x.HasEventToUser(It.IsAny<int>(), It.IsAny<int>())).Throws(new Exception());
+            _mockedEventRepository.Setup(x => x.HasEventToUser(It.IsAny<int>(), It.IsAny<Guid>())).Throws(new Exception());
 
             //Act
             var response = _commandHandler.Handle(command, new CancellationToken()).Result;

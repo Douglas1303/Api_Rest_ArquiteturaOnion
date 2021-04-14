@@ -84,7 +84,7 @@ namespace Infra.Data.Repository
         {
             try
             {
-                 _context.Subscription.AddAsync(eventUserModel);
+                 _context.Subscriptions.AddAsync(eventUserModel);
             }
             catch (Exception ex)
             {
@@ -138,7 +138,7 @@ namespace Infra.Data.Repository
         {
             try
             {
-                _context.Subscription.RemoveRange(_context.Subscription.Where(x => x.EventoId.Equals(eventId)));
+                _context.Subscriptions.RemoveRange(_context.Subscriptions.Where(x => x.EventoId.Equals(eventId)));
             }
             catch (Exception ex)
             {
@@ -177,11 +177,11 @@ namespace Infra.Data.Repository
             }
         }
 
-        public bool UserIdExists(int userId)
+        public bool UserIdExists(Guid userId)
         {
             try
             {
-                var userExists = _context.Users.Where(x => x.Id == userId).Count();
+                var userExists = _context.Users.Where(x => x.UsuarioId == userId).Count();
 
                 return userExists > 0;
             }
@@ -192,7 +192,7 @@ namespace Infra.Data.Repository
             }
         }
 
-        public bool HasEventToUser(int eventId, int userId)
+        public bool HasEventToUser(int eventId, Guid userId)
         {
             try
             {
@@ -201,7 +201,7 @@ namespace Infra.Data.Repository
                 //             e.UsuarioId.Equals(userId)
                 //             select e)?.Count();
 
-                var count = _context.Subscription.Where(x => x.EventoId == eventId && x.UsuarioId == userId).Count(); 
+                var count = _context.Subscriptions.Where(x => x.EventoId == eventId && x.UsuarioId == userId).Count(); 
 
                 return count > 0; //Se for maior que zero retorna True
             }
@@ -219,6 +219,21 @@ namespace Infra.Data.Repository
                 var eventTitle = _context.Events.Where(x => x.Titulo == titulo).Count();
 
                 return eventTitle <= 0; 
+            }
+            catch (Exception ex)
+            {
+                _log.RecLog(ex);
+                throw;
+            }
+        }
+
+        public bool CategoryExists(int categoryId)
+        {
+            try
+            {
+                var category = _context.Categories.Where(x => x.Id == categoryId).Count();
+
+                return category > 0; 
             }
             catch (Exception ex)
             {

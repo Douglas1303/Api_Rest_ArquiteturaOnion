@@ -29,8 +29,6 @@ using Poc.Domain.Commands.Events;
 using Poc.Domain.Commands.File;
 using Poc.Domain.Commands.Sponsor;
 using Poc.Domain.Commands.Users;
-using Poc.Domain.Entities;
-using Poc.Domain.Entities.Validations;
 using Poc.Domain.Helper;
 using Poc.Domain.Helper.Interface;
 using Poc.Domain.Interface.Base;
@@ -112,7 +110,7 @@ namespace Infra.CrossCutting.IoC
             services.AddScoped<ICepService, CepService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<IAuthenticatedUser, AuthenticatedUser>(); 
+            services.AddScoped<IAuthenticatedUser, AuthenticatedUser>();
 
             ServiceProvider = services.BuildServiceProvider();
         }

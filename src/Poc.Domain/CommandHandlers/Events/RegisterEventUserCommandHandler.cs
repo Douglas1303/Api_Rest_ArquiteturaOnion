@@ -31,11 +31,11 @@ namespace Poc.Domain.CommandHandlers.Events
 
         public async Task<IResult> Handle(RegisterEventUserCommand request, CancellationToken cancellationToken)
         {
-            var model = new SubscriptionModel(request.UsuarioId, request.EventoId);
+            var model = new SubscriptionModel(Guid.Parse(request.UserId), request.EventId);
 
             try
             {
-                if (_eventRepository.HasEventToUser(request.EventoId, request.UsuarioId))
+                if (_eventRepository.HasEventToUser(request.EventId, Guid.Parse(request.UserId)))
                 {
                     return new CommandResult(Localizer.GetMsg(RegisteredUserInfo));
                 }
@@ -44,7 +44,7 @@ namespace Poc.Domain.CommandHandlers.Events
 
                 await _unitOfWork.Commit();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 var cmdResult = new CommandResult();
                 cmdResult.AddErrorMessage(Localizer.GetMsg(RegisterEventError));

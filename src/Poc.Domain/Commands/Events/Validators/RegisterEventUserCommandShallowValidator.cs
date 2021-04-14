@@ -13,15 +13,14 @@ namespace Poc.Domain.Commands.Events.Validators
 
         public RegisterEventUserCommandShallowValidator(IStringLocalizer<RegisterEventUserRsc> localizer) : base(localizer)
         {
-            RuleFor(c => c.EventoId)
+            RuleFor(c => c.EventId)
                 .NotNull()
                 .GreaterThan(0)
                .WithMessage(x => GetMessage(EventIdInvalidError))
                .WithErrorCode(EventIdInvalidError);
 
-            RuleFor(c => c.UsuarioId)
-                .NotNull()
-                .GreaterThan(0)
+            RuleFor(c => c.UserId)
+                .NotEmpty()
                .WithMessage(x => GetMessage(UserIdNotInvalidError))
                .WithErrorCode(UserIdNotInvalidError);
         }

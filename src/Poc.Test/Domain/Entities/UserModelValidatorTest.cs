@@ -44,12 +44,12 @@ namespace Poc.Test.Domain.Entities
 
         private UserModel GetValidUserModel()
         {
-            return new UserModel(_faker.Person.FirstName, _faker.Person.Cpf().Replace("-", "").Replace(".", ""), DateTime.Parse("10/01/1996"), "teste@gmail.com");
+            return new UserModel(_faker.Random.Guid(), _faker.Person.FirstName, _faker.Person.Cpf().Replace("-", "").Replace(".", ""), DateTime.Parse("10/01/1996"), "teste@gmail.com");
         }
 
         private UserModel GetInvalidUserModel()
         {
-            return new UserModel(string.Empty, "292453510763231313", DateTime.Parse("10/01/1996"), "test.com.br");
+            return new UserModel(_faker.Random.Guid(), string.Empty, "292453510763231313", DateTime.Parse("10/01/1996"), "test.com.br");
         }
     }
 }

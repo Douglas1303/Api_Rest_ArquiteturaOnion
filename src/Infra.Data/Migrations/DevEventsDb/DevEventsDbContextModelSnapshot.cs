@@ -24,12 +24,12 @@ namespace Infra.Data.Migrations.DevEventsDb
                     b.Property<int>("EventosId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UsuariosId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("UsuariosUsuarioId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("EventosId", "UsuariosId");
+                    b.HasKey("EventosId", "UsuariosUsuarioId");
 
-                    b.HasIndex("UsuariosId");
+                    b.HasIndex("UsuariosUsuarioId");
 
                     b.ToTable("EventModelUserModel");
                 });
@@ -97,8 +97,8 @@ namespace Infra.Data.Migrations.DevEventsDb
                     b.Property<int>("EventoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UsuarioId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("UsuarioId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
@@ -107,15 +107,14 @@ namespace Infra.Data.Migrations.DevEventsDb
 
                     b.HasIndex("UsuarioId");
 
-                    b.ToTable("Subscription");
+                    b.ToTable("Subscriptions");
                 });
 
             modelBuilder.Entity("Poc.Domain.Entities.UserModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("UsuarioId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Ativo")
                         .HasColumnType("bit");
@@ -135,7 +134,7 @@ namespace Infra.Data.Migrations.DevEventsDb
                     b.Property<string>("NomeCompleto")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("UsuarioId");
 
                     b.ToTable("Users");
                 });
@@ -150,7 +149,7 @@ namespace Infra.Data.Migrations.DevEventsDb
 
                     b.HasOne("Poc.Domain.Entities.UserModel", null)
                         .WithMany()
-                        .HasForeignKey("UsuariosId")
+                        .HasForeignKey("UsuariosUsuarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

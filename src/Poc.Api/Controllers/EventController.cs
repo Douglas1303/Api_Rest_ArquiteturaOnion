@@ -42,10 +42,10 @@ namespace Poc.Api.Controllers
             return Ok(await _eventApplication.UpdateAsync(updateEventViewModel));
         }
 
-        [HttpPost("RegisterUserEvent")]
-        public async Task<IActionResult> RegisterUserEvent([FromBody] AddUserEventViewModel addUserEventViewModel)
+        [HttpPatch("Inscricao")]
+        public async Task<IActionResult> RegisterUserEvent(int eventId)
         {
-            return Ok(await _eventApplication.RegisterAsync(addUserEventViewModel));
+            return Ok(await _eventApplication.RegisterAsync(eventId));
         }
 
         [HttpPut("Desabilitar/{id=int}")]

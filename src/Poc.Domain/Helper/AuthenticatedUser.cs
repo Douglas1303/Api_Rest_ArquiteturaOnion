@@ -19,7 +19,9 @@ namespace Poc.Domain.Helper
 
         private string Email => _accessor.HttpContext.User.Identity.Name;
         private string Name => GetClaimsIdentity().FirstOrDefault(a => a.Type == ClaimTypes.NameIdentifier)?.Value;
-        private string Id => _accessor.HttpContext.User.FindFirst(CustomClaimTypes.Sid).ToString();
+        private string Id => _accessor.HttpContext.User.Identity.GetId().ToString(); 
+
+
 
         public IEnumerable<Claim> GetClaimsIdentity()
         {

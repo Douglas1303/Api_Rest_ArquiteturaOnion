@@ -13,11 +13,11 @@ namespace Infra.Data.Context
         public DbSet<CategoryModel> Categories { get; set; }
         public DbSet<EventModel> Events { get; set; }
         public DbSet<UserModel> Users { get; set; }
-        public DbSet<SubscriptionModel> Subscription { get; set; }
+        public DbSet<SubscriptionModel> Subscriptions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(DevEventsDbContext).Assembly); 
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(DevEventsDbContext).Assembly);
 
             modelBuilder.Entity<EventModel>()
                 .Property(e => e.Titulo)
@@ -42,6 +42,8 @@ namespace Infra.Data.Context
             modelBuilder.Entity<EventModel>()
                 .HasMany(e => e.Usuarios);
 
+            modelBuilder.Entity<UserModel>()
+                .HasKey(x => x.UsuarioId); 
 
             //modelBuilder.Entity<SubscriptionModel>()
             //   .HasKey(i => i.Id);

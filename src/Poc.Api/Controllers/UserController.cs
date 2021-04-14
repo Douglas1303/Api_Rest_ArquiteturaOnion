@@ -34,7 +34,7 @@ namespace Poc.Api.Controllers
 
             var cep = new CepUserViewModel(address.Cep, address.Logradouro, address.Complemento, address.Bairro, address.Localidade, address.UF, address.DDD);
 
-            return Ok(await _userApplication.AddAsync(addUserViewModel, User.Identity.GetEmailUser()));
+            return Ok(await _userApplication.AddAsync(addUserViewModel));
         }
 
         //[ClaimsAuthorize("Identity", "Incluir")]
@@ -43,7 +43,7 @@ namespace Poc.Api.Controllers
         {
             var tt = User.Identity.GetId();
             var name = _user.EmailUser;
-            var id = _user.UserId;
+            var id = _user.UserId; 
             var aaaa = User.Identity.GetEmailUser();
             var user = User?.Claims;
 

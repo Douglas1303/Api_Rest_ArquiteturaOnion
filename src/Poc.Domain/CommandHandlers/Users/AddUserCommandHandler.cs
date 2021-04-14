@@ -30,7 +30,7 @@ namespace Poc.Domain.CommandHandlers.Users
 
         public async Task<IResult> Handle(AddUserCommand request, CancellationToken cancellationToken)
         {
-            var model = new UserModel(request.NomeCompleto, request.Cpf, request.DataNascimento, request.Email);
+            var model = new UserModel(Guid.Parse(request.Id), request.NomeCompleto, request.Cpf, request.DataNascimento, request.Email);
 
             try
             {

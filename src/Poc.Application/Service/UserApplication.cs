@@ -8,6 +8,7 @@ using Poc.Application.Interface;
 using Poc.Application.Service.Base;
 using Poc.Application.ViewModel;
 using Poc.Domain.Commands.Users;
+using Poc.Domain.Helper.Interface;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Resources.Application;
 using Poc.Domain.Resources.ExtensionMethods;
@@ -22,6 +23,7 @@ namespace Poc.Application.Service
         private readonly IUserRepository _userRepository;
         private readonly IMediator _mediator;
         private readonly IStringLocalizer<UserAppRsc> Localizer;
+        private readonly IAuthenticatedUser _user;
 
         #region
         private const string GetAllUserError = "GetAllUserError"; 
@@ -29,12 +31,13 @@ namespace Poc.Application.Service
         #endregion
 
         public UserApplication(IUserRepository userRepository, IMediatorHandler mediatorHandler, IMapper mapper, 
-                                ILogModel logModel, IMediator mediator, IStringLocalizer<UserAppRsc> localizer)
+                                ILogModel logModel, IMediator mediator, IStringLocalizer<UserAppRsc> localizer, IAuthenticatedUser user)
                                 : base(mediatorHandler, mapper, logModel)
         {
             _userRepository = userRepository;
             _mediator = mediator;
-            Localizer = localizer; 
+            Localizer = localizer;
+            _user = user; 
         }
 
         public async Task<IResult> GetAllAsync()
@@ -50,15 +53,16 @@ namespace Poc.Application.Service
             }
         }
 
-        public async Task<IResult> AddAsync(AddUserViewModel addUserViewModel, string email)
+        public async Task<IResult> AddAsync(AddUserViewModel addUserViewModel)
         {
             try
             {
                 var command = new AddUserCommand(
+                    _user.UserId,
                     addUserViewModel.NomeCompleto,
                     addUserViewModel.Cpf,
                     DateTime.Parse(addUserViewModel.DataNascimento),
-                    email);
+                    _user.EmailUser);
 
                 return await _mediator.Send(command);
             }

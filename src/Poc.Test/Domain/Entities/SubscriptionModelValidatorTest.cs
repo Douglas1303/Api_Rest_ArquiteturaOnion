@@ -1,5 +1,6 @@
 ﻿using Poc.Domain.Entities;
 using Poc.Domain.Entities.Validations;
+using System;
 using Xunit;
 
 namespace Poc.Test.Domain.Entities
@@ -36,12 +37,12 @@ namespace Poc.Test.Domain.Entities
 
         private SubscriptionModel GetValidSubscriptionModel()
         {
-            return new SubscriptionModel(10, 20);
+            return new SubscriptionModel(new Guid(),20);
         }
 
         private SubscriptionModel GetInvalidSubscriptionModel()
         {
-            return new SubscriptionModel(-1, -1);
+            return new SubscriptionModel(new Guid(), -1);
         }
     }
 }

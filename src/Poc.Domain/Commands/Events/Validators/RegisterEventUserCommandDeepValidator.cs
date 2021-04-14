@@ -4,6 +4,7 @@ using Microsoft.Extensions.Localization;
 using Poc.Domain.Commands.BaseValidators;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Resources;
+using System;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Test")]
@@ -24,12 +25,12 @@ namespace Poc.Domain.Commands.Events.Validators
 
         private void Validations()
         {
-            RuleFor(x => x.EventoId)
+            RuleFor(x => x.EventId)
                 .Must(CheckEventExists)
                 .WithErrorCode(EventIdNotExistsError)
                 .WithMessage(x => GetMessage(EventIdNotExistsError));
 
-            RuleFor(x => x.UsuarioId)
+            RuleFor(x => x.UserId)
                 .Must(CheckUserExists)
                 .WithErrorCode(UserIdNotExistsError)
                 .WithMessage(x => GetMessage(UserIdNotExistsError));
@@ -40,9 +41,9 @@ namespace Poc.Domain.Commands.Events.Validators
             return _eventRepository.EventIdExists(eventId);
         }
 
-        private bool CheckUserExists(int userId)
+        private bool CheckUserExists(string userId)
         {
-            return _eventRepository.UserIdExists(userId);
+            return _eventRepository.UserIdExists(Guid.Parse(userId));
         }
     }
 }

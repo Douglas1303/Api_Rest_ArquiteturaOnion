@@ -10,6 +10,7 @@ using Moq;
 using Poc.Application.AutoMapper;
 using Poc.Application.Service;
 using Poc.Domain.Entities;
+using Poc.Domain.Helper.Interface;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Resources.Application;
 using Poc.Test.ObjectsFakers.Entities;
@@ -27,6 +28,7 @@ namespace Poc.Test.Application.Services
         private readonly Mock<IMediatorHandler> _mockedMediatorHandler;
         private readonly IMapper _mapperFake;
         private readonly Mock<ILogModel> _mockedLog;
+        private readonly Mock<IAuthenticatedUser> _mockedUser;
         private readonly Mock<IStringLocalizer<UserAppRsc>> _mockedLocalizer;
         private readonly UserApplication _userApplication;
 
@@ -38,6 +40,7 @@ namespace Poc.Test.Application.Services
             _mockedMediator = new Mock<IMediator>();
             _mockedMediatorHandler = new Mock<IMediatorHandler>();
             _mockedLog = new Mock<ILogModel>();
+            _mockedUser = new Mock<IAuthenticatedUser>(); 
             _mockedLocalizer = new Mock<IStringLocalizer<UserAppRsc>>();
 
             _faker = new Faker();
@@ -51,7 +54,7 @@ namespace Poc.Test.Application.Services
 
             _userApplication = new UserApplication(_mockedUserRepository.Object, _mockedMediatorHandler.Object,
                                                     _mapperFake, _mockedLog.Object, _mockedMediator.Object,
-                                                    _mockedLocalizer.Object);
+                                                    _mockedLocalizer.Object, _mockedUser.Object);
         }
 
         [Fact]
@@ -101,7 +104,7 @@ namespace Poc.Test.Application.Services
             _mockedUserRepository.Setup(x => x.UserExists(It.IsAny<string>())).Returns(true);
 
             //Act
-            var requestResult = _userApplication.AddAsync(AddUserViewModelFaker.GetViewModelValid(), _faker.Person.Email);
+            var requestResult = _userApplication.AddAsync(AddUserViewModelFaker.GetViewModelValid());
 
             // Assert
             Assert.NotNull(requestResult);
@@ -118,7 +121,7 @@ namespace Poc.Test.Application.Services
             _mockedMediator.Setup(x => x.Send(It.IsAny<Command>(), It.IsAny<CancellationToken>())).Throws(new Exception());
 
             //Act
-            var requestResult = _userApplication.AddAsync(AddUserViewModelFaker.GetViewModelValid(), _faker.Person.Email);
+            var requestResult = _userApplication.AddAsync(AddUserViewModelFaker.GetViewModelValid());
 
             //Assert
             Assert.NotNull(requestResult);
