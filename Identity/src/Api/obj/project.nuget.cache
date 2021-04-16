@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "cJCuwV+Y4FGJzynZeKZkeRge5/1F9vIMcQ7UywatTSTCKf8zIujuu7+lLGaBY1uBedmaiQVSDjCwVIdkEsuaog==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\douglas.sousa\\Desktop\\POC\\Api_Rest_ArquiteturaOnion\\DevEvents\\src\\Api\\Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\douglas.sousa\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.13\\microsoft.netcore.app.host.win-x64.3.1.13.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,8 @@
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\src\Domain\bin\Debug\netcoreapp3.1\Domain.deps.json
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\src\Domain\bin\Debug\netcoreapp3.1\Domain.dll
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\src\Domain\bin\Debug\netcoreapp3.1\Domain.pdb
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\src\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfoInputs.cache
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\src\Domain\obj\Debug\netcoreapp3.1\Domain.AssemblyInfo.cs
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\src\Domain\obj\Debug\netcoreapp3.1\Domain.csproj.CoreCompileInputs.cache
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\src\Domain\obj\Debug\netcoreapp3.1\Domain.dll
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\src\Domain\obj\Debug\netcoreapp3.1\Domain.pdb

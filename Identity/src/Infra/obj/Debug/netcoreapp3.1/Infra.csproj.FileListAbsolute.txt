@@ -1,0 +1,8 @@
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\src\Infra\bin\Debug\netcoreapp3.1\Infra.deps.json
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\src\Infra\bin\Debug\netcoreapp3.1\Infra.dll
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\src\Infra\bin\Debug\netcoreapp3.1\Infra.pdb
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\src\Infra\obj\Debug\netcoreapp3.1\Infra.AssemblyInfoInputs.cache
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\src\Infra\obj\Debug\netcoreapp3.1\Infra.AssemblyInfo.cs
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\src\Infra\obj\Debug\netcoreapp3.1\Infra.csproj.CoreCompileInputs.cache
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\src\Infra\obj\Debug\netcoreapp3.1\Infra.dll
+C:\Users\douglas.sousa\Desktop\POC\Api_Rest_ArquiteturaOnion\src\Infra\obj\Debug\netcoreapp3.1\Infra.pdb
