@@ -43,7 +43,7 @@ namespace Infra.Data.Repository
 
                 parameters.Add("@Id", 0, direction: ParameterDirection.Output);
                 parameters.Add("@NomePatrocinador", dto.NomePatrocinador); 
-                parameters.Add("@Documento", dto.Documento); 
+                parameters.Add("@Documento", dto.Documento);
                 parameters.Add("@Telefone", dto.Telefone); 
                 parameters.Add("@Cep", dto.Cep); 
                 parameters.Add("@Logradouro", dto.Logradouro); 

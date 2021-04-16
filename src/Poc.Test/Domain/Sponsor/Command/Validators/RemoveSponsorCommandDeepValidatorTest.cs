@@ -27,7 +27,7 @@ namespace Poc.Test.Domain.Sponsor.Command.Validators
         [Fact]
         public void SponsorExists_WhenSponsorExists_ReturnShouldBeOk()
         {
-            _mockedSponsorRepository.Setup(x => x.SponsorExists(It.IsAny<int>())).ReturnsAsync(new SponsorDto());
+            _mockedSponsorRepository.Setup(x => x.SponsorExists(It.IsAny<int>())).ReturnsAsync(It.IsAny<SponsorDto>());
 
             var cmd = RemoveSponsorCommandFaker.GetCommandValid(); 
 

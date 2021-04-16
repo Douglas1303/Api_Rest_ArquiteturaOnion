@@ -4,6 +4,7 @@ using Microsoft.Extensions.Localization;
 using Poc.Domain.Commands.BaseValidators;
 using Poc.Domain.Interface.Repository;
 using Poc.Domain.Resources;
+using System;
 
 namespace Poc.Domain.Commands.Sponsor.Validators
 {

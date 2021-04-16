@@ -31,7 +31,7 @@
             DDD = ddd;
         }
 
-        public SponsorDto()
+        private SponsorDto()
         {
         }
 

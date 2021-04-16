@@ -31,11 +31,12 @@ namespace Poc.Domain.CommandHandlers.Sponsor
         public async Task<IResult> Handle(AddSponsorCommand request, CancellationToken cancellationToken)
         {
             var cepNumber = request.Cep.Replace("-", "").Replace(".", "");
+            var phoneNumber = request.Telefone.Replace("(", "").Replace(")", "").Replace(" ", "").Replace("-", ""); 
 
             var dto = new SponsorDto(
                     request.NomePatrocinador,
                     request.Documento,
-                    request.Telefone,
+                    phoneNumber,
                     cepNumber,
                     request.Logradouro,
                     request.Complemento,

@@ -5,6 +5,7 @@ using Poc.Domain.Commands.BaseValidators;
 using Poc.Domain.Enum;
 using Poc.Domain.Resources;
 using Poc.Domain.ValueObjects;
+using System;
 
 namespace Poc.Domain.Commands.Sponsor.Validators
 {

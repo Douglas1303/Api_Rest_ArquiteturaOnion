@@ -29,6 +29,7 @@ namespace Poc.Application.ViewModel
         public string Bairro { get; set; }
 
         [Required]
+        //[JsonProperty("cidade")]
         public string Localidade { get; set; }
 
         [Required]

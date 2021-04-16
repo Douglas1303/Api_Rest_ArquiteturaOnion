@@ -44,7 +44,7 @@ namespace Poc.Domain.CommandHandlers.Events
 
                 await _unitOfWork.Commit();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 var cmdResult = new CommandResult();
                 cmdResult.AddErrorMessage(Localizer.GetMsg(RegisterEventError));

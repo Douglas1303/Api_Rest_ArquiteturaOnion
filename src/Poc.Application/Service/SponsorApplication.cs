@@ -62,6 +62,8 @@ namespace Poc.Application.Service
             {
                 var address = await _cepService.GetAddressAsync(viewModel.Cep);
 
+                if (address.Cep == null) return new QueryResult("Cep não encontrado.");  
+
                 var command = new AddSponsorCommand(
                     (ETipoPatrocinador)viewModel.TipoPatrocinador,
                     viewModel.NomePatrocinador,
