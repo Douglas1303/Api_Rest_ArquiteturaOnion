@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\DevEvents",
+    "\\DevEvents\\src",
+    "\\DevEvents\\src\\Poc.Test\\Api\\Controllers"
   ],
-  "SelectedNode": "\\Identity",
+  "SelectedNode": "\\DevEvents\\src\\PocProject.sln",
   "PreviewInSolutionExplorer": false
 }

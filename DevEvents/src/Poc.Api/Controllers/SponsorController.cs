@@ -14,7 +14,7 @@ namespace Poc.Api.Controllers
             _sponsorApplication = sponsorApplication;
         }
 
-        [HttpGet]
+        [HttpGet("{id}/{teste}")]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _sponsorApplication.GetAllAsync());
