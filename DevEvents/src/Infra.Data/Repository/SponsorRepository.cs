@@ -39,7 +39,7 @@ namespace Infra.Data.Repository
         {
             try
             {
-                var parameters = new DynamicParameters();
+                var parameters = new DynamicParameters(); 
 
                 parameters.Add("@Id", 0, direction: ParameterDirection.Output);
                 parameters.Add("@NomePatrocinador", dto.NomePatrocinador); 
